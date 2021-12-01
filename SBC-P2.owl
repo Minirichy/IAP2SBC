@@ -1,0 +1,609 @@
+@prefix : <http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR> .
+
+<http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR> rdf:type owl:Ontology ;
+                                                                         rdfs:comment "Ontologia de la práctica de ofertas de alquiler de viviendas" .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#oferta_de
+:oferta_de rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty ;
+           rdfs:domain :Oferta_Alquiler ;
+           rdfs:range :Vivienda ;
+           rdfs:comment "Una oferta de una" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#parte_de
+:parte_de rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          rdfs:domain :Baño ,
+                      :Cocina ,
+                      :Dormitorio ;
+          rdfs:range :Vivienda ;
+          rdfs:comment "Forma parte de:" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#solicita
+:solicita rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          rdfs:domain :Persona ;
+          rdfs:range :Oferta_Alquiler ;
+          rdfs:comment "Se solicita una" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#localizada/o_en
+<http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#localizada/o_en> rdf:type owl:ObjectProperty ;
+                                                                                        rdfs:subPropertyOf owl:topObjectProperty ;
+                                                                                        rdfs:domain :Servicio ,
+                                                                                                    :Vivienda ;
+                                                                                        rdfs:range :Localización ;
+                                                                                        rdfs:comment "Esta localizado/a en:" .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#NIF
+:NIF rdf:type owl:DatatypeProperty ;
+     rdfs:subPropertyOf owl:topDataProperty ;
+     rdf:type owl:FunctionalProperty ;
+     rdfs:domain :Persona ;
+     rdfs:range xsd:string ;
+     rdfs:comment "DNI de la persona" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#acceso_mov_red
+:acceso_mov_red rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf owl:topDataProperty ;
+                rdfs:domain :Vivienda ;
+                rdfs:range xsd:boolean ;
+                rdfs:comment "Si se tiene acceso a movilidad reducida" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#agua
+:agua rdf:type owl:DatatypeProperty ;
+      rdfs:subPropertyOf owl:topDataProperty ;
+      rdfs:domain :Vivienda ;
+      rdfs:range xsd:boolean ;
+      rdfs:comment "Si se dispone de agua" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#aire
+:aire rdf:type owl:DatatypeProperty ;
+      rdfs:subPropertyOf owl:topDataProperty ;
+      rdfs:domain :Vivienda ;
+      rdfs:range xsd:boolean ;
+      rdfs:comment "Si tiene aire o no" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#altura
+:altura rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf owl:topDataProperty ;
+        rdfs:domain :Plurifamiliar ;
+        rdfs:range xsd:string ;
+        rdfs:comment "Altura de la vivienda plurifamiliar: 1a planta, atico, entresuelo, planta baja..." .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#amueblada
+:amueblada rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf owl:topDataProperty ;
+           rdfs:domain :Vivienda ;
+           rdfs:range xsd:boolean ;
+           rdfs:comment "Si la vivienda esta amueblada o no" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#apellidos
+:apellidos rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf owl:topDataProperty ;
+           rdf:type owl:FunctionalProperty ;
+           rdfs:domain :Persona ;
+           rdfs:range xsd:string ;
+           rdfs:comment "Apellidos de la persona" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#ascensor
+:ascensor rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf owl:topDataProperty ;
+          rdfs:domain :Vivienda ;
+          rdfs:range xsd:boolean ;
+          rdfs:comment "Si tiene ascensor o no" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#bañera
+:bañera rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf owl:topDataProperty ;
+        rdfs:domain :Baño ;
+        rdfs:range xsd:boolean ;
+        rdfs:comment "Tiene o no bañera" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#bidet
+:bidet rdf:type owl:DatatypeProperty ;
+       rdfs:subPropertyOf owl:topDataProperty ;
+       rdfs:domain :Baño ;
+       rdfs:range xsd:boolean ;
+       rdfs:comment "Tiene o no bidet" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#calefacción
+:calefacción rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:domain :Vivienda ;
+             rdfs:range xsd:boolean ;
+             rdfs:comment "Si tiene calefacción o no" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#ciudad
+:ciudad rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf owl:topDataProperty ;
+        rdfs:domain :Localización ;
+        rdfs:range xsd:string ;
+        rdfs:comment "Ciudad de la localización" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#coche
+:coche rdf:type owl:DatatypeProperty ;
+       rdfs:subPropertyOf owl:topDataProperty ;
+       rdfs:domain :Persona ;
+       rdfs:range xsd:string ;
+       rdfs:comment "Si la persona tiene coche, y cantidad de coches tiene" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#consumo
+:consumo rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf owl:topDataProperty ;
+         rdfs:domain :Vivienda ;
+         rdfs:range xsd:float ;
+         rdfs:comment "Cantidad de consumo" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#direccion
+:direccion rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf owl:topDataProperty ;
+           rdfs:domain :Localización ;
+           rdfs:range xsd:string ;
+           rdfs:comment "Dirección de la localización" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#distrito
+:distrito rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf owl:topDataProperty ;
+          rdfs:domain :Localización ;
+          rdfs:range xsd:string ;
+          rdfs:comment "Distrito de la localización" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#ducha
+:ducha rdf:type owl:DatatypeProperty ;
+       rdfs:subPropertyOf owl:topDataProperty ;
+       rdfs:domain :Baño ;
+       rdfs:range xsd:boolean ;
+       rdfs:comment "Tiene o no ducha" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#e-mail
+:e-mail rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf owl:topDataProperty ;
+        rdfs:domain :Persona ;
+        rdfs:range xsd:string ;
+        rdfs:comment "E-mail de la persona" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#edad
+:edad rdf:type owl:DatatypeProperty ;
+      rdfs:subPropertyOf owl:topDataProperty ;
+      rdf:type owl:FunctionalProperty ;
+      rdfs:domain :Persona ;
+      rdfs:range xsd:integer ;
+      rdfs:comment "Edad de la persona" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#electrodomesticos
+:electrodomesticos rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf owl:topDataProperty ;
+                   rdfs:domain :Vivienda ;
+                   rdfs:range xsd:string ;
+                   rdfs:comment "El estado de los electrodomesticos de la vivienda: {buen estado, mal estado...}" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#emisiones
+:emisiones rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf owl:topDataProperty ;
+           rdfs:domain :Vivienda ;
+           rdfs:range xsd:float ;
+           rdfs:comment "Cantidad de emisiones" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#estado
+:estado rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf owl:topDataProperty ;
+        rdfs:domain :Vivienda ;
+        rdfs:range xsd:string ;
+        rdfs:comment "Estado en el que se encuentra la vivienda" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#estado_civil
+:estado_civil rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty ;
+              rdfs:domain :Persona ;
+              rdfs:range xsd:string ;
+              rdfs:comment "Estado civil de la persona: casado, soltero..." .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#estudiante
+:estudiante rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdfs:domain :Persona ;
+            rdfs:range xsd:boolean ;
+            rdfs:comment "Si es estudiante" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#familia_rica
+:familia_rica rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty ;
+              rdf:type owl:FunctionalProperty ;
+              rdfs:domain :Persona ;
+              rdfs:range xsd:boolean ;
+              rdfs:comment "Si tiene familia rica" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#fianza
+:fianza rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf owl:topDataProperty ;
+        rdfs:domain :Oferta_Alquiler ;
+        rdfs:range xsd:float ;
+        rdfs:comment "Fianza de la vivienda" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#fogones
+:fogones rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf owl:topDataProperty ;
+         rdfs:domain :Cocina ;
+         rdfs:range xsd:string ;
+         rdfs:comment "Si tiene fogones o no" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#garaje
+:garaje rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf owl:topDataProperty ;
+        rdfs:domain :Vivienda ;
+        rdfs:range xsd:boolean ;
+        rdfs:comment "Si se dispone de garaje o plaza de aparcamiento" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#gas
+:gas rdf:type owl:DatatypeProperty ;
+     rdfs:subPropertyOf owl:topDataProperty ;
+     rdfs:domain :Vivienda ;
+     rdfs:range xsd:string ;
+     rdfs:comment "Si hay gas en la vivienda: butano, gas natural o nada" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#hijos
+:hijos rdf:type owl:DatatypeProperty ;
+       rdfs:subPropertyOf owl:topDataProperty ;
+       rdfs:domain :Persona ;
+       rdfs:range xsd:integer ;
+       rdfs:comment "Número de hijos que tiene" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#horno
+:horno rdf:type owl:DatatypeProperty ;
+       rdfs:subPropertyOf owl:topDataProperty ;
+       rdfs:domain :Cocina ;
+       rdfs:range xsd:boolean ;
+       rdfs:comment "Tiene o no horno" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#iluminación
+:iluminación rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:domain :Oferta_Alquiler ;
+             rdfs:range xsd:string ;
+             rdfs:comment "Iluminación de la vivienda" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#independiente
+:independiente rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf owl:topDataProperty ;
+               rdfs:domain :Persona ;
+               rdfs:range xsd:boolean ;
+               rdfs:comment "Si quiere vivir solo, o vivirá con sus padres/mas gente" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#latitud
+:latitud rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf owl:topDataProperty ;
+         rdfs:domain :Localización ;
+         rdfs:range xsd:float ;
+         rdfs:comment "Latitud de la localización" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#lavabo
+:lavabo rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf owl:topDataProperty ;
+        rdfs:domain :Baño ;
+        rdfs:range xsd:boolean ;
+        rdfs:comment "Tiene o no lavabo" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#lavavajillas
+:lavavajillas rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty ;
+              rdfs:domain :Cocina ;
+              rdfs:range xsd:boolean ;
+              rdfs:comment "Si tiene lavavajillas o no" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#longitud
+:longitud rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf owl:topDataProperty ;
+          rdfs:domain :Localización ;
+          rdfs:range xsd:float ;
+          rdfs:comment "Longitud de la localización" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#luz
+:luz rdf:type owl:DatatypeProperty ;
+     rdfs:subPropertyOf owl:topDataProperty ;
+     rdfs:domain :Vivienda ;
+     rdfs:range xsd:boolean ;
+     rdfs:comment "Si tiene luz o no" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#mascota
+:mascota rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf owl:topDataProperty ;
+         rdfs:domain :Persona ;
+         rdfs:range xsd:boolean ;
+         rdfs:comment "Si la persona tiene mascotas o no" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#nevera
+:nevera rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf owl:topDataProperty ;
+        rdfs:domain :Cocina ;
+        rdfs:range xsd:boolean ;
+        rdfs:comment "Si tiene nevera o no" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#nombre
+:nombre rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf owl:topDataProperty ;
+        rdf:type owl:FunctionalProperty ;
+        rdfs:domain :Persona ;
+        rdfs:range xsd:string ;
+        rdfs:comment "Nombre de la persona" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#num_viviendas
+:num_viviendas rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf owl:topDataProperty ;
+               rdfs:domain :Persona ;
+               rdfs:range xsd:integer ;
+               rdfs:comment "Numero de viviendas que tiene en su posesión" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#permiso_mascotas
+:permiso_mascotas rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf owl:topDataProperty ;
+                  rdfs:domain :Oferta_Alquiler ;
+                  rdfs:range xsd:boolean ;
+                  rdfs:comment "Si se tiene permiso de mascotas" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#piscina
+:piscina rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf owl:topDataProperty ;
+         rdfs:domain :Vivienda ;
+         rdfs:range xsd:boolean ;
+         rdfs:comment "Si hay piscina o no" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#precio_max
+:precio_max rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdfs:domain :Oferta_Alquiler ;
+            rdfs:range xsd:float ;
+            rdfs:comment "Precio maximo dispuesto a pagar" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#precio_mim
+:precio_mim rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdfs:domain :Oferta_Alquiler ;
+            rdfs:range xsd:float ;
+            rdfs:comment "Precio minimo a pagar de la persona" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#soleado
+:soleado rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf owl:topDataProperty ;
+         rdfs:domain :Oferta_Alquiler ;
+         rdfs:range xsd:string ;
+         rdfs:comment "Si se busca un piso soleado" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#sueldo
+:sueldo rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf owl:topDataProperty ;
+        rdfs:domain :Persona ;
+        rdfs:range xsd:float ;
+        rdfs:comment "Sueldo de la persona" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#superficie
+:superficie rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdfs:domain :Vivienda ;
+            rdfs:range xsd:float ;
+            rdfs:comment "Superficie en m2 de la vivienda" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#telefono
+:telefono rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf owl:topDataProperty ;
+          rdfs:domain :Persona ;
+          rdfs:range xsd:string ;
+          rdfs:comment "Telefono de la persona" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#terraza
+:terraza rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf owl:topDataProperty ;
+         rdfs:domain :Vivienda ;
+         rdfs:range xsd:boolean ;
+         rdfs:comment "Si hay terraza o no" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#tipo_co
+:tipo_co rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf owl:topDataProperty ;
+         rdfs:domain :Cocina ;
+         rdfs:range xsd:string ;
+         rdfs:comment "Tipo de cocina: {en 'u', en 'l', en isla, en paralelo, en linea}" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#tipo_do
+:tipo_do rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf owl:topDataProperty ;
+         rdfs:domain :Dormitorio ;
+         rdfs:range xsd:string ;
+         rdfs:comment "Tipo de dormitorio: {simple, doble}" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#tipo_ser
+:tipo_ser rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf owl:topDataProperty ;
+          rdfs:domain :Servicio ;
+          rdfs:range xsd:string ;
+          rdfs:comment "Tipo de servicio: {colegios, zonas verdes, metro, ocio nocturno...}" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#tipo_viv
+:tipo_viv rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf owl:topDataProperty ;
+          rdfs:domain :Plurifamiliar ,
+                      :Unifamiliar ;
+          rdfs:range xsd:string ;
+          rdfs:comment "Tipo de vivienda: {Independiente, adosado, pareado, apartamento, piso, duplex, estudio}" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#trabajo
+:trabajo rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf owl:topDataProperty ;
+         rdf:type owl:FunctionalProperty ;
+         rdfs:domain :Persona ;
+         rdfs:range xsd:string ;
+         rdfs:comment "Si trabaja o no, y si tene mas de un trabajo" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#vajilla
+:vajilla rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf owl:topDataProperty ;
+         rdfs:domain :Cocina ;
+         rdfs:range xsd:boolean ;
+         rdfs:comment "Si tiene vajilla o no" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#vistas
+:vistas rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf owl:topDataProperty ;
+        rdfs:domain :Oferta_Alquiler ;
+        rdfs:range xsd:string ;
+        rdfs:comment "Las vistas de la vivienda si son: {buenas, malas...}" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#Baño
+:Baño rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#Cocina
+:Cocina rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#Dormitorio
+:Dormitorio rdf:type owl:Class ;
+            rdfs:comment "Clase de Dormitorio" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#Localización
+:Localización rdf:type owl:Class ;
+              rdfs:comment "Clase de Localización" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#Oferta_Alquiler
+:Oferta_Alquiler rdf:type owl:Class ;
+                 rdfs:comment "Clase de Oferta de Alquiler" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#Persona
+:Persona rdf:type owl:Class ;
+         rdfs:comment "Clase de Persona" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#Plurifamiliar
+:Plurifamiliar rdf:type owl:Class ;
+               rdfs:subClassOf :Vivienda ;
+               owl:disjointWith :Unifamiliar ;
+               rdfs:comment "Clase de Plurifamiliar, Sub-clase de Vivienda (Vivienda Plurifamiliar)" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#Servicio
+:Servicio rdf:type owl:Class ;
+          rdfs:comment "Clase de Servicio" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#Unifamiliar
+:Unifamiliar rdf:type owl:Class ;
+             rdfs:subClassOf :Vivienda ;
+             rdfs:comment "Clase de Unifamiliar, Sub-clase de Vivienda (Vivienda Unifamiliar)" .
+
+
+###  http://www.semanticweb.org/jonsnow/ontologies/2021/11/ontologia-SBCFR#Vivienda
+:Vivienda rdf:type owl:Class ;
+          rdfs:comment "Clase de Vivienda" .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Baño
+                :Cocina
+                :Dormitorio
+                :Localización
+                :Oferta_Alquiler
+                :Persona
+                :Servicio
+                :Vivienda
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Dormitorio
+                :Localización
+                :Oferta_Alquiler
+                :Persona
+                :Servicio
+                :Vivienda
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
