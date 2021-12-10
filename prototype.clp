@@ -1207,24 +1207,22 @@
 ;TODO: lo de instance-name igual se podria hacer mejor...
 (defrule asociacion::movilidad_reducida "Se descartan las recomendaciones no adaptadas a movilidad reducida "
     ?p <- (object (is-a Persona))
-    (test (eq (send ?p get-movilidad_reducida) TRUE))
     (recomendaciones_creadas) 
     ?rec <- (object (is-a Recomendacion) (oferta ?ofr))
     ?of  <- (object (is-a Oferta_Alquiler) (oferta_de ?vivo))
     ?viv <- (object (is-a Vivienda) (acceso_mov_red FALSE))
-    (test (and (eq (instance-name ?ofr) (instance-name ?of)) (eq (instance-name ?vivo) (instance-name ?viv))))
+    (test (and (and (eq (instance-name ?ofr) (instance-name ?of)) (eq (instance-name ?vivo) (instance-name ?viv))) (eq (send ?p get-movilidad_reducida) TRUE)))
     =>
     (send ?rec delete)
 )
 
 (defrule asociacion::amueblada "Se descartan las recomendaciones no amuebladas"
     ?p <- (object (is-a Persona))
-    (test (eq (send ?p get-pref_amueblada) TRUE))
     (recomendaciones_creadas) 
     ?rec <- (object (is-a Recomendacion) (oferta ?ofr))
     ?of  <- (object (is-a Oferta_Alquiler) (oferta_de ?vivo))
     ?viv <- (object (is-a Vivienda) (amueblada FALSE))
-    (test (and (eq (instance-name ?ofr) (instance-name ?of)) (eq (instance-name ?vivo) (instance-name ?viv))))
+    (test (and (and (eq (instance-name ?ofr) (instance-name ?of)) (eq (instance-name ?vivo) (instance-name ?viv))) (eq (send ?p get-pref_amueblada) TRUE)))
     =>
     (send ?rec delete)
 )
