@@ -244,7 +244,7 @@
     (role concrete)
     (pattern-match reactive)
     ;;; Una oferta de una
-    (multislot oferta_de
+    (slot oferta_de
         (type INSTANCE)
         (create-accessor read-write))
     ;;; Precio
@@ -1053,9 +1053,9 @@
 )
 
 (defmessage-handler Vivienda imprimir ()
-    (format t "-- Amueblada: %d" ?self:amueblada)
+    (format t "-- Amueblada: %s" ?self:amueblada)
     (printout t crlf)
-    (format t "-- Movilidad Reducida: %d" ?self:acceso_mov_red)
+    (format t "-- Movilidad Reducida: %s" ?self:acceso_mov_red)
     (printout t crlf)
 )
 
@@ -1064,8 +1064,8 @@
     (printout t crlf)
     (format t "- Fianza: %s" ?self:fianza)
     (printout t crlf)
-    ;(printout t "- Vivienda: ")
-    ;(send (send ?self get-oferta_de) imprimir)
+    (printout t "- Vivienda: " crlf)
+    (send ?self:oferta_de imprimir)
     (printout t crlf)
 )
 
@@ -1110,7 +1110,7 @@
 (defrule preguntas::pregunta-nombre "pregunta al usuario su nombre de usuario"
     (not (Persona))
     =>
-    (bind ?nombre (pregunta "Nombre de usario: "))
+    (bind ?nombre (pregunta "Nombre de usuario: "))
     (make-instance usuario of Persona (nombre ?nombre))
 )
 
