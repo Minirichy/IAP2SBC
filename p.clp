@@ -1073,7 +1073,6 @@
     (slot pref_tipo_vistas
         (type STRING)
         (create-accessor read-write))
-
 )
 
 (defmodule MAIN (export ?ALL))
@@ -1385,12 +1384,49 @@
     (send ?p put-mascota_grande ?new-ma)
 )
 
-(defrule preguntas::pregunta-amueblada "pregunta al usuario si prefiere vivienda amueblada"
+(defrule preguntas::pregunta-pref_tipo "pregunta al usuario el tipo de casa que prefieren"
+    ?p <- (object (is-a Persona) (pref_tipo ""))
+    =>
+    (bind ?new-tp (pregunta-opciones "Prefieres casa unifamiliar o un piso?" "Unifamiliar" "Piso"))
+    (send ?p put-pref_tipo ?new-tp)
+)
+
+(defrule preguntas::pregunta-pref_piso "si prefiere piso, pregunta al usuario si prefiere un piso (altura) particular"
+    ?p <- (object (is-a Persona) (pref_tipo "Piso") (pref_piso ""))
+    =>
+    (bind ?new-tp (pregunta-opciones "Que piso prefieres?" "Principal" "Atico" "Indiferente"))
+    (send ?p put-pref_piso ?new-tp)
+)
+
+(defrule preguntas::pregunta-pref_distancia_centro "pregunta al usuario la distancia que quiere vivir del centro"
+    ?p <- (object (is-a Persona) (pref_distancia_centro 0.0))
+    =>
+    (bind ?new-di (pregunta "A que distancia, en metros, quieres vivir del centro?" ""))
+    (send ?p put-pref_distancia_centro ?new-di)
+)
+
+(defrule preguntas::pregunta-pref_amueblada "pregunta al usuario si prefiere vivienda amueblada"
     ?p <- (object (is-a Persona) (pref_amueblada nil))
     =>
     (bind ?new-am (pregunta-binaria "Prefieres la casa amueblada?"))
     (send ?p put-pref_amueblada ?new-am)
 )
+
+(defrule preguntas::pregunta-pref_bañera "si la prefiere amueblada, pregunta al usuario si prefiere tener bañera"
+    ?p <- (object (is-a Persona) (pref_amueblada TRUE) (pref_bañera nil))
+    =>
+    (bind ?new-ba (pregunta-binaria "Buscas una casa con bañera?"))
+    (send ?p put-pref_bañera ?new-ba)
+)
+
+(defrule preguntas::pregunta-pref_piscina "pregunta al usuario si prefiere vivienda con piscina"
+    ?p <- (object (is-a Persona) (pref_piscina nil))
+    =>
+    (bind ?new-pis (pregunta-binaria "Buscas una casa con piscina?"))
+    (send ?p put-pref_piscina ?new-pis)
+)
+
+
 
 
 (defrule preguntas::fin_preguntas "fin de las preguntas, pasa a abstraccion" 
