@@ -960,51 +960,9 @@
     (slot nombre
         (type STRING)
         (create-accessor read-write))
-    ;;; Si es estudiante
-    (slot ocupacion
-        (type STRING)
-        (create-accessor read-write))
-    ;;; Si la persona tiene coche, y cantidad de coches tiene
-    (slot sueldo
-        (type FLOAT)
-        (create-accessor read-write))
-
-
-
-    
-    (slot coche
-        (type STRING)
-        (create-accessor read-write))
     ;;; Edad de la persona
     (slot edad
         (type INTEGER)
-        (create-accessor read-write))
-    ;;; Estado civil de la persona: casado, soltero...
-    (slot estado_civil
-        (type STRING)
-        (create-accessor read-write))
-    ;;; Si tiene familia rica
-    (slot familia_rica
-        (type SYMBOL)
-        (create-accessor read-write))
-    ;;; Número de hijos que tiene
-    (slot num_hijos
-        (type INTEGER)
-        (create-accessor read-write))
-    ;;; Si quiere vivir solo, o vivirá con sus padres/mas gente
-    (slot independiente
-        (type SYMBOL)
-        (create-accessor read-write))
-    ;;; Si la persona tiene mascotas o no
-    (slot mascota
-        (type SYMBOL)
-        (create-accessor read-write))
-    ;;; Numero de viviendas que tiene en su posesión
-    (slot num_viviendas
-        (type INTEGER)
-        (create-accessor read-write))
-    (slot perf_jardi
-        (type SYMBOL)
         (create-accessor read-write))
     ;;; Precio maximo dispuesto a pagar
     (slot precio_max
@@ -1014,33 +972,108 @@
     (slot precio_min
         (type FLOAT)
         (create-accessor read-write))
+    ;;; Si es estudiante
+    (slot ocupacion
+        (type STRING)
+        (create-accessor read-write))
+    (slot ingresos
+        (type FLOAT)
+        (create-accessor read-write))
+    (slot ingresos_pareja
+        (type FLOAT)
+        (create-accessor read-write))
+    (slot movilidad_reducida
+        (type SYMBOL)
+        (create-accessor read-write))
+    (slot puede_subir_escaleras
+        (type SYMBOL)
+        (create-accessor read-write))
+    (slot distancia_recorrer
+        (type FLOAT)
+        (create-accessor read-write))
+    (slot pareja
+        (type SYMBOL)
+        (create-accessor read-write))
+    (slot vives_pareja
+        (type SYMBOL)
+        (create-accessor read-write))
+    (slot hijos
+        (type SYMBOL)
+        (create-accessor read-write))
+    (slot num_hijos
+        (type INTEGER)
+        (create-accessor read-write))
+    (slot hijos_escuela_universidad
+        (type STRING)
+        (create-accessor read-write))
+    (slot comparte_piso
+        (type SYMBOL)
+        (create-accessor read-write))
+    (slot num_amigos
+        (type INTEGER)
+        (create-accessor read-write))
+    (slot deporte
+        (type SYMBOL)
+        (create-accessor read-write))
+    (slot donde_deporte
+        (type STRING)
+        (create-accessor read-write))
+    (slot num_coches
+        (type INTEGER)
+        (create-accessor read-write)
+        (default -1))
+    (slot aparcar
+        (type STRING)
+        (create-accessor read-write))
+    (slot transporte_publico
+        (type SYMBOL)
+        (create-accessor read-write))
+    (slot mascota
+        (type SYMBOL)
+        (create-accessor read-write))
+    (slot mascota_grande
+        (type SYMBOL)
+        (create-accessor read-write))
+
+
+    (slot pref_tipo
+        (type STRING)
+        (create-accessor read-write))
+    (slot pref_piso
+        (type STRING)
+        (create-accessor read-write))
+
+    (slot pref_distancia_centro
+        (type FLOAT)
+        (create-accessor read-write))
+
     (slot pref_amueblada
         (type SYMBOL)
         (create-accessor read-write))
     (slot pref_bañera
         (type SYMBOL)
         (create-accessor read-write))
-    (slot pref_lavavajillas
-        (type SYMBOL)
-        (create-accessor read-write))
     (slot pref_piscina
         (type SYMBOL)
         (create-accessor read-write))
-    (slot pref_serveis
+
+    (slot cocinas
         (type SYMBOL)
         (create-accessor read-write))
-    (slot movilidad_reducida
+    (slot pref_tipo_cocina
+        (type STRING)
+        (create-accessor read-write))
+
+    (slot pref_soleado
         (type SYMBOL)
         (create-accessor read-write))
-    ;;; Sueldo de la persona
-    ;;; Telefono de la persona
-    (slot telefono
+    (slot pref_vistas
+        (type SYMBOL)
+        (create-accessor read-write))
+    (slot pref_tipo_vistas
         (type STRING)
         (create-accessor read-write))
-    ;;; Si trabaja o no, y si tene mas de un trabajo
-    (slot trabajo
-        (type STRING)
-        (create-accessor read-write))
+
 )
 
 (defmodule MAIN (export ?ALL))
@@ -1191,60 +1224,172 @@
 )
 
 (defrule preguntas::pregunta-edad "pregunta al usuario su edad"
-    ?p <- (object (is-a Persona))
-    (test (eq (send ?p get-edad) 0))
+    ?p <- (object (is-a Persona) (edad 0))
     =>
     (bind ?new-edad (pregunta-rango "Cuantos años tienes?" 18 120))
     (send ?p put-edad ?new-edad)
 )
 
-(defrule preguntas::pregunta-ocupacion "pregunta al usuario si trabaja o estudia"
-    ?p <- (object (is-a Persona))
-    (test (eq (send ?p get-ocupacion) ""))
-    =>
-    (bind ?new-ocupacion (pregunta-opciones "Estudias o trabajas?" "Estudio" "Trabajo"))
-    (send ?p put-ocupacion ?new-ocupacion)
-)
-
-(defrule preguntas::pregunta-sueldo "si trabaja, le pregunta al usuario su sueldo"
-    ?p <- (object (is-a Persona) (ocupacion "Trabajo"))
-    (test (eq (send ?p get-sueldo) 0.0))
-    =>
-    (bind ?new-sueldo (pregunta-rango "Cual es tu sueldo bruto?" 500 10000))
-    (send ?p put-sueldo ?new-sueldo)
-)
-
-
-(defrule preguntas::pregunta-amueblada "pregunta al usuario si prefiere vivienda amueblada"
-    ?p <- (object (is-a Persona))
-    (test (eq (send ?p get-pref_amueblada) nil))
-    =>
-    (bind ?new-am (pregunta-binaria "Prefieres la casa amueblada?"))
-    (send ?p put-pref_amueblada ?new-am)
-)
-
-(defrule preguntas::pregunta-movilidad_reducida "pregunta al usuario si prefiere vivienda amueblada" 
-    ?p <- (object (is-a Persona))
-    (test (eq (send ?p get-movilidad_reducida) nil))
-    =>
-    (bind ?new-mov (pregunta-binaria "Tienes problemas de movilidad reducida?"))
-    (send ?p put-movilidad_reducida ?new-mov)
-)
-
 (defrule preguntas::pregunta-precio_min "pregunta al usuario el precio minimo que esta dispuesto a pagar" 
-    ?p <- (object (is-a Persona))
-    (test (eq (send ?p get-precio_min) 0.0))
+    ?p <- (object (is-a Persona) (precio_min 0.0))
     =>
     (bind ?new-precio_min (pregunta-rango "Cual es el precio minimo que estarias dispuesto a pagar?" 100 100000))
     (send ?p put-precio_min ?new-precio_min)
 )
 
 (defrule preguntas::pregunta-precio_max "pregunta al usuario el precio maximo que esta dispuesto a pagar" 
-    ?p <- (object (is-a Persona))
-    (test (eq (send ?p get-precio_max) 0.0))
+    ?p <- (object (is-a Persona) (precio_max 0.0))
     =>
     (bind ?new-precio_max (pregunta-rango "Cual es el precio maximo que estarias dispuesto a pagar?" 100 100000))
     (send ?p put-precio_max ?new-precio_max)
+)
+
+(defrule preguntas::pregunta-ocupacion "pregunta al usuario si trabaja o estudia"
+    ?p <- (object (is-a Persona) (ocupacion ""))
+    =>
+    (bind ?new-ocupacion (pregunta-opciones "Estudias o trabajas?" "Estudio" "Trabajo"))
+    (send ?p put-ocupacion ?new-ocupacion)
+)
+
+(defrule preguntas::pregunta-sueldo "si trabaja, le pregunta al usuario su sueldo"
+    ?p <- (object (is-a Persona) (ocupacion "Trabajo") (ingresos 0.0))
+    =>
+    (bind ?new-ing (pregunta-rango "--> Cual es tu sueldo neto, en euros?" 500 100000))
+    (send ?p put-ingresos ?new-ing)
+)
+
+(defrule preguntas::pregunta-movilidad_reducida "pregunta al usuario si tiene un problema de movilidad reducida" 
+    ?p <- (object (is-a Persona) (movilidad_reducida nil))
+    =>
+    (bind ?new-mov (pregunta-binaria "Te ves afectado por un problema de movilidad reducida?"))
+    (send ?p put-movilidad_reducida ?new-mov)
+)
+
+(defrule preguntas::pregunta-puede_subir_escaleras "si tiene problemas de movilidad, pregunta si puede subir escaleras" 
+    ?p <- (object (is-a Persona) (movilidad_reducida TRUE) (puede_subir_escaleras nil))
+    =>
+    (bind ?new-esc (pregunta-binaria "--> Puedes subir escaleras?"))
+    (send ?p put-puede_subir_escaleras ?new-esc)
+)
+
+(defrule preguntas::pregunta-distancia_recorrer "si tiene problemas de movilidad, pregunta cuanta distancia puede recorrer por la calle" 
+    ?p <- (object (is-a Persona) (movilidad_reducida TRUE) (distancia_recorrer 0.0))
+    =>
+    (bind ?new-dis (pregunta "--> Cuanta distancia, en metros, puedes recorrer por el arcen?" ""))
+    (send ?p put-distancia_recorrer ?new-dis)
+)
+
+(defrule preguntas::pregunta-pareja "pregunta al usuario si tiene pareja" 
+    ?p <- (object (is-a Persona) (pareja nil))
+    =>
+    (bind ?new-par (pregunta-binaria "Tienes pareja?"))
+    (send ?p put-pareja ?new-par)
+)
+
+(defrule preguntas::pregunta-vives_pareja "pregunta al usuario si vive con la pareja" 
+    ?p <- (object (is-a Persona) (pareja TRUE) (vives_pareja nil))
+    =>
+    (bind ?new-par (pregunta-binaria "--> Vives con tu pareja?"))
+    (send ?p put-vives_pareja ?new-par)
+)
+
+(defrule preguntas::pregunta-ingresos_pareja "pregunta al usuario los ingresos conjuntos con su pareja" 
+    ?p <- (object (is-a Persona) (pareja TRUE) (ingresos_pareja 0.0))
+    =>
+    (bind ?new-ing (pregunta-rango "--> Cuales son vuestros ingesos netos mensuales, en euros?" 500 100000))
+    (send ?p put-ingresos_pareja ?new-ing)
+)
+
+(defrule preguntas::pregunta-hijos "pregunta al usuario si tiene hijos" 
+    ?p <- (object (is-a Persona) (hijos nil))
+    =>
+    (bind ?new-hij (pregunta-binaria "Tienes hijos?"))
+    (send ?p put-hijos ?new-hij)
+)
+
+(defrule preguntas::pregunta-num_hijos "si tiene hijos, pregunta al usuario cuantos hijos tiene" 
+    ?p <- (object (is-a Persona) (hijos TRUE) (num_amigos 0))
+    =>
+    (bind ?new-nj (pregunta-rango "--> Cuantos?" 1 20))
+    (send ?p put-num_hijos ?new-nj)
+)
+
+(defrule preguntas::pregunta-hijos_escuela_universidad "si tiene hijos, pregunta si van a la escuela universidad ambas o ninguna" 
+    ?p <- (object (is-a Persona) (hijos TRUE) (hijos_escuela_universidad ""))
+    =>
+    (bind ?new-he (pregunta-opciones "--> Alguno de tus hijos va a la escuela o universidad?" "Escuela" "Universidad" "Ambas" "Ninguna"))
+    (send ?p put-hijos_escuela_universidad ?new-he)
+)
+
+(defrule preguntas::pregunta-comparte_piso "pregunta al usuario si comparte_piso" 
+    ?p <- (object (is-a Persona) (comparte_piso nil))
+    =>
+    (bind ?new-cp (pregunta-binaria "Compartes piso con amigos?"))
+    (send ?p put-comparte_piso ?new-cp)
+)
+
+(defrule preguntas::pregunta-num_amigos "si comparte piso, pregunta con cuantos amigos" 
+    ?p <- (object (is-a Persona) (comparte_piso TRUE) (num_amigos 0))
+    =>
+    (bind ?new-cp (pregunta-rango "--> Con cuantos amigos compartes piso?" 1 10))
+    (send ?p put-num_amigos ?new-cp)
+)
+
+(defrule preguntas::pregunta-deporte "pregunta al usuario si hace deporte" 
+    ?p <- (object (is-a Persona) (deporte nil))
+    =>
+    (bind ?new-dep (pregunta-binaria "Haces deporte regularmente?"))
+    (send ?p put-deporte ?new-dep)
+)
+
+(defrule preguntas::pregunta-donde_deporte "si hace deporte, pregunta al usuario donde" 
+    ?p <- (object (is-a Persona) (deporte TRUE) (donde_deporte ""))
+    =>
+    (bind ?new-dep (pregunta-opciones "--> Donde?" "Parque" "Gimnasio"))
+    (send ?p put-donde_deporte ?new-dep)
+)
+
+(defrule preguntas::pregunta-num_coches "pregunta al usuario cuantos coches tiene" 
+    ?p <- (object (is-a Persona) (num_coches -1))
+    =>
+    (bind ?new-co (pregunta-rango "Cuantos coches tienes?" 0 10))
+    (send ?p put-num_coches ?new-co)
+)
+
+(defrule preguntas::pregunta-aparcar "pregunta al usuario donde aparca el coche" 
+    ?p <- (object (is-a Persona) (num_coches ?coches) (aparcar ""))
+    (test (> ?coches 0))
+    =>
+    (bind ?new-co (pregunta-opciones "--> Donde aparcas el coche(s)?" "Garage" "Calle"))
+    (send ?p put-aparcar ?new-co)
+)
+
+(defrule preguntas::pregunta-transporte_publico "pregunta al usuario si usa el trans publico" 
+    ?p <- (object (is-a Persona) (transporte_publico nil))
+    =>
+    (bind ?new-co (pregunta-binaria "Usas el transporte publico regularmente?"))
+    (send ?p put-transporte_publico ?new-co)
+)
+
+(defrule preguntas::pregunta-mascota "pregunta al usuario si tiene mascota" 
+    ?p <- (object (is-a Persona) (mascota nil))
+    =>
+    (bind ?new-ma (pregunta-binaria "Tienes mascota?"))
+    (send ?p put-mascota ?new-ma)
+)
+
+(defrule preguntas::pregunta-mascota_grande "si tiene mascota, pregunta al usuario si es grande" 
+    ?p <- (object (is-a Persona) (mascota TRUE) (mascota_grande nil))
+    =>
+    (bind ?new-ma (pregunta-binaria "--> Es grande?"))
+    (send ?p put-mascota_grande ?new-ma)
+)
+
+(defrule preguntas::pregunta-amueblada "pregunta al usuario si prefiere vivienda amueblada"
+    ?p <- (object (is-a Persona) (pref_amueblada nil))
+    =>
+    (bind ?new-am (pregunta-binaria "Prefieres la casa amueblada?"))
+    (send ?p put-pref_amueblada ?new-am)
 )
 
 
