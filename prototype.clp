@@ -10,7 +10,7 @@
 ;;; SBC-P2.clp
 ;;; Translated by owl2clips
 ;;; Translated to CLIPS from ontology SBC-P2.owl
-;;; :Date 01/12/2021 13:26:05
+;;; :Date 01/12/2021 13:26:06
 
 ;;; ---------------------------------------------------------
 ;;; OntProba.clp
