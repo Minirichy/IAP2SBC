@@ -952,7 +952,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-(defclass Persona "Clase de Persona"
+(defclass Persona "Classe de Persona"
     (is-a USER)
     (role concrete)
     (pattern-match reactive)
@@ -960,7 +960,18 @@
     (slot nombre
         (type STRING)
         (create-accessor read-write))
+    ;;; Si es estudiante
+    (slot ocupacion
+        (type STRING)
+        (create-accessor read-write))
     ;;; Si la persona tiene coche, y cantidad de coches tiene
+    (slot sueldo
+        (type FLOAT)
+        (create-accessor read-write))
+
+
+
+    
     (slot coche
         (type STRING)
         (create-accessor read-write))
@@ -971,10 +982,6 @@
     ;;; Estado civil de la persona: casado, soltero...
     (slot estado_civil
         (type STRING)
-        (create-accessor read-write))
-    ;;; Si es estudiante
-    (slot ocupacion
-        (type SYMBOL)
         (create-accessor read-write))
     ;;; Si tiene familia rica
     (slot familia_rica
@@ -1026,9 +1033,6 @@
         (type SYMBOL)
         (create-accessor read-write))
     ;;; Sueldo de la persona
-    (slot sueldo
-        (type FLOAT)
-        (create-accessor read-write))
     ;;; Telefono de la persona
     (slot telefono
         (type STRING)
@@ -1194,6 +1198,23 @@
     (send ?p put-edad ?new-edad)
 )
 
+(defrule preguntas::pregunta-ocupacion "pregunta al usuario si trabaja o estudia"
+    ?p <- (object (is-a Persona))
+    (test (eq (send ?p get-ocupacion) ""))
+    =>
+    (bind ?new-ocupacion (pregunta-opciones "Estudias o trabajas?" "Estudio" "Trabajo"))
+    (send ?p put-ocupacion ?new-ocupacion)
+)
+
+(defrule preguntas::pregunta-sueldo "si trabaja, le pregunta al usuario su sueldo"
+    ?p <- (object (is-a Persona) (ocupacion "Trabajo"))
+    (test (eq (send ?p get-sueldo) 0.0))
+    =>
+    (bind ?new-sueldo (pregunta-rango "Cual es tu sueldo bruto?" 500 10000))
+    (send ?p put-sueldo ?new-sueldo)
+)
+
+
 (defrule preguntas::pregunta-amueblada "pregunta al usuario si prefiere vivienda amueblada"
     ?p <- (object (is-a Persona))
     (test (eq (send ?p get-pref_amueblada) nil))
@@ -1202,7 +1223,7 @@
     (send ?p put-pref_amueblada ?new-am)
 )
 
-(defrule preguntas::pregunta-movilidad_reducida "pregunta al usuario si prefiere vivienda amueblada"
+(defrule preguntas::pregunta-movilidad_reducida "pregunta al usuario si prefiere vivienda amueblada" 
     ?p <- (object (is-a Persona))
     (test (eq (send ?p get-movilidad_reducida) nil))
     =>
@@ -1210,7 +1231,7 @@
     (send ?p put-movilidad_reducida ?new-mov)
 )
 
-(defrule preguntas::pregunta-precio_min "pregunta al usuario el precio minimo que esta dispuesto a pagar"
+(defrule preguntas::pregunta-precio_min "pregunta al usuario el precio minimo que esta dispuesto a pagar" 
     ?p <- (object (is-a Persona))
     (test (eq (send ?p get-precio_min) 0.0))
     =>
@@ -1218,7 +1239,7 @@
     (send ?p put-precio_min ?new-precio_min)
 )
 
-(defrule preguntas::pregunta-precio_max "pregunta al usuario el precio maximo que esta dispuesto a pagar"
+(defrule preguntas::pregunta-precio_max "pregunta al usuario el precio maximo que esta dispuesto a pagar" 
     ?p <- (object (is-a Persona))
     (test (eq (send ?p get-precio_max) 0.0))
     =>
@@ -1226,16 +1247,8 @@
     (send ?p put-precio_max ?new-precio_max)
 )
 
-(defrule preguntas::pregunta-ocupacion "pregunta al usuario si trabaja o estudia"
-    ?p <- (object (is-a Persona))
-    (test (eq (send ?p get-ocupacion) nil))
-    =>
-    (bind ?new-ocupacion (pregunta-opciones "Estudias o trabajas?" "Estudio" "Trabajo"))
-    (send ?p put-ocupacion ?new-ocupacion)
-)
 
-
-(defrule preguntas::fin_preguntas "fin de las preguntas, pasa a abstraccion"
+(defrule preguntas::fin_preguntas "fin de las preguntas, pasa a abstraccion" 
     (declare (salience -100)) 
     =>
     (focus abstraccion)
