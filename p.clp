@@ -973,7 +973,7 @@
         (type STRING)
         (create-accessor read-write))
     ;;; Si es estudiante
-    (slot estudiante
+    (slot ocupacion
         (type SYMBOL)
         (create-accessor read-write))
     ;;; Si tiene familia rica
@@ -1113,13 +1113,13 @@
                 (pregunta-binaria ?pregunta)
             )
         else 
-            (if (eq (lowcase ?respuesta) s)
+            (if (eq ?respuesta S)
     	       then TRUE
             else 
-                (if (eq (lowcase ?respuesta) n)
+                (if (eq ?respuesta N)
                     then FALSE
                     else (progn
-                        (input-error "Wrong input format, not [S, N]")
+                        (input-error "Wrong input, not [S, N]")
                         (pregunta-binaria ?pregunta)
                     )
                 )
@@ -1128,7 +1128,7 @@
 )
 
 (deffunction pregunta-rango (?pregunta ?rmin ?rmax)
-    (bind ?range (format nil "[%d, %d]" ?rmin ?rmax))
+    (bind ?range (format nil " [%d, %d]" ?rmin ?rmax))
     (bind ?respuesta (pregunta ?pregunta ?range)) 
     (if (neq (type ?respuesta) INTEGER)
     then 
@@ -1140,7 +1140,7 @@
         (if (or (< ?respuesta ?rmin) (> ?respuesta ?rmax))
         then 
             (progn
-                (input-error "Wrong input format, not in range")
+                (input-error "Wrong input, not in range")
                 (pregunta-rango ?pregunta ?rmin ?rmax)
             )
         )
@@ -1148,12 +1148,41 @@
     )
 )
 
+
+(deffunction pregunta-opciones (?pregunta $?opciones)
+    (bind ?opstr " [")
+    (progn$ (?op $?opciones)
+        (bind ?opstr (format nil "%s%s, " ?opstr ?op))
+    )
+    (bind ?opstr (sub-string 0 (- (str-length ?opstr) 2) ?opstr))
+    (bind ?opstr (format nil "%s]" ?opstr))
+    (bind ?respuesta (str-cat (pregunta ?pregunta ?opstr)))
+    (if (neq (type ?respuesta) STRING)
+    then 
+        (progn
+            (input-error "Wrong input format, not a SYMBOL")
+            (pregunta-opciones ?pregunta $?opciones)
+        )
+    else 
+        (if (eq (member ?respuesta $?opciones) FALSE)
+        then
+            (progn
+                (input-error "Wrong input, not in option list")
+                (pregunta-opciones ?pregunta $?opciones)
+            )
+        else 
+            (return ?respuesta)
+        )
+    )
+)
+
+
 ;; PREGUNTAS AL USUARIO
 
 (defrule preguntas::pregunta-nombre "pregunta al usuario su nombre de usuario"
     (not (Persona))
     =>
-    (bind ?nombre (pregunta "Nombre de usuario: " ""))
+    (bind ?nombre (pregunta "Nombre de usuario:" ""))
     (make-instance usuario of Persona (nombre ?nombre))
 )
 
@@ -1161,7 +1190,7 @@
     ?p <- (object (is-a Persona))
     (test (eq (send ?p get-edad) 0))
     =>
-    (bind ?new-edad (pregunta-rango "Cuantos años tienes? " 18 120))
+    (bind ?new-edad (pregunta-rango "Cuantos años tienes?" 18 120))
     (send ?p put-edad ?new-edad)
 )
 
@@ -1169,7 +1198,7 @@
     ?p <- (object (is-a Persona))
     (test (eq (send ?p get-pref_amueblada) nil))
     =>
-    (bind ?new-am (pregunta-binaria "Prefieres la casa amueblada? "))
+    (bind ?new-am (pregunta-binaria "Prefieres la casa amueblada?"))
     (send ?p put-pref_amueblada ?new-am)
 )
 
@@ -1177,7 +1206,7 @@
     ?p <- (object (is-a Persona))
     (test (eq (send ?p get-movilidad_reducida) nil))
     =>
-    (bind ?new-mov (pregunta-binaria "Tienes problemas de movilidad reducida? "))
+    (bind ?new-mov (pregunta-binaria "Tienes problemas de movilidad reducida?"))
     (send ?p put-movilidad_reducida ?new-mov)
 )
 
@@ -1185,7 +1214,7 @@
     ?p <- (object (is-a Persona))
     (test (eq (send ?p get-precio_min) 0.0))
     =>
-    (bind ?new-precio_min (pregunta-rango "Cual es el precio minimo que estarias dispuesto a pagar? " 100 100000))
+    (bind ?new-precio_min (pregunta-rango "Cual es el precio minimo que estarias dispuesto a pagar?" 100 100000))
     (send ?p put-precio_min ?new-precio_min)
 )
 
@@ -1193,8 +1222,16 @@
     ?p <- (object (is-a Persona))
     (test (eq (send ?p get-precio_max) 0.0))
     =>
-    (bind ?new-precio_max (pregunta-rango "Cual es el precio maximo que estarias dispuesto a pagar? " 100 100000))
+    (bind ?new-precio_max (pregunta-rango "Cual es el precio maximo que estarias dispuesto a pagar?" 100 100000))
     (send ?p put-precio_max ?new-precio_max)
+)
+
+(defrule preguntas::pregunta-ocupacion "pregunta al usuario si trabaja o estudia"
+    ?p <- (object (is-a Persona))
+    (test (eq (send ?p get-ocupacion) nil))
+    =>
+    (bind ?new-ocupacion (pregunta-opciones "Estudias o trabajas?" "Estudio" "Trabajo"))
+    (send ?p put-ocupacion ?new-ocupacion)
 )
 
 
