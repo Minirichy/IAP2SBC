@@ -1093,24 +1093,67 @@
 
 ;; TIPOS DE PREGUNTA
 
-(deffunction pregunta (?pregunta)
-	(format t "%s" ?pregunta)
+(deffunction pregunta (?pregunta ?extra)
+	(format t "%s%s " ?pregunta ?extra)
  	(read)
 )
 
+(deffunction input-error (?msg)
+    (format t "INPUT ERROR: %s" ?msg)
+    (printout t crlf)
+)
+
 (deffunction pregunta-binaria (?pregunta)
-	 (bind ?respuesta (pregunta ?pregunta))
-	 (if (or (eq (lowcase ?respuesta) si) (eq (lowcase ?respuesta) s))
-	 then TRUE
-	 else FALSE
-))
+	(bind ?respuesta (pregunta ?pregunta " [S, N]"))
+	(
+        if (neq (type ?respuesta) SYMBOL)
+        then 
+            (progn
+                (input-error "Wrong input format, not a SYMBOL")
+                (pregunta-binaria ?pregunta)
+            )
+        else 
+            (if (eq (lowcase ?respuesta) s)
+    	       then TRUE
+            else 
+                (if (eq (lowcase ?respuesta) n)
+                    then FALSE
+                    else (progn
+                        (input-error "Wrong input format, not [S, N]")
+                        (pregunta-binaria ?pregunta)
+                    )
+                )
+            )
+    )
+)
+
+(deffunction pregunta-rango (?pregunta ?rmin ?rmax)
+    (bind ?range (format nil "[%d, %d]" ?rmin ?rmax))
+    (bind ?respuesta (pregunta ?pregunta ?range)) 
+    (if (neq (type ?respuesta) INTEGER)
+    then 
+        (progn
+            (input-error "Wrong input format, not an INTEGER")
+            (pregunta-rango ?pregunta ?rmin ?rmax)
+        )
+    else 
+        (if (or (< ?respuesta ?rmin) (> ?respuesta ?rmax))
+        then 
+            (progn
+                (input-error "Wrong input format, not in range")
+                (pregunta-rango ?pregunta ?rmin ?rmax)
+            )
+        )
+        else (return ?respuesta)
+    )
+)
 
 ;; PREGUNTAS AL USUARIO
 
 (defrule preguntas::pregunta-nombre "pregunta al usuario su nombre de usuario"
     (not (Persona))
     =>
-    (bind ?nombre (pregunta "Nombre de usuario: "))
+    (bind ?nombre (pregunta "Nombre de usuario: " ""))
     (make-instance usuario of Persona (nombre ?nombre))
 )
 
@@ -1118,7 +1161,7 @@
     ?p <- (object (is-a Persona))
     (test (eq (send ?p get-edad) 0))
     =>
-    (bind ?new-edad (pregunta "Cuantos años tienes? "))
+    (bind ?new-edad (pregunta-rango "Cuantos años tienes? " 18 120))
     (send ?p put-edad ?new-edad)
 )
 
@@ -1142,7 +1185,7 @@
     ?p <- (object (is-a Persona))
     (test (eq (send ?p get-precio_min) 0.0))
     =>
-    (bind ?new-precio_min (pregunta "Cual es el precio minimo que estarias dispuesto a pagar? "))
+    (bind ?new-precio_min (pregunta-rango "Cual es el precio minimo que estarias dispuesto a pagar? " 100 100000))
     (send ?p put-precio_min ?new-precio_min)
 )
 
@@ -1150,7 +1193,7 @@
     ?p <- (object (is-a Persona))
     (test (eq (send ?p get-precio_max) 0.0))
     =>
-    (bind ?new-precio_max (pregunta "Cual es el precio maximo que estarias dispuesto a pagar? "))
+    (bind ?new-precio_max (pregunta-rango "Cual es el precio maximo que estarias dispuesto a pagar? " 100 100000))
     (send ?p put-precio_max ?new-precio_max)
 )
 
