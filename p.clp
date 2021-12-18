@@ -1131,6 +1131,7 @@
 
 (deffunction pregunta (?pregunta ?extra)
 	(format t "%s%s " ?pregunta ?extra)
+    (printout t crlf)
  	(read)
 )
 
@@ -1293,9 +1294,9 @@
 )
 
 (defrule preguntas::pregunta-ingresos_pareja "pregunta al usuario los ingresos conjuntos con su pareja" 
-    ?p <- (object (is-a Persona) (pareja TRUE) (ingresos_pareja 0.0))
+    ?p <- (object (is-a Persona) (vives_pareja TRUE) (ingresos_pareja 0.0))
     =>
-    (bind ?new-ing (pregunta-rango "--> Cuales son vuestros ingresos netos mensuales, en euros?" 500 100000))
+    (bind ?new-ing (pregunta-rango "----> Cuales son vuestros ingresos netos mensuales, en euros?" 500 100000))
     (send ?p put-ingresos_pareja ?new-ing)
 )
 
@@ -1483,7 +1484,131 @@
      (import MAIN ?ALL)
 )
 
-(defrule abstraccion::regla_inicial_abstraccion "regla inicial abstraccion"
+(defrule abstraccion::rango_edad ""
+    ?p <- (object (is-a Persona) (edad ?e))
+    =>
+    (if (< ?e 23) 
+    then (assert (rango_edades "Adolescente"))
+    else 
+        (if (< ?e 35)
+        then (assert (rango_edades "Joven"))
+        else 
+            (if (< ?e 60)
+            then (assert (rango_edades "Mediana Edad"))
+            else 
+                (assert (rango_edades "Persona Mayor"))
+            )
+        )
+    )
+)
+
+(defrule abstraccion::vivir_cerca_universidad ""
+    ?p <- (object (is-a Persona) (ocupacion "Estudio"))
+    =>
+    (assert (distancia "Universidad" 10000))
+)
+
+(defrule abstraccion::clase_economica ""
+    ?p <- (object (is-a Persona)
+            (ingresos ?i) (ingresos_pareja ?ip)
+        )
+    =>
+    (bind ?ing ?i)
+    (if (send ?p get-vives_pareja) then (bind ?ing ?ip))
+    (if (< ?ing 1000) 
+    then (assert (clase_economica "Baja"))
+    else 
+        (if (< ?ing 6000)
+        then (assert (clase_economica "Media"))
+        else 
+            (if (< ?ing 20000)
+            then (assert (clase_economica "Rica"))
+            else 
+                (assert (clase_economica "Muy Rica"))
+            )
+        )
+    )
+)
+
+(defrule abstraccion::mov_red_trans_publico ""
+    ?p <- (object (is-a Persona) 
+            (movilidad_reducida TRUE)
+            (distancia_recorrer ?dr)
+        )
+    =>
+    (assert (distancia "Transporte publico" ?dr))
+)
+
+(defrule abstraccion::mov_red_escaleras ""
+    ?p <- (object (is-a Persona) 
+            (movilidad_reducida TRUE)
+            (puede_subir_escaleras ?es)
+        )
+    =>
+    (if (not ?es) 
+    then 
+        (assert (no_escaleras))
+    )
+)
+
+(defrule abstraccion::casa_pareja ""
+    ?p <- (object (is-a Persona) (vives_pareja TRUE))
+    =>
+    (assert (personas_caben_casa 2))
+)
+
+(defrule abstraccion::casa_hijos ""
+    ?p <- (object (is-a Persona) (hijos TRUE) (num_hijos ?nh))
+    =>
+    (assert (personas_caben_casa (+ 2 (div ?nh 2))))
+    (assert (superficie_minima 80))
+)
+
+(defrule abstraccion::casa_amigos ""
+    ?p <- (object (is-a Persona) (num_amigos ?na))
+    (test (> ?na 0))
+    =>
+    (assert (personas_caben_casa ?na))
+)
+
+
+(defrule abstraccion::hijos_escuela_universidad ""
+    ?p <- (object (is-a Persona) (hijos_escuela_universidad ?heu))
+    =>
+    (if (or (eq ?heu "Universidad") (eq ?heu "Ambas")) 
+    then (assert (distancia "Universidad" 10000)))
+
+    (if (or (eq ?heu "Escuela") (eq ?heu "Ambas")) 
+    then (assert (distancia "Escuela" 10000)))
+)
+
+
+(defrule abstraccion::deporte ""
+    ?p <- (object (is-a Persona) (deporte TRUE) (donde_deporte ?dd))
+    =>
+    (assert (distancia ?dd 2000))
+)
+
+
+
+(defrule abstraccion::init_max_caben ""
+    (declare (salience -1))
+    (not (max_personas_caben_casa ?))
+    =>
+    (assert (max_personas_caben_casa 0))
+)
+
+(defrule abstraccion::max_caben ""
+    (declare (salience -2))
+    ?a <- (personas_caben_casa ?np)
+    ?b <- (max_personas_caben_casa ?mnp)
+    =>
+    (retract ?a ?b)
+    (assert (max_personas_caben_casa (max ?mnp ?np)))
+)
+
+(defrule abstraccion::fin_abstraccion "regla final abstraccion, focus en asociacion"
+    (declare (salience -100))
     =>
     (focus asociacion)
 )
@@ -1609,6 +1734,7 @@
 (defmodule output
      (export ?ALL)
      (import MAIN ?ALL)
+     (import abstraccion deftemplate ?ALL)
 )
 
 ;TODO: Output mas sofisticado?
