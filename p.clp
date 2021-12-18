@@ -1295,7 +1295,7 @@
 (defrule preguntas::pregunta-ingresos_pareja "pregunta al usuario los ingresos conjuntos con su pareja" 
     ?p <- (object (is-a Persona) (pareja TRUE) (ingresos_pareja 0.0))
     =>
-    (bind ?new-ing (pregunta-rango "--> Cuales son vuestros ingesos netos mensuales, en euros?" 500 100000))
+    (bind ?new-ing (pregunta-rango "--> Cuales son vuestros ingresos netos mensuales, en euros?" 500 100000))
     (send ?p put-ingresos_pareja ?new-ing)
 )
 
@@ -1394,7 +1394,7 @@
 (defrule preguntas::pregunta-pref_piso "si prefiere piso, pregunta al usuario si prefiere un piso (altura) particular"
     ?p <- (object (is-a Persona) (pref_tipo "Piso") (pref_piso ""))
     =>
-    (bind ?new-tp (pregunta-opciones "Que piso prefieres?" "Principal" "Atico" "Indiferente"))
+    (bind ?new-tp (pregunta-opciones "--> Que piso prefieres?" "Principal" "Atico" "Indiferente"))
     (send ?p put-pref_piso ?new-tp)
 )
 
@@ -1415,8 +1415,22 @@
 (defrule preguntas::pregunta-pref_bañera "si la prefiere amueblada, pregunta al usuario si prefiere tener bañera"
     ?p <- (object (is-a Persona) (pref_amueblada TRUE) (pref_bañera nil))
     =>
-    (bind ?new-ba (pregunta-binaria "Buscas una casa con bañera?"))
+    (bind ?new-ba (pregunta-binaria "--> Buscas una casa con bañera?"))
     (send ?p put-pref_bañera ?new-ba)
+)
+
+(defrule preguntas::pregunta-cocinas "pregunta al usuario si cocina"
+    ?p <- (object (is-a Persona) (pref_amueblada TRUE) (cocinas nil))
+    =>
+    (bind ?new-c (pregunta-binaria "--> Cocinas regularmente?"))
+    (send ?p put-cocinas ?new-c)
+)
+
+(defrule preguntas::pregunta-pref_tipo_cocina "pregunta al usuario que tipo de cocina prefiere"
+    ?p <- (object (is-a Persona) (pref_amueblada TRUE) (cocinas TRUE) (pref_tipo_cocina ""))
+    =>
+    (bind ?new-c (pregunta-opciones "----> Prefieres fogones o induccion?" "Fogones" "Induccion"))
+    (send ?p put-pref_tipo_cocina ?new-c)
 )
 
 (defrule preguntas::pregunta-pref_piscina "pregunta al usuario si prefiere vivienda con piscina"
@@ -1426,8 +1440,26 @@
     (send ?p put-pref_piscina ?new-pis)
 )
 
+(defrule preguntas::pregunta-pref_soleado "pregunta al usuario si prefiere casa soleada"
+    ?p <- (object (is-a Persona) (pref_soleado nil))
+    =>
+    (bind ?new-so (pregunta-binaria "Prefieres una casa soleada?"))
+    (send ?p put-pref_soleado ?new-so)
+)
 
+(defrule preguntas::pregunta-pref_vistas "pregunta al usuario si prefiere casa con vistas"
+    ?p <- (object (is-a Persona) (pref_vistas nil))
+    =>
+    (bind ?new-vi (pregunta-binaria "Prefieres una casa con vistas?"))
+    (send ?p put-pref_vistas ?new-vi)
+)
 
+(defrule preguntas::pregunta-pref_tipo_vistas "si quiere la casa con vistas, pregunta que vistas prefiere"
+    ?p <- (object (is-a Persona) (pref_vistas TRUE) (pref_tipo_vistas ""))
+    =>
+    (bind ?new-vi (pregunta-opciones "--> Que vistas prefieres?" "Montaña" "Playa" "Ciudad" "Indiferente"))
+    (send ?p put-pref_tipo_vistas ?new-vi)
+)
 
 (defrule preguntas::fin_preguntas "fin de las preguntas, pasa a abstraccion" 
     (declare (salience -100)) 
