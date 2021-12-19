@@ -4564,14 +4564,14 @@
 )
 
 (defrule preguntas::pregunta-cocinas "pregunta al usuario si cocina"
-    ?p <- (object (is-a Persona) (pref_amueblada TRUE) (cocinas nil))
+    ?p <- (object (is-a Persona) (cocinas nil))
     =>
     (bind ?new-c (pregunta-binaria "--> Cocinas regularmente?"))
     (send ?p put-cocinas ?new-c)
 )
 
 (defrule preguntas::pregunta-pref_tipo_cocina "pregunta al usuario que tipo de cocina prefiere"
-    ?p <- (object (is-a Persona) (pref_amueblada TRUE) (cocinas TRUE) (pref_tipo_cocina ""))
+    ?p <- (object (is-a Persona) (cocinas TRUE) (pref_tipo_cocina ""))
     =>
     (bind ?new-c (pregunta-opciones "----> Prefieres fogones o induccion?" "Fogones" "Induccion"))
     (send ?p put-pref_tipo_cocina ?new-c)
