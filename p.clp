@@ -5051,10 +5051,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;Usando informacion concreta se clasifican las recomendaciones en "parcialmente adecuado", "adecuado", "muy recomendable" 
 ;(tambien se pueden descartar recomendaciones)
-
 (defmodule refinamiento
      (export ?ALL)
      (import MAIN ?ALL)
+     (import asociacion ?ALL)
 )
 
 (deffunction precio_excesivo(?precio)
@@ -5085,17 +5085,100 @@
     (assert (comprobado-precio-excesivo ?rec))
 )
 
-(defrule refinamiento::precio-insuficiente "determina si el precio de la vivienda esta por debajo del minimo"
+(defrule refinamiento::precio-bajo "determina si el precio de la vivienda es bajo o esta por debajo del minimo"
 	?rec <- (object (is-a Recomendacion) (oferta ?of))
-	(not (comprobado-precio-insuficiente ?rec))
+	(not (comprobado-precio-bajo ?rec))
 	=>
     (if (< (send ?of get-precio) (send [usuario] get-precio_min))
     then 
         (send ?rec criterio-violado "-Precio por debajo del minimo estipulado")
-        
     )
-    (assert (comprobado-precio-insuficiente ?rec))
+    (if (< (* (send ?of get-precio) 2) (+ (send [usuario] get-precio_min) (send [usuario] get-precio_max)))
+    then 
+        (send ?rec factor-positivo "-Precio bajo")
+    )
+    (assert (comprobado-precio-bajo ?rec))
 )
+
+(defrule refinamiento::soleada "si el cliente prefiere casa soleada y no es soleada, es un criterio violado, si es todo el dia es un factor positivo"
+	?rec <- (object (is-a Recomendacion) (oferta ?of))
+	(soleada)
+	(not (comprobado-soleada ?rec))
+	=>
+	(if (eq (send (send ?of get-oferta_de) get-soleado) "no")
+    then (send ?rec criterio-violado "-La casa no es soleada")
+    )
+    (if (eq (send (send ?of get-oferta_de) get-soleado) "mañana y tarde")
+    then (send ?rec factor-positivo "-La casa es soleada todo el dia")
+    )
+    (assert (comprobado-soleada ?rec))
+)
+
+;TODO tipo de vistas
+(defrule refinamiento::vistas "si el cliente prefiere buenas vistas y no hay buenas vistas, es un criterio violado, si hay buenas vistas del tipo que prefiere es un factor positivo"
+	?rec <- (object (is-a Recomendacion) (oferta ?of))
+	(vistas ?tv)
+	(not (comprobado-vistas ?rec))
+	=>
+	(if (eq (send (send ?of get-oferta_de) get-vistas) "no")
+    then (send ?rec criterio-violado "-La casa no tiene buenas vistas")
+    )
+    (assert (comprobado-vistas ?rec))
+)
+
+(defrule refinamiento::piscina "si el cliente prefiere casa con piscina y la casa no tiene piscina, es un criterio violado"
+	?rec <- (object (is-a Recomendacion) (oferta ?of))
+	(con_o_cerca_de_piscina)
+	(not (comprobado-piscina ?rec))
+	=>
+	(if (eq (send (send ?of get-oferta_de) get-piscina) FALSE)
+    then (send ?rec criterio-violado "-La casa no tiene piscina")
+    )
+    (assert (comprobado-piscina ?rec))
+)
+
+
+(defrule refinamiento::estado "si la casa es nueva, es un factor positivo"
+	?rec <- (object (is-a Recomendacion) (oferta ?of))
+	(not (comprobado-estado ?rec))
+	=>
+	(if (eq (send (send ?of get-oferta_de) get-estado) "nuevo")
+    then (send ?rec factor-positivo "-La casa es nueva")
+    )
+    (assert (comprobado-estado ?rec))
+)
+
+(defrule refinamiento::emisiones "si la casa emite pocas emisiones, es un factor positivo"
+	?rec <- (object (is-a Recomendacion) (oferta ?of))
+	(not (comprobado-emisiones ?rec))
+	=>
+	(if (< (send (send ?of get-oferta_de) get-emisiones) 50)
+    then (send ?rec factor-positivo "-Casa eco-friendly: tiene pocas emisiones")
+    )
+    (assert (comprobado-emisiones ?rec))
+)
+
+(defrule refinamiento::distancia_centro "refina seguin si la distancia al centro es la adecuada"
+	?rec <- (object (is-a Recomendacion) (oferta ?of))
+	(not (comprobado-distancia_centro ?rec))
+	=>
+	(bind ?distancia_centro  (calcula_distancia (send (send ?of get-oferta_de) get-localizado_en) [Loc_Centro]))
+	(bind ?distancia_preferida (send [usuario] get-pref_distancia_centro))
+	(if (> ?distancia_centro (* ?distancia_preferida 3))
+    then (send ?rec criterio-violado "-La casa esta lejos del centro")
+    )
+    (if (< ?distancia_centro (* ?distancia_preferida 0.33))
+    then (send ?rec criterio-violado "-La casa esta mas cerca del centro de lo preferido")
+    )
+	(if (and (< ?distancia_centro (* ?distancia_preferida 1.1)) (> ?distancia_centro (* ?distancia_preferida 0.9)))
+    then (send ?rec factor-positivo "-La casa esta a la distancia del centro especificada")
+    )
+    (assert (comprobado-distancia_centro ?rec))
+)
+
+
+
+
 
 (defrule refinamiento::clasificar-recomendacion "clasifica una recomendacion"
 	(declare (salience -10))
