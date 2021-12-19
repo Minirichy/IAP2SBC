@@ -1635,6 +1635,43 @@
     (assert (distancia "Centro" ?dc))
 )
 
+(defrule abstraccion::amueblada ""
+    ?p <- (object (is-a Persona) (pref_amueblada TRUE))
+    =>
+    (assert (amueblada))
+)
+
+(defrule abstraccion::bañera ""
+    ?p <- (object (is-a Persona) (pref_bañera TRUE))
+    =>
+    (assert (bañera))
+)
+
+(defrule abstraccion::piscina ""
+    ?p <- (object (is-a Persona) (pref_piscina TRUE))
+    =>
+    (assert (con_o_cerca_de_piscina))
+)
+
+(defrule abstraccion::cocinas ""
+    ?p <- (object (is-a Persona) (cocinas TRUE) (pref_tipo_cocina ?tc))
+    =>
+    (assert (distancia "Mercado" 1000))
+    (assert (cocina ?tc))
+)
+
+(defrule abstraccion::soleado ""
+    ?p <- (object (is-a Persona) (pref_soleado TRUE))
+    =>
+    (assert (soleada))
+)
+
+(defrule abstraccion::vistas ""
+    ?p <- (object (is-a Persona) (pref_vistas TRUE) (pref_tipo_vistas ?tv))
+    =>
+    (assert (vistas ?tv))
+)
+
 (defrule abstraccion::init_max_caben ""
     (declare (salience -1))
     (not (max_personas_caben_casa ?))
