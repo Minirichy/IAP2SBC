@@ -4152,6 +4152,32 @@
 	(slot clasificacion
 		(type SYMBOL)
 		(create-accessor read-write))
+	(slot criterios-violados
+		(type INTEGER)
+		(default 0)
+		(create-accessor read-write)
+	)
+	(slot factores-positivos
+		(type INTEGER)
+		(default 0)
+		(create-accessor read-write)
+	)
+	(multislot justificaciones-parcialmente-adecuado
+		(type STRING)
+		(create-accessor read-write))
+	(multislot justificaciones-recomendable
+		(type STRING)
+		(create-accessor read-write))
+)
+
+(defmessage-handler Recomendacion criterio-violado (?just)
+	(bind ?self:criterios-violados (+ ?self:criterios-violados 1))
+	(slot-insert$ ?self justificaciones-parcialmente-adecuado ?self:criterios-violados ?just)
+)
+
+(defmessage-handler Recomendacion factor-positivo (?just)
+	(bind ?self:factores-positivos (+ ?self:factores-positivos 1))
+	(slot-insert$ ?self justificaciones-recomendable ?self:factores-positivos ?just)
 )
 
 (defmessage-handler Localización imprimir ()
@@ -4200,7 +4226,33 @@
 (defmessage-handler MAIN::Recomendacion imprimir ()
 	(printout t "OFERTA: " (instance-name ?self) " " ?self crlf)
 	(send ?self:oferta imprimir)
-	(format t "Nivel de recomendacion: %s%n" ?self:clasificacion)
+	 (if (eq ?self:clasificacion parcialmente-adecuado)
+    	then 
+    	(progn
+    		(printout t "Nivel de recomendacion: Parcialmente adecuado" crlf)
+    		(printout t "Criterios violados: " crlf)
+    		(progn$ (?just ?self:justificaciones-parcialmente-adecuado)
+				(printout t ?just crlf)
+			)
+    	)
+    )
+    (if (eq ?self:clasificacion adecuado)
+    	then 
+    	(progn
+    		(printout t "Nivel de recomendacion: Adecuado" crlf)
+    	)
+    )
+    (if (eq ?self:clasificacion recomendable)
+    	then 
+    	(progn
+    		(printout t "Nivel de recomendacion: Muy recomendable" crlf)
+    		(printout t "Factores positivos a destacar: " crlf)
+    		(progn$ (?just ?self:justificaciones-recomendable)
+				(printout t ?just crlf)
+			)
+    	)
+    )
+	
 )
 
 (defrule regla_inicial "regla inicial"
@@ -4919,7 +4971,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;; MODULO REFINAMIENTO ;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 ;Usando informacion concreta se clasifican las recomendaciones en "parcialmente adecuado", "adecuado", "muy recomendable" 
 ;(tambien se pueden descartar recomendaciones)
 
@@ -4929,37 +4980,67 @@
 )
 
 (deffunction precio_excesivo(?precio)
-    (or 
-        (> ?precio (* (send [usuario] get-precio_max) 1.2)) 
-        (< ?precio (* (send [usuario] get-precio_min) 0.8))
-    )
+    (> ?precio (* (send [usuario] get-precio_max) 1.2)) 
 )
 
 (deffunction precio_ligeramente_excesivo(?precio)
     (and 
         (not (precio_excesivo ?precio))
-        (or 
-            (> ?precio (send [usuario] get-precio_max))
-            (< ?precio (send [usuario] get-precio_min)) 
-        )
+        (> ?precio (send [usuario] get-precio_max))
     )
 )
 
-;TODO: deberian ser rules distintas para clasificar, pensar como hacerlo
-(defrule refinamiento::clasificar_recomendacion "clasifica una recomendacion"
-    ?rec <- (object (is-a Recomendacion) (clasificacion nil) (oferta ?of))
-    =>
-    (bind ?precio_exc (precio_excesivo (send ?of get-precio)))
+(defrule refinamiento::precio-excesivo "determina si el precio de la vivienda esta por encima del maximo"
+	?rec <- (object (is-a Recomendacion) (oferta ?of))
+	(not (comprobado-precio-excesivo ?rec))
+	=>
+	(bind ?precio_exc (precio_excesivo (send ?of get-precio)))
     (bind ?precio_lig_exc (precio_ligeramente_excesivo (send ?of get-precio)))
     (if ?precio_exc
         then (send ?rec delete)
         else (
             if ?precio_lig_exc 
             then 
-                (send ?rec put-clasificacion parcialmente_adecuado)
-            else 
-                (send ?rec put-clasificacion adecuado)
+                (send ?rec criterio-violado "-Precio ligeramente por encima del maximo estipulado")
         )
+    )
+    (assert (comprobado-precio-excesivo ?rec))
+)
+
+(defrule refinamiento::precio-insuficiente "determina si el precio de la vivienda esta por debajo del minimo"
+	?rec <- (object (is-a Recomendacion) (oferta ?of))
+	(not (comprobado-precio-insuficiente ?rec))
+	=>
+    (if (< (send ?of get-precio) (send [usuario] get-precio_min))
+    then 
+        (send ?rec criterio-violado "-Precio por debajo del minimo estipulado")
+        
+    )
+    (assert (comprobado-precio-insuficiente ?rec))
+)
+
+(defrule refinamiento::clasificar-recomendacion "clasifica una recomendacion"
+	(declare (salience -10))
+    ?rec <- (object (is-a Recomendacion) (clasificacion nil))
+    =>
+    (if
+    	(= (send ?rec get-criterios-violados) 0)
+    then
+    	(if
+    		(> (send ?rec get-factores-positivos) 1)
+    	then
+    		(send ?rec put-clasificacion recomendable)
+    	else
+    		(send ?rec put-clasificacion adecuado)
+    	)
+    else 
+    	(if
+    		(< (send ?rec get-criterios-violados) 3)
+    	then
+    		(send ?rec put-clasificacion parcialmente-adecuado)
+    	else
+    		(send ?rec delete)
+    	)
     )
 )
 
@@ -4968,6 +5049,7 @@
     =>
     (focus output)
 )
+
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
