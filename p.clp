@@ -2589,67 +2589,67 @@
 
     ([Club_Esp_1] of Servicio
          (localizado_en  [Loc_Club_Esp_1])
-         (tipo_ser  "Deporte")
+         (tipo_ser  "Club")
     )
 
     ([Club_Esp_10] of Servicio
          (localizado_en  [Loc_Club_Esp_10])
-         (tipo_ser  "Deporte")
+         (tipo_ser  "Club")
     )
 
     ([Club_Esp_11] of Servicio
          (localizado_en  [Loc_Club_Esp_11])
-         (tipo_ser  "Deporte")
+         (tipo_ser  "Club")
     )
 
     ([Club_Esp_12] of Servicio
          (localizado_en  [Loc_Club_Esp_12])
-         (tipo_ser  "Deporte")
+         (tipo_ser  "Club")
     )
 
     ([Club_Esp_13] of Servicio
          (localizado_en  [Loc_Club_Esp_13])
-         (tipo_ser  "Deporte")
+         (tipo_ser  "Club")
     )
 
     ([Club_Esp_2] of Servicio
          (localizado_en  [Loc_Club_Esp_2])
-         (tipo_ser  "Deporte")
+         (tipo_ser  "Club")
     )
 
     ([Club_Esp_3] of Servicio
          (localizado_en  [Loc_Club_Esp_3])
-         (tipo_ser  "Deporte")
+         (tipo_ser  "Club")
     )
 
     ([Club_Esp_4] of Servicio
          (localizado_en  [Loc_Club_Esp_4])
-         (tipo_ser  "Deporte")
+         (tipo_ser  "Club")
     )
 
     ([Club_Esp_5] of Servicio
          (localizado_en  [Loc_Club_Esp_5])
-         (tipo_ser  "Deporte")
+         (tipo_ser  "Club")
     )
 
     ([Club_Esp_6] of Servicio
          (localizado_en  [Loc_Club_Esp_6])
-         (tipo_ser  "Deporte")
+         (tipo_ser  "Club")
     )
 
     ([Club_Esp_7] of Servicio
          (localizado_en  [Loc_Club_Esp_7])
-         (tipo_ser  "Deporte")
+         (tipo_ser  "Club")
     )
 
     ([Club_Esp_8] of Servicio
          (localizado_en  [Loc_Club_Esp_8])
-         (tipo_ser  "Deporte")
+         (tipo_ser  "Club")
     )
 
     ([Club_Esp_9] of Servicio
          (localizado_en  [Loc_Club_Esp_9])
-         (tipo_ser  "Deporte")
+         (tipo_ser  "Club")
     )
 
     ([Cole_1] of Servicio
@@ -4488,7 +4488,7 @@
 (defrule preguntas::pregunta-donde_deporte "si hace deporte, pregunta al usuario donde" 
     ?p <- (object (is-a Persona) (deporte TRUE) (donde_deporte ""))
     =>
-    (bind ?new-dep (pregunta-opciones "--> Donde?" "Parque" "Gimnasio"))
+    (bind ?new-dep (pregunta-opciones "--> Donde?" "Parque" "Gimnasio" "Club"))
     (send ?p put-donde_deporte ?new-dep)
 )
 
