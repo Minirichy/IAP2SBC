@@ -2584,177 +2584,177 @@
 
     ([Centro] of Servicio
          (localizado_en  [Loc_Centro])
-         (tipo_ser  "centro")
+         (tipo_ser  "Centro")
     )
 
     ([Club_Esp_1] of Servicio
          (localizado_en  [Loc_Club_Esp_1])
-         (tipo_ser  "deporte")
+         (tipo_ser  "Deporte")
     )
 
     ([Club_Esp_10] of Servicio
          (localizado_en  [Loc_Club_Esp_10])
-         (tipo_ser  "deporte")
+         (tipo_ser  "Deporte")
     )
 
     ([Club_Esp_11] of Servicio
          (localizado_en  [Loc_Club_Esp_11])
-         (tipo_ser  "deporte")
+         (tipo_ser  "Deporte")
     )
 
     ([Club_Esp_12] of Servicio
          (localizado_en  [Loc_Club_Esp_12])
-         (tipo_ser  "deporte")
+         (tipo_ser  "Deporte")
     )
 
     ([Club_Esp_13] of Servicio
          (localizado_en  [Loc_Club_Esp_13])
-         (tipo_ser  "deporte")
+         (tipo_ser  "Deporte")
     )
 
     ([Club_Esp_2] of Servicio
          (localizado_en  [Loc_Club_Esp_2])
-         (tipo_ser  "deporte")
+         (tipo_ser  "Deporte")
     )
 
     ([Club_Esp_3] of Servicio
          (localizado_en  [Loc_Club_Esp_3])
-         (tipo_ser  "deporte")
+         (tipo_ser  "Deporte")
     )
 
     ([Club_Esp_4] of Servicio
          (localizado_en  [Loc_Club_Esp_4])
-         (tipo_ser  "deporte")
+         (tipo_ser  "Deporte")
     )
 
     ([Club_Esp_5] of Servicio
          (localizado_en  [Loc_Club_Esp_5])
-         (tipo_ser  "deporte")
+         (tipo_ser  "Deporte")
     )
 
     ([Club_Esp_6] of Servicio
          (localizado_en  [Loc_Club_Esp_6])
-         (tipo_ser  "deporte")
+         (tipo_ser  "Deporte")
     )
 
     ([Club_Esp_7] of Servicio
          (localizado_en  [Loc_Club_Esp_7])
-         (tipo_ser  "deporte")
+         (tipo_ser  "Deporte")
     )
 
     ([Club_Esp_8] of Servicio
          (localizado_en  [Loc_Club_Esp_8])
-         (tipo_ser  "deporte")
+         (tipo_ser  "Deporte")
     )
 
     ([Club_Esp_9] of Servicio
          (localizado_en  [Loc_Club_Esp_9])
-         (tipo_ser  "deporte")
+         (tipo_ser  "Deporte")
     )
 
     ([Cole_1] of Servicio
          (localizado_en  [Loc_Cole_1])
-         (tipo_ser  "colegio")
+         (tipo_ser  "Escuela")
     )
 
     ([Cole_10] of Servicio
          (localizado_en  [Loc_Cole_10])
-         (tipo_ser  "colegio")
+         (tipo_ser  "Escuela")
     )
 
     ([Cole_2] of Servicio
          (localizado_en  [Loc_Cole_2])
-         (tipo_ser  "colegio")
+         (tipo_ser  "Escuela")
     )
 
     ([Cole_3] of Servicio
          (localizado_en  [Loc_Cole_3])
-         (tipo_ser  "colegio")
+         (tipo_ser  "Escuela")
     )
 
     ([Cole_4] of Servicio
          (localizado_en  [Loc_Cole_4])
-         (tipo_ser  "colegio")
+         (tipo_ser  "Escuela")
     )
 
     ([Cole_5] of Servicio
          (localizado_en  [Loc_Cole_5])
-         (tipo_ser  "colegio")
+         (tipo_ser  "Escuela")
     )
 
     ([Cole_6] of Servicio
          (localizado_en  [Loc_Cole_6])
-         (tipo_ser  "colegio")
+         (tipo_ser  "Escuela")
     )
 
     ([Cole_7] of Servicio
          (localizado_en  [Loc_Cole_7])
-         (tipo_ser  "colegio")
+         (tipo_ser  "Escuela")
     )
 
     ([Cole_8] of Servicio
          (localizado_en  [Loc_Cole_8])
-         (tipo_ser  "colegio")
+         (tipo_ser  "Escuela")
     )
 
     ([Cole_9] of Servicio
          (localizado_en  [Loc_Cole_9])
-         (tipo_ser  "colegio")
+         (tipo_ser  "Escuela")
     )
 
     ([Gym_1] of Servicio
          (localizado_en  [Loc_Gym_1])
-         (tipo_ser  "gimnasio")
+         (tipo_ser  "Gimnasio")
     )
 
     ([Gym_2] of Servicio
          (localizado_en  [Loc_Gym_2])
-         (tipo_ser  "gimnasio")
+         (tipo_ser  "Gimnasio")
     )
 
     ([Gym_3] of Servicio
          (localizado_en  [Loc_Gym_3])
-         (tipo_ser  "gimnasio")
+         (tipo_ser  "Gimnasio")
     )
 
     ([Gym_4] of Servicio
          (localizado_en  [Loc_Gym_4])
-         (tipo_ser  "gimnasio")
+         (tipo_ser  "Gimnasio")
     )
 
     ([Gym_5] of Servicio
          (localizado_en  [Loc_Gym_5])
-         (tipo_ser  "gimnasio")
+         (tipo_ser  "Gimnasio")
     )
 
     ([Gym_6] of Servicio
          (localizado_en  [Loc_Gym_6])
-         (tipo_ser  "gimnasio")
+         (tipo_ser  "Gimnasio")
     )
 
     ([Gym_7] of Servicio
          (localizado_en  [Loc_Gym_7])
-         (tipo_ser  "gimnasio")
+         (tipo_ser  "Gimnasio")
     )
 
     ([Hospital_1] of Servicio
          (localizado_en  [Loc_Hospital_1])
-         (tipo_ser  "hospital")
+         (tipo_ser  "Hospital")
     )
 
     ([Hospital_2] of Servicio
          (localizado_en  [Loc_Hospital_2])
-         (tipo_ser  "hospital")
+         (tipo_ser  "Hospital")
     )
 
     ([Hospital_3] of Servicio
          (localizado_en  [Loc_Hospital_3])
-         (tipo_ser  "hospital")
+         (tipo_ser  "Hospital")
     )
 
     ([Hospital_4] of Servicio
          (localizado_en  [Loc_Hospital_4])
-         (tipo_ser  "hospital")
+         (tipo_ser  "Hospital")
     )
 
     ([Loc_Casa_1] of Localización
@@ -3405,33 +3405,33 @@
          (longitud  2.191789268701732)
     )
 
-    ([Loc_Parking_1] of Localización
+    ([Loc_Aparcamiento_1] of Localización
          (ciudad  "Barcelona")
-         (direccion  "Parking 1")
+         (direccion  "Aparcamiento 1")
          (distrito  "Gracia")
          (latitud  41.419515023758606)
          (longitud  2.1475685398669695)
     )
 
-    ([Loc_Parking_2] of Localización
+    ([Loc_Aparcamiento_2] of Localización
          (ciudad  "Barcelona")
-         (direccion  "Parking 2")
+         (direccion  "Aparcamiento 2")
          (distrito  "Sant Andreu")
          (latitud  41.424738695457464)
          (longitud  2.1809007263743205)
     )
 
-    ([Loc_Parking_3] of Localización
+    ([Loc_Aparcamiento_3] of Localización
          (ciudad  "Barcelona")
-         (direccion  "Parking 3")
+         (direccion  "Aparcamiento 3")
          (distrito  "Sarria")
          (latitud  41.39498265751859)
          (longitud  2.1336692687017815)
     )
 
-    ([Loc_Parking_4] of Localización
+    ([Loc_Aparcamiento_4] of Localización
          (ciudad  "Barcelona")
-         (direccion  "Parking 4")
+         (direccion  "Aparcamiento 4")
          (distrito  "Eixample")
          (latitud  41.39744874954209)
          (longitud  2.1628163533590166)
@@ -3743,267 +3743,267 @@
 
     ([Oci_1] of Servicio
          (localizado_en  [Loc_Oci_1])
-         (tipo_ser  "ocio nocturno")
+         (tipo_ser  "Ocio nocturno")
     )
 
     ([Oci_2] of Servicio
          (localizado_en  [Loc_Oci_2])
-         (tipo_ser  "ocio nocturno")
+         (tipo_ser  "Ocio nocturno")
     )
 
     ([Oci_3] of Servicio
          (localizado_en  [Loc_Oci_3])
-         (tipo_ser  "ocio nocturno")
+         (tipo_ser  "Ocio nocturno")
     )
 
     ([Oci_4] of Servicio
          (localizado_en  [Loc_Oci_4])
-         (tipo_ser  "ocio nocturno")
+         (tipo_ser  "Ocio nocturno")
     )
 
     ([Parc_1] of Servicio
          (localizado_en  [Loc_Parc_1])
-         (tipo_ser  "parque")
+         (tipo_ser  "Parque")
     )
 
     ([Parc_2] of Servicio
          (localizado_en  [Loc_Parc_2])
-         (tipo_ser  "parque")
+         (tipo_ser  "Parque")
     )
 
     ([Parc_3] of Servicio
          (localizado_en  [Loc_Parc_3])
-         (tipo_ser  "parque")
+         (tipo_ser  "Parque")
     )
 
     ([Parc_4] of Servicio
          (localizado_en  [Loc_Parc_4])
-         (tipo_ser  "parque")
+         (tipo_ser  "Parque")
     )
 
     ([Parc_5] of Servicio
          (localizado_en  [Loc_Parc_5])
-         (tipo_ser  "parque")
+         (tipo_ser  "Parque")
     )
 
     ([Parc_6] of Servicio
          (localizado_en  [Loc_Parc_6])
-         (tipo_ser  "parque")
+         (tipo_ser  "Parque")
     )
 
     ([Parc_7] of Servicio
          (localizado_en  [Loc_Parc_7])
-         (tipo_ser  "parque")
+         (tipo_ser  "Parque")
     )
 
-    ([Parking_1] of Servicio
-         (localizado_en  [Loc_Parking_1])
-         (tipo_ser  "aparcamiento")
+    ([Aparcamiento_1] of Servicio
+         (localizado_en  [Loc_Aparcamiento_1])
+         (tipo_ser  "Aparcamiento")
     )
 
-    ([Parking_2] of Servicio
-         (localizado_en  [Loc_Parking_2])
-         (tipo_ser  "aparcamiento")
+    ([Aparcamiento_2] of Servicio
+         (localizado_en  [Loc_Aparcamiento_2])
+         (tipo_ser  "Aparcamiento")
     )
 
-    ([Parking_3] of Servicio
-         (localizado_en  [Loc_Parking_3])
-         (tipo_ser  "aparcamiento")
+    ([Aparcamiento_3] of Servicio
+         (localizado_en  [Loc_Aparcamiento_3])
+         (tipo_ser  "Aparcamiento")
     )
 
-    ([Parking_4] of Servicio
-         (localizado_en  [Loc_Parking_4])
-         (tipo_ser  "aparcamiento")
+    ([Aparcamiento_4] of Servicio
+         (localizado_en  [Loc_Aparcamiento_4])
+         (tipo_ser  "Aparcamiento")
     )
 
     ([Super_1] of Servicio
          (localizado_en  [Loc_Super_1])
-         (tipo_ser  "supermercado")
+         (tipo_ser  "Mercado")
     )
 
     ([Super_2] of Servicio
          (localizado_en  [Loc_Super_2])
-         (tipo_ser  "supermercado")
+         (tipo_ser  "Mercado")
     )
 
     ([Super_3] of Servicio
          (localizado_en  [Loc_Super_3])
-         (tipo_ser  "supermercado")
+         (tipo_ser  "Mercado")
     )
 
     ([Super_4] of Servicio
          (localizado_en  [Loc_Super_4])
-         (tipo_ser  "supermercado")
+         (tipo_ser  "Mercado")
     )
 
     ([Super_5] of Servicio
          (localizado_en  [Loc_Super_5])
-         (tipo_ser  "supermercado")
+         (tipo_ser  "Mercado")
     )
 
     ([Super_6] of Servicio
          (localizado_en  [Loc_Super_6])
-         (tipo_ser  "supermercado")
+         (tipo_ser  "Mercado")
     )
 
     ([Tp_1] of Servicio
          (localizado_en  [Loc_Tp_1])
-         (tipo_ser  "trasporte publico")
+         (tipo_ser  "Transporte publico")
     )
 
     ([Tp_10] of Servicio
          (localizado_en  [Loc_Tp_10])
-         (tipo_ser  "trasporte publico")
+         (tipo_ser  "Transporte publico")
     )
 
     ([Tp_11] of Servicio
          (localizado_en  [Loc_Tp_11])
-         (tipo_ser  "trasporte publico")
+         (tipo_ser  "Transporte publico")
     )
 
     ([Tp_12] of Servicio
          (localizado_en  [Loc_Tp_12])
-         (tipo_ser  "trasporte publico")
+         (tipo_ser  "Transporte publico")
     )
 
     ([Tp_13] of Servicio
          (localizado_en  [Loc_Tp_13])
-         (tipo_ser  "trasporte publico")
+         (tipo_ser  "Transporte publico")
     )
 
     ([Tp_14] of Servicio
          (localizado_en  [Loc_Tp_14])
-         (tipo_ser  "trasporte publico")
+         (tipo_ser  "Transporte publico")
     )
 
     ([Tp_15] of Servicio
          (localizado_en  [Loc_Tp_15])
-         (tipo_ser  "trasporte publico")
+         (tipo_ser  "Transporte publico")
     )
 
     ([Tp_16] of Servicio
          (localizado_en  [Loc_Tp_16])
-         (tipo_ser  "trasporte publico")
+         (tipo_ser  "Transporte publico")
     )
 
     ([Tp_17] of Servicio
          (localizado_en  [Loc_Tp_17])
-         (tipo_ser  "trasporte publico")
+         (tipo_ser  "Transporte publico")
     )
 
     ([Tp_18] of Servicio
          (localizado_en  [Loc_Tp_18])
-         (tipo_ser  "trasporte publico")
+         (tipo_ser  "Transporte publico")
     )
 
     ([Tp_2] of Servicio
          (localizado_en  [Loc_Tp_2])
-         (tipo_ser  "trasporte publico")
+         (tipo_ser  "Transporte publico")
     )
 
     ([Tp_3] of Servicio
          (localizado_en  [Loc_Tp_3])
-         (tipo_ser  "trasporte publico")
+         (tipo_ser  "Transporte publico")
     )
 
     ([Tp_4] of Servicio
          (localizado_en  [Loc_Tp_4])
-         (tipo_ser  "trasporte publico")
+         (tipo_ser  "Transporte publico")
     )
 
     ([Tp_5] of Servicio
          (localizado_en  [Loc_Tp_5])
-         (tipo_ser  "trasporte publico")
+         (tipo_ser  "Transporte publico")
     )
 
     ([Tp_6] of Servicio
          (localizado_en  [Loc_Tp_6])
-         (tipo_ser  "trasporte publico")
+         (tipo_ser  "Transporte publico")
     )
 
     ([Tp_7] of Servicio
          (localizado_en  [Loc_Tp_7])
-         (tipo_ser  "trasporte publico")
+         (tipo_ser  "Transporte publico")
     )
 
     ([Tp_8] of Servicio
          (localizado_en  [Loc_Tp_8])
-         (tipo_ser  "trasporte publico")
+         (tipo_ser  "Transporte publico")
     )
 
     ([Tp_9] of Servicio
          (localizado_en  [Loc_Tp_9])
-         (tipo_ser  "trasporte publico")
+         (tipo_ser  "Transporte publico")
     )
 
     ([Uni_1] of Servicio
          (localizado_en  [Loc_Uni_1])
-         (tipo_ser  "universidad")
+         (tipo_ser  "Universidad")
     )
 
     ([Uni_10] of Servicio
          (localizado_en  [Loc_Uni_10])
-         (tipo_ser  "universidad")
+         (tipo_ser  "Universidad")
     )
 
     ([Uni_11] of Servicio
          (localizado_en  [Loc_Uni_11])
-         (tipo_ser  "universidad")
+         (tipo_ser  "Universidad")
     )
 
     ([Uni_12] of Servicio
          (localizado_en  [Loc_Uni_12])
-         (tipo_ser  "universidad")
+         (tipo_ser  "Universidad")
     )
 
     ([Uni_13] of Servicio
          (localizado_en  [Loc_Uni_13])
-         (tipo_ser  "universidad")
+         (tipo_ser  "Universidad")
     )
 
     ([Uni_14] of Servicio
          (localizado_en  [Loc_Uni_14])
-         (tipo_ser  "universidad")
+         (tipo_ser  "Universidad")
     )
 
     ([Uni_2] of Servicio
          (localizado_en  [Loc_Uni_2])
-         (tipo_ser  "universidad")
+         (tipo_ser  "Universidad")
     )
 
     ([Uni_3] of Servicio
          (localizado_en  [Loc_Uni_3])
-         (tipo_ser  "universidad")
+         (tipo_ser  "Universidad")
     )
 
     ([Uni_4] of Servicio
          (localizado_en  [Loc_Uni_4])
-         (tipo_ser  "universidad")
+         (tipo_ser  "Universidad")
     )
 
     ([Uni_5] of Servicio
          (localizado_en  [Loc_Uni_5])
-         (tipo_ser  "universidad")
+         (tipo_ser  "Universidad")
     )
 
     ([Uni_6] of Servicio
          (localizado_en  [Loc_Uni_6])
-         (tipo_ser  "universidad")
+         (tipo_ser  "Universidad")
     )
 
     ([Uni_7] of Servicio
          (localizado_en  [Loc_Uni_7])
-         (tipo_ser  "universidad")
+         (tipo_ser  "Universidad")
     )
 
     ([Uni_8] of Servicio
          (localizado_en  [Loc_Uni_8])
-         (tipo_ser  "universidad")
+         (tipo_ser  "Universidad")
     )
 
     ([Uni_9] of Servicio
          (localizado_en  [Loc_Uni_9])
-         (tipo_ser  "universidad")
+         (tipo_ser  "Universidad")
     )
 
 )
@@ -4181,7 +4181,7 @@
     (format t "  --> Ascensor: %s%n" ?self:ascensor)
     (format t "  --> Balcon: %s%n" ?self:balcon)
     (format t "  --> Terraza: %s%n" ?self:terraza)
-    (format t "  --> Garage: %s%n" ?self:garaje)
+    (format t "  --> Garaje: %s%n" ?self:garaje)
     (format t "  --> Permiso Mascotas: %s%n" ?self:permiso_mascotas)
     (format t "  --> Piscina: %s%n" ?self:piscina)
     (format t "  --> Soleado: %s%n" ?self:soleado)
@@ -4198,7 +4198,7 @@
 )
 
 (defmessage-handler MAIN::Recomendacion imprimir ()
-	(printout t "OFERTA: " crlf)
+	(printout t "OFERTA: " (instance-name ?self) " " ?self crlf)
 	(send ?self:oferta imprimir)
 	(format t "Nivel de recomendacion: %s%n" ?self:clasificacion)
 )
@@ -4451,7 +4451,7 @@
     ?p <- (object (is-a Persona) (num_coches ?coches) (aparcar ""))
     (test (> ?coches 0))
     =>
-    (bind ?new-co (pregunta-opciones "--> Donde aparcas el coche(s)?" "Garage" "Calle" "Parking"))
+    (bind ?new-co (pregunta-opciones "--> Donde aparcas el coche(s)?" "Garaje" "Calle" "Aparcamiento"))
     (send ?p put-aparcar ?new-co)
 )
 
@@ -4683,12 +4683,12 @@
 (defrule abstraccion::garaje ""
     ?p <- (object (is-a Persona) (num_coches ?nc) (aparcar ?a))
     =>
-    (if (or (>= ?nc 3) (eq ?a "Garage")) 
+    (if (or (>= ?nc 3) (eq ?a "Garaje")) 
     then 
         (assert (garaje))
     else 
-        (if (eq ?a "Parking")
-        then (assert (distancia "Parking" 1000))
+        (if (eq ?a "Aparcamiento")
+        then (assert (distancia "Aparcamiento" 1000))
         )
     )
 )
@@ -4847,9 +4847,7 @@
     (recomendaciones_creadas) 
     (movilidad_reducida) 
     ?rec <- (object (is-a Recomendacion) (oferta ?ofr))
-    ?of  <- (object (is-a Oferta_Alquiler) (oferta_de ?vivo))
-    ?viv <- (object (is-a Vivienda) (acceso_mov_red FALSE))
-    (test (and (eq (instance-name ?ofr) (instance-name ?of)) (eq (instance-name ?vivo) (instance-name ?viv))))
+    (test (not (send (send ?ofr get-oferta_de) get-acceso_mov_red)))
     =>
     (send ?rec delete)
 )
@@ -4858,9 +4856,51 @@
     (recomendaciones_creadas) 
     (amueblada) 
     ?rec <- (object (is-a Recomendacion) (oferta ?ofr))
-    ?of  <- (object (is-a Oferta_Alquiler) (oferta_de ?vivo))
-    ?viv <- (object (is-a Vivienda) (amueblada FALSE))
-    (test (and (eq (instance-name ?ofr) (instance-name ?of)) (eq (instance-name ?vivo) (instance-name ?viv))))
+    (test (not (send (send ?ofr get-oferta_de) get-amueblada)))
+    =>
+    (send ?rec delete)
+)
+
+
+(deffunction calcula_distancia(?loc1 ?loc2)
+    (bind ?la1 (send ?loc1 get-latitud)) 
+    (bind ?la2 (send ?loc2 get-latitud)) 
+    (bind ?lo1 (send ?loc1 get-longitud)) 
+    (bind ?lo2 (send ?loc2 get-longitud)) 
+    (bind ?dist 
+        (*
+            (sqrt
+                (+ 
+                    (* (- ?la1 ?la2) (- ?la1 ?la2))
+                    (* (- ?lo1 ?lo2) (- ?lo1 ?lo2))
+                )
+            )
+            40000
+            ;82896.12585950835 ; Factor de long-lat -> km a barcelona. Calculat amb la distancia entre F.Macia i Palau Reial
+        )
+    )
+    ;(format t "(%f, %f) -> (%f, %f) = %f" ?la1 ?lo1 ?la2 ?lo2 ?dist)
+    ?dist
+)
+
+(defrule asociacion::distancias "Se descartan que no cumplen distancias"
+    (recomendaciones_creadas) 
+    (min_distancia ?sitio ?dist) 
+    ?rec <- (object (is-a Recomendacion) (oferta ?ofr))
+    ?ser <- (object (is-a Servicio) (localizado_en ?loca2) (tipo_ser ?sitio))
+    =>
+    (if (< (calcula_distancia (send (send ?ofr get-oferta_de) get-localizado_en) ?loca2) ?dist)
+    then
+        (assert (bien_distancia ?rec ?sitio))
+    )
+)
+
+(defrule asociacion::descarte_distancias ""
+    (declare (salience -1))
+    (recomendaciones_creadas)
+    (min_distancia ?sitio ?)
+    ?rec <- (object (is-a Recomendacion))
+    (not (bien_distancia ?rec ?sitio))
     =>
     (send ?rec delete)
 )
@@ -4942,6 +4982,7 @@
      (export ?ALL)
      (import MAIN ?ALL)
      (import abstraccion deftemplate ?ALL)
+     (import asociacion deftemplate ?ALL)
 )
 
 ;TODO: Output mas sofisticado?
