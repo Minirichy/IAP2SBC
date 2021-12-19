@@ -4648,7 +4648,7 @@
 (defrule abstraccion::vivir_cerca_universidad ""
     ?p <- (object (is-a Persona) (ocupacion "Estudio"))
     =>
-    (assert (distancia "Universidad" 10000))
+    (assert (distancia "Universidad" media))
 )
 
 (defrule abstraccion::clase_economica ""
@@ -4679,7 +4679,17 @@
             (distancia_recorrer ?dr)
         )
     =>
-    (assert (distancia "Transporte publico" ?dr))
+    (if (< ?dr 750)
+    then (assert (distancia "Transporte publico" cerca))
+    else 
+        (if (< ?dr 1500)
+        then (assert (distancia "Transporte publico" media))
+        else
+            (if (< ?dr 3000) 
+            then (assert (distancia "Transporte publico" lejos))
+            )
+        )
+    )
 )
 
 (defrule abstraccion::mov_red_escaleras ""
@@ -4720,16 +4730,16 @@
     ?p <- (object (is-a Persona) (hijos_escuela_universidad ?heu))
     =>
     (if (or (eq ?heu "Universidad") (eq ?heu "Ambas")) 
-    then (assert (distancia "Universidad" 10000)))
+    then (assert (distancia "Universidad" media)))
 
     (if (or (eq ?heu "Escuela") (eq ?heu "Ambas")) 
-    then (assert (distancia "Escuela" 10000)))
+    then (assert (distancia "Escuela" cerca)))
 )
 
 (defrule abstraccion::deporte ""
     ?p <- (object (is-a Persona) (deporte TRUE) (donde_deporte ?dd))
     =>
-    (assert (distancia ?dd 2000))
+    (assert (distancia ?dd media))
 )
 
 (defrule abstraccion::garaje ""
@@ -4740,7 +4750,7 @@
         (assert (garaje))
     else 
         (if (eq ?a "Aparcamiento")
-        then (assert (distancia "Aparcamiento" 1000))
+        then (assert (distancia "Aparcamiento" cerca))
         )
     )
 )
@@ -4748,14 +4758,14 @@
 (defrule abstraccion::transporte_publico ""
     ?p <- (object (is-a Persona) (transporte_publico TRUE))
     =>
-    (assert (distancia "Transporte publico" 500))
+    (assert (distancia "Transporte publico" cerca))
 )
 
 (defrule abstraccion::mascota ""
     ?p <- (object (is-a Persona) (mascota TRUE) (mascota_grande ?gr))
     =>
     (if ?gr then (assert (superficie_minima 100)))
-    (assert (distancia "Parque" 400))
+    (assert (distancia "Parque" cerca))
 )
 
 (defrule abstraccion::piso ""
@@ -4776,7 +4786,17 @@
 (defrule abstraccion::distancia_centro ""
     ?p <- (object (is-a Persona) (pref_distancia_centro ?dc))
     =>
-    (assert (distancia "Centro" ?dc))
+    (if (< ?dc 750)
+    then (assert (distancia "Centro" cerca))
+    else 
+        (if (< ?dc 1500)
+        then (assert (distancia "Centro" media))
+        else
+            (if (< ?dc 3000) 
+            then (assert (distancia "Centro" lejos))
+            )
+        )
+    )
 )
 
 (defrule abstraccion::amueblada ""
@@ -4800,7 +4820,7 @@
 (defrule abstraccion::cocinas ""
     ?p <- (object (is-a Persona) (cocinas TRUE) (pref_tipo_cocina ?tc))
     =>
-    (assert (distancia "Mercado" 1000))
+    (assert (distancia "Mercado" media))
     (assert (cocina ?tc))
 )
 
@@ -4835,7 +4855,14 @@
     (distancia ?lloc ?)
     (not (min_distancia ?lloc ?))
     =>
-    (assert (min_distancia ?lloc 1e9))
+    (assert (min_distancia ?lloc muy_lejos))
+)
+
+(deffunction mindist (?d1 ?d2) 
+    (if (or (eq ?d1 cerca) (eq ?d2 cerca)) then (return cerca))
+    (if (or (eq ?d1 media) (eq ?d2 media)) then (return media))
+    (if (or (eq ?d1 lejos) (eq ?d2 lejos)) then (return lejos))
+    (return muy_lejos)
 )
 
 (defrule abstraccion::max_superficie_min ""
@@ -4853,7 +4880,7 @@
     ?b <- (distancia ?lloc ?di2)
     =>
     (retract ?a ?b)
-    (assert (min_distancia ?lloc (min ?di ?di2)))
+    (assert (min_distancia ?lloc (mindist ?di ?di2)))
 )
 
 (defrule abstraccion::max_caben ""
@@ -4944,13 +4971,36 @@
     ?dist
 )
 
+(deffunction menor_dist (?di ?dist)
+    (if (eq ?dist muy_lejos) then (return TRUE))
+    (if (eq ?dist lejos) 
+    then 
+        (if (< ?di 3000) 
+        then (return TRUE)
+        else (return FALSE))
+    )
+    (if (eq ?dist media) 
+    then 
+        (if (< ?di 1500) 
+        then (return TRUE)
+        else (return FALSE))
+    )
+    (if (eq ?dist cerca) 
+    then 
+        (if (< ?di 750) 
+        then (return TRUE)
+        else (return FALSE))
+    )
+    (return FALSE)
+)
+
 (defrule asociacion::distancias "Se descartan que no cumplen distancias"
     (recomendaciones_creadas) 
     (min_distancia ?sitio ?dist) 
     ?rec <- (object (is-a Recomendacion) (oferta ?ofr))
     ?ser <- (object (is-a Servicio) (localizado_en ?loca2) (tipo_ser ?sitio))
     =>
-    (if (< (calcula_distancia (send (send ?ofr get-oferta_de) get-localizado_en) ?loca2) ?dist)
+    (if (menor_dist (calcula_distancia (send (send ?ofr get-oferta_de) get-localizado_en) ?loca2) ?dist)
     then
         (assert (cerca_distancia ?rec ?sitio "bien"))
     )
