@@ -2016,7 +2016,7 @@
          (permiso_mascotas  TRUE)
          (piscina  FALSE)
          (soleado  "mañana")
-         (superficie  90)
+         (superficie  110)
          (terraza  FALSE)
          (vistas  "buenas")
     )
@@ -4913,6 +4913,15 @@
     (send ?rec delete)
 )
 
+(defrule asociacion::discard_superficie "Se descartan que no tienen suficiente superficie"
+    (recomendaciones_creadas) 
+    (max_superficie_min ?ms) 
+    ?rec <- (object (is-a Recomendacion) (oferta ?ofr))
+    (test (< (send (send ?ofr get-oferta_de) get-superficie) ?ms))
+    =>
+    (format t "%d %d %s" (send (send ?ofr get-oferta_de) get-superficie) ?ms (< (send (send ?ofr get-oferta_de) get-superficie) ?ms))
+    (send ?rec delete)
+)
 
 (deffunction calcula_distancia(?loc1 ?loc2)
     (bind ?la1 (send ?loc1 get-latitud)) 
@@ -4943,7 +4952,7 @@
     =>
     (if (< (calcula_distancia (send (send ?ofr get-oferta_de) get-localizado_en) ?loca2) ?dist)
     then
-        (assert (bien_distancia ?rec ?sitio))
+        (assert (cerca_distancia ?rec ?sitio "bien"))
     )
 )
 
@@ -4952,9 +4961,17 @@
     (recomendaciones_creadas)
     (min_distancia ?sitio ?)
     ?rec <- (object (is-a Recomendacion))
-    (not (bien_distancia ?rec ?sitio))
+    (not (cerca_distancia ?rec ?sitio "bien"))
     =>
+    (assert (cerca_distancia ?rec ?sitio "mal"))
     (send ?rec delete)
+)
+
+(defrule asociacion::clear_min_distancias ""
+    (declare (salience -2))
+    ?a <- (min_distancia ? ?)
+    =>
+    (retract ?a)
 )
 
 
