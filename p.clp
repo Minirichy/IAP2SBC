@@ -23,7 +23,7 @@
     (role concrete)
     (pattern-match reactive)
     ;;; Esta localizado/a en:
-    (slot localizado_en
+    (multislot localizado_en
         (type INSTANCE)
         (create-accessor read-write))
     ;;; Si se tiene acceso a movilidad reducida
@@ -49,8 +49,8 @@
     (slot balcon
         (type SYMBOL)
         (create-accessor read-write))
-    ;;; Si tiene calefaccion o no
-    (slot calefaccion
+    ;;; Si tiene calefacción o no
+    (slot calefacción
         (type SYMBOL)
         (create-accessor read-write))
     ;;; Cantidad de consumo
@@ -77,8 +77,8 @@
     (slot gas
         (type STRING)
         (create-accessor read-write))
-    ;;; Iluminacion de la vivienda
-    (slot iluminacion
+    ;;; Iluminación de la vivienda
+    (slot iluminación
         (type STRING)
         (create-accessor read-write))
     ;;; Si tiene luz o no
@@ -213,27 +213,27 @@
         (create-accessor read-write))
 )
 
-(defclass Localizacion "Clase de Localizacion"
+(defclass Localización "Clase de Localización"
     (is-a USER)
     (role concrete)
     (pattern-match reactive)
-    ;;; Ciudad de la localizacion
+    ;;; Ciudad de la localización
     (slot ciudad
         (type STRING)
         (create-accessor read-write))
-    ;;; Direccion de la localizacion
+    ;;; Dirección de la localización
     (slot direccion
         (type STRING)
         (create-accessor read-write))
-    ;;; Distrito de la localizacion
+    ;;; Distrito de la localización
     (slot distrito
         (type STRING)
         (create-accessor read-write))
-    ;;; Latitud de la localizacion
+    ;;; Latitud de la localización
     (slot latitud
         (type FLOAT)
         (create-accessor read-write))
-    ;;; Longitud de la localizacion
+    ;;; Longitud de la localización
     (slot longitud
         (type FLOAT)
         (create-accessor read-write))
@@ -292,14 +292,14 @@
          (amueblada  FALSE)
          (ascensor  FALSE)
          (balcon  FALSE)
-         (calefaccion  "electrica")
+         (calefacción  "electrica")
          (consumo  120)
          (electrodomesticos  "bon estat")
          (emisiones  20)
          (estado  "buen estado")
          (garaje  TRUE)
          (gas  "natural")
-         (iluminacion  "natural")
+         (iluminación  "natural")
          (luz  TRUE)
          (permiso_mascotas  TRUE)
          (piscina  TRUE)
@@ -321,14 +321,14 @@
          (amueblada  FALSE)
          (ascensor  FALSE)
          (balcon  FALSE)
-         (calefaccion  "electrica")
+         (calefacción  "electrica")
          (consumo  115)
          (electrodomesticos  "buen estado")
          (emisiones  15)
          (estado  "segunda mano")
          (garaje  TRUE)
          (gas  TRUE)
-         (iluminacion  "natural")
+         (iluminación  "natural")
          (luz  TRUE)
          (permiso_mascotas  TRUE)
          (piscina  FALSE)
@@ -348,7 +348,7 @@
          (tipo_ser  "centro deportivo")
     )
 
-    ([Loc_Clinic] of Localizacion
+    ([Loc_Clinic] of Localización
          (ciudad  "Barcelona")
          (direccion  "Hospital Clinic de Barcelona")
          (distrito  "Ensanche")
@@ -356,7 +356,7 @@
          (longitud  2.152219477245829)
     )
 
-    ([Loc_Gotic] of Localizacion
+    ([Loc_Gotic] of Localización
          (ciudad  "Barcelona")
          (direccion  "Calle dels Boters")
          (distrito  "Barri Gotic")
@@ -364,7 +364,7 @@
          (longitud  2.1743901398656726)
     )
 
-    ([Loc_Inspira_Fitness] of Localizacion
+    ([Loc_Inspira_Fitness] of Localización
          (ciudad  "Barcelona")
          (direccion  "Inspira Fitness")
          (distrito  "Les Corts")
@@ -372,7 +372,7 @@
          (longitud  2.1383673786021378)
     )
 
-    ([Loc_La_Sagrera] of Localizacion
+    ([Loc_La_Sagrera] of Localización
          (ciudad  "Barcelona")
          (direccion  "Carrer de Josep Estivill")
          (distrito  "La Sagrera")
@@ -380,7 +380,7 @@
          (longitud  2.188412224528191)
     )
 
-    ([Loc_PalauReialMetro] of Localizacion
+    ([Loc_PalauReialMetro] of Localización
          (ciudad  "Barcelona")
          (direccion  "Palau Reial")
          (distrito  "Pedralbes")
@@ -388,7 +388,7 @@
          (longitud  2.1180533494161837)
     )
 
-    ([Loc_Parc_del_Clot] of Localizacion
+    ([Loc_Parc_del_Clot] of Localización
          (ciudad  "Barcelona")
          (direccion  "Parc del Clot")
          (distrito  "El Clot")
@@ -396,7 +396,7 @@
          (longitud  2.1902893713058225)
     )
 
-    ([Loc_Pedralbes] of Localizacion
+    ([Loc_Pedralbes] of Localización
          (ciudad  "Barcelona")
          (direccion  "Avenida d'Esplugues")
          (distrito  "Pedralbes")
@@ -404,23 +404,23 @@
          (longitud  2.1074592552086995)
     )
 
-    ([Loc_Pis_Dreta_Eixample] of Localizacion
+    ([Loc_Pis_Dreta_Eixample] of Localización
          (ciudad  "Barcelona")
-         (direccion  "Calle de la Diputacio S/N")
+         (direccion  "Calle de la Diputació S/N")
          (distrito  "Dreta Eixample")
          (latitud  41.38884977906806)
          (longitud  2.164990797448728)
     )
 
-    ([Loc_Prats_de_Mollo] of Localizacion
+    ([Loc_Prats_de_Molló] of Localización
          (ciudad  "Barcelona")
-         (direccion  "Carrer Prats de Mollo")
+         (direccion  "Carrer Prats de Molló")
          (distrito  "Sant Gervasi")
          (latitud  41.40160155596814)
          (longitud  2.137378239866304)
     )
 
-    ([Loc_Razzmataz] of Localizacion
+    ([Loc_Razzmataz] of Localización
          (ciudad  "Barcelona")
          (direccion  "Razzmataz")
          (distrito  "Marina")
@@ -428,7 +428,7 @@
          (longitud  2.1911555525473085)
     )
 
-    ([Loc_Sants] of Localizacion
+    ([Loc_Sants] of Localización
          (ciudad  "Barcelona")
          (direccion  "calle de Tinent Flomesta")
          (distrito  "Sants")
@@ -436,7 +436,7 @@
          (longitud  2.131847111029593)
     )
 
-    ([Loc_UPC_Campus_Nord] of Localizacion
+    ([Loc_UPC_Campus_Nord] of Localización
          (ciudad  "Barcelona")
          (direccion  "Carrer de Jordi Girona")
          (distrito  "Pedralbes")
@@ -444,7 +444,7 @@
          (longitud  2.114101414317475)
     )
 
-    ([Loc_Vall_Hebron] of Localizacion
+    ([Loc_Vall_Hebron] of Localización
          (ciudad  "Barcelona")
          (direccion  "Avenida Marquès de Castellbell")
          (distrito  "Vall d'Hebron")
@@ -509,14 +509,14 @@
          (amueblada  TRUE)
          (ascensor  TRUE)
          (balcon  TRUE)
-         (calefaccion  TRUE)
+         (calefacción  TRUE)
          (consumo  100)
          (electrodomesticos  "buen estado")
          (emisiones  36)
          (estado  "bon estat")
          (garaje  FALSE)
          (gas  "electrica")
-         (iluminacion  "natural")
+         (iluminación  "natural")
          (luz  TRUE)
          (permiso_mascotas  TRUE)
          (piscina  TRUE)
@@ -529,21 +529,21 @@
     ([Pis_Gotic] of Plurifamiliar
          (altura  "2a planta")
          (tipo_viv  "piso")
-         (localizado_en  [Loc_Pedralbes])
+         (localizado_en  [Pis_Gotic])
          (acceso_mov_red  FALSE)
          (agua  TRUE)
          (aire  FALSE)
          (amueblada  TRUE)
          (ascensor  FALSE)
          (balcon  TRUE)
-         (calefaccion  "electrica")
+         (calefacción  "electrica")
          (consumo  216)
          (electrodomesticos  "buen estado")
          (emisiones  44)
          (estado  "buen estado")
          (garaje  TRUE)
          (gas  "butano")
-         (iluminacion  "natural")
+         (iluminación  "natural")
          (luz  TRUE)
          (permiso_mascotas  FALSE)
          (piscina  FALSE)
@@ -561,14 +561,14 @@
          (amueblada  FALSE)
          (ascensor  TRUE)
          (balcon  TRUE)
-         (calefaccion  "electrica")
+         (calefacción  "electrica")
          (consumo  150)
          (electrodomesticos  "buen estado")
          (emisiones  15)
          (estado  "buen estado")
          (garaje  FALSE)
          (gas  "butano")
-         (iluminacion  "natural")
+         (iluminación  "natural")
          (luz  TRUE)
          (permiso_mascotas  TRUE)
          (piscina  FALSE)
@@ -581,21 +581,21 @@
     ([Pis_Sant_Gervasi] of Plurifamiliar
          (altura  "atico")
          (tipo_viv  "apartamento")
-         (localizado_en  [Loc_Prats_de_Mollo])
+         (localizado_en  [Loc_Prats_de_Molló])
          (acceso_mov_red  FALSE)
          (agua  TRUE)
          (aire  TRUE)
          (amueblada  TRUE)
          (ascensor  TRUE)
          (balcon  FALSE)
-         (calefaccion  "electrica")
+         (calefacción  "electrica")
          (consumo  90)
          (electrodomesticos  "buen estado")
          (emisiones  12)
          (estado  "buen estado")
          (garaje  TRUE)
          (gas  "natural")
-         (iluminacion  "natural")
+         (iluminación  "natural")
          (luz  TRUE)
          (permiso_mascotas  FALSE)
          (piscina  FALSE)
@@ -615,14 +615,14 @@
          (amueblada  FALSE)
          (ascensor  TRUE)
          (balcon  FALSE)
-         (calefaccion  "electrica")
+         (calefacción  "electrica")
          (consumo  120)
          (electrodomesticos  "no")
          (emisiones  20)
          (estado  "segunda mano")
          (garaje  FALSE)
          (gas  "natural")
-         (iluminacion  "natural")
+         (iluminación  "natural")
          (luz  TRUE)
          (permiso_mascotas  TRUE)
          (piscina  FALSE)
@@ -1086,55 +1086,17 @@
 	(slot clasificacion
 		(type SYMBOL)
 		(create-accessor read-write))
-	(slot criterios-violados
-		(type INTEGER)
-		(default 0)
-		(create-accessor read-write)
-	)
-	(slot factores-positivos
-		(type INTEGER)
-		(default 0)
-		(create-accessor read-write)
-	)
-	(multislot justificaciones-parcialmente-adecuado
-		(type STRING)
-		(create-accessor read-write))
-	(multislot justificaciones-recomendable
-		(type STRING)
-		(create-accessor read-write))
-)
-
-(defmessage-handler Recomendacion criterio-violado (?just)
-	(bind ?self:criterios-violados (+ ?self:criterios-violados 1))
-	(slot-insert$ ?self justificaciones-parcialmente-adecuado ?self:criterios-violados ?just)
-)
-
-(defmessage-handler Recomendacion factor-positivo (?just)
-	(bind ?self:factores-positivos (+ ?self:factores-positivos 1))
-	(slot-insert$ ?self justificaciones-recomendable ?self:factores-positivos ?just)
-)
-
-(defmessage-handler Localizacion imprimir ()
-	(format t "--- %s" ?self:direccion)
-	(printout t crlf)
-	(format t "--- (%f, %f)" ?self:latitud ?self:longitud)
-	(printout t crlf)
 )
 
 (defmessage-handler Vivienda imprimir ()
-	(printout t "-- Localizacion:" crlf)
-	(send ?self:localizado_en imprimir)
-	(if (eq ?self:amueblada TRUE)
-	then (printout t "-- Amueblada" crlf)
-	)
-	(if (eq ?self:acceso_mov_red TRUE)
-	then (printout t "-- Adaptada para personas con movilidad reducida" crlf)
-	)
+    (format t "-- Amueblada: %s" ?self:amueblada)
+    (printout t crlf)
+    (format t "-- Movilidad Reducida: %s" ?self:acceso_mov_red)
+    (printout t crlf)
 )
 
 (defmessage-handler Oferta_Alquiler imprimir ()
-	;TODO: comprobar que sean E/mes
-	(format t "- Precio: %d E/mes" ?self:precio)
+	(format t "- Precio: %d" ?self:precio)
     (printout t crlf)
     (format t "- Fianza: %s" ?self:fianza)
     (printout t crlf)
@@ -1146,32 +1108,8 @@
 (defmessage-handler MAIN::Recomendacion imprimir ()
 	(printout t "Oferta: " crlf)
 	(send ?self:oferta imprimir)
-    (if (eq ?self:clasificacion parcialmente-adecuado)
-    	then 
-    	(progn
-    		(printout t "Nivel de recomendacion: Parcialmente adecuado" crlf)
-    		(printout t "Criterios violados: " crlf)
-    		(progn$ (?just ?self:justificaciones-parcialmente-adecuado)
-				(printout t ?just crlf)
-			)
-    	)
-    )
-    (if (eq ?self:clasificacion adecuado)
-    	then 
-    	(progn
-    		(printout t "Nivel de recomendacion: Adecuado" crlf)
-    	)
-    )
-    (if (eq ?self:clasificacion recomendable)
-    	then 
-    	(progn
-    		(printout t "Nivel de recomendacion: Muy recomendable" crlf)
-    		(printout t "Factores positivos a destacar: " crlf)
-    		(progn$ (?just ?self:justificaciones-recomendable)
-				(printout t ?just crlf)
-			)
-    	)
-    )
+	(format t "Nivel de recomendacion: %s" ?self:clasificacion)
+    (printout t crlf)
 )
 
 (defrule regla_inicial "regla inicial"
@@ -1422,7 +1360,7 @@
     ?p <- (object (is-a Persona) (num_coches ?coches) (aparcar ""))
     (test (> ?coches 0))
     =>
-    (bind ?new-co (pregunta-opciones "--> Donde aparcas el coche(s)?" "Garage" "Calle"))
+    (bind ?new-co (pregunta-opciones "--> Donde aparcas el coche(s)?" "Garage" "Calle" "Parking"))
     (send ?p put-aparcar ?new-co)
 )
 
@@ -1644,20 +1582,97 @@
     then (assert (distancia "Escuela" 10000)))
 )
 
-
 (defrule abstraccion::deporte ""
     ?p <- (object (is-a Persona) (deporte TRUE) (donde_deporte ?dd))
     =>
     (assert (distancia ?dd 2000))
 )
 
+(defrule abstraccion::garage ""
+    ?p <- (object (is-a Persona) (num_coches ?nc) (aparcar ?a))
+    =>
+    (if (or (>= ?nc 3) (eq ?a "Garage")) 
+    then 
+        (assert (garage))
+    else 
+        (if (eq ?a "Parking")
+        then (assert (distancia "Parking" 1000))
+        )
+    )
+)
 
+(defrule abstraccion::transporte_publico ""
+    ?p <- (object (is-a Persona) (transporte_publico TRUE))
+    =>
+    (assert (distancia "Transporte publico" 500))
+)
+
+(defrule abstraccion::mascota ""
+    ?p <- (object (is-a Persona) (mascota TRUE) (mascota_grande ?gr))
+    =>
+    (if ?gr then (assert (superficie_minima 100)))
+    (assert (distancia "Parque" 400))
+)
+
+(defrule abstraccion::piso ""
+    ?p <- (object (is-a Persona) (pref_tipo ?tp))
+    =>
+    (assert (tipo_casa ?tp))
+)
+
+(defrule abstraccion::piso_altura ""
+    ?p <- (object (is-a Persona) (pref_piso ?pf))
+    =>
+    (if (not (eq ?pf "Indiferente"))
+    then 
+        (assert (piso ?pf))
+    )
+)
+
+(defrule abstraccion::distancia_centro ""
+    ?p <- (object (is-a Persona) (pref_distancia_centro ?dc))
+    =>
+    (assert (distancia "Centro" ?dc))
+)
 
 (defrule abstraccion::init_max_caben ""
     (declare (salience -1))
     (not (max_personas_caben_casa ?))
     =>
     (assert (max_personas_caben_casa 0))
+)
+
+(defrule abstraccion::init_max_superficie_min ""
+    (declare (salience -1))
+    (not (max_superficie_min ?))
+    =>
+    (assert (max_superficie_min 0))
+)
+
+(defrule abstraccion::init_min_distancia ""
+    (declare (salience -1))
+    (distancia ?lloc ?)
+    (not (min_distancia ?lloc ?))
+    =>
+    (assert (min_distancia ?lloc 1e9))
+)
+
+(defrule abstraccion::max_superficie_min ""
+    (declare (salience -2))
+    ?a <- (superficie_minima ?np)
+    ?b <- (max_superficie_min ?mnp)
+    =>
+    (retract ?a ?b)
+    (assert (max_superficie_min (max ?mnp ?np)))
+)
+
+(defrule abstraccion::min_distancia ""
+    (declare (salience -2))
+    ?a <- (min_distancia ?lloc ?di)
+    ?b <- (distancia ?lloc ?di2)
+    =>
+    (retract ?a ?b)
+    (assert (min_distancia ?lloc (min ?di ?di2)))
 )
 
 (defrule abstraccion::max_caben ""
@@ -1744,67 +1759,37 @@
 )
 
 (deffunction precio_excesivo(?precio)
-    (> ?precio (* (send [usuario] get-precio_max) 1.2)) 
+    (or 
+        (> ?precio (* (send [usuario] get-precio_max) 1.2)) 
+        (< ?precio (* (send [usuario] get-precio_min) 0.8))
+    )
 )
 
 (deffunction precio_ligeramente_excesivo(?precio)
     (and 
         (not (precio_excesivo ?precio))
-        (> ?precio (send [usuario] get-precio_max))
+        (or 
+            (> ?precio (send [usuario] get-precio_max))
+            (< ?precio (send [usuario] get-precio_min)) 
+        )
     )
 )
 
-(defrule refinamiento::precio-excesivo "determina si el precio de la vivienda esta por encima del maximo"
-	?rec <- (object (is-a Recomendacion) (oferta ?of))
-	(not (comprobado-precio-excesivo ?rec))
-	=>
-	(bind ?precio_exc (precio_excesivo (send ?of get-precio)))
+;TODO: deberian ser rules distintas para clasificar, pensar como hacerlo
+(defrule refinamiento::clasificar_recomendacion "clasifica una recomendacion"
+    ?rec <- (object (is-a Recomendacion) (clasificacion nil) (oferta ?of))
+    =>
+    (bind ?precio_exc (precio_excesivo (send ?of get-precio)))
     (bind ?precio_lig_exc (precio_ligeramente_excesivo (send ?of get-precio)))
     (if ?precio_exc
         then (send ?rec delete)
         else (
             if ?precio_lig_exc 
             then 
-                (send ?rec criterio-violado "-Precio ligeramente por encima del maximo estipulado")
+                (send ?rec put-clasificacion parcialmente_adecuado)
+            else 
+                (send ?rec put-clasificacion adecuado)
         )
-    )
-    (assert (comprobado-precio-excesivo ?rec))
-)
-
-(defrule refinamiento::precio-insuficiente "determina si el precio de la vivienda esta por debajo del minimo"
-	?rec <- (object (is-a Recomendacion) (oferta ?of))
-	(not (comprobado-precio-insuficiente ?rec))
-	=>
-    (if (< (send ?of get-precio) (send [usuario] get-precio_min))
-    then 
-        (send ?rec criterio-violado "-Precio por debajo del minimo estipulado")
-        
-    )
-    (assert (comprobado-precio-insuficiente ?rec))
-)
-
-(defrule refinamiento::clasificar-recomendacion "clasifica una recomendacion"
-	(declare (salience -10))
-    ?rec <- (object (is-a Recomendacion) (clasificacion nil))
-    =>
-    (if
-    	(= (send ?rec get-criterios-violados) 0)
-    then
-    	(if
-    		(> (send ?rec get-factores-positivos) 1)
-    	then
-    		(send ?rec put-clasificacion recomendable)
-    	else
-    		(send ?rec put-clasificacion adecuado)
-    	)
-    else 
-    	(if
-    		(< (send ?rec get-criterios-violados) 3)
-    	then
-    		(send ?rec put-clasificacion parcialmente-adecuado)
-    	else
-    		(send ?rec delete)
-    	)
     )
 )
 
