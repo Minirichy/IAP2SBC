@@ -4766,6 +4766,7 @@
     =>
     (if ?gr then (assert (superficie_minima 100)))
     (assert (distancia "Parque" cerca))
+    (assert (mascota))
 )
 
 (defrule abstraccion::piso ""
@@ -4939,6 +4940,16 @@
     =>
     (send ?rec delete)
 )
+
+(defrule asociacion::permiso_mascotas "Se descartan las recomendaciones sin permiso de mascotas"
+    (recomendaciones_creadas) 
+    (mascota) 
+    ?rec <- (object (is-a Recomendacion) (oferta ?ofr))
+    (test (not (send (send ?ofr get-oferta_de) get-permiso_mascotas)))
+    =>
+    (send ?rec delete)
+)
+
 
 (defrule asociacion::discard_superficie "Se descartan que no tienen suficiente superficie"
     (recomendaciones_creadas) 
