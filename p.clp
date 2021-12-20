@@ -43,8 +43,8 @@
     (slot balcon
         (type SYMBOL)
         (create-accessor read-write))
-    ;;; Si tiene calefacción o no
-    (slot calefacción
+    ;;; Si tiene calefaccion o no
+    (slot calefaccion
         (type SYMBOL)
         (create-accessor read-write))
     ;;; Cantidad de consumo
@@ -71,7 +71,7 @@
     (slot gas
         (type STRING)
         (create-accessor read-write))
-    ;;; Iluminación de la vivienda
+    ;;; Iluminacion de la vivienda
     (slot iluminacion
         (type STRING)
         (create-accessor read-write))
@@ -138,16 +138,16 @@
         (create-accessor read-write))
 )
 
-(defclass Baño
+(defclass Banyo
     (is-a USER)
     (role concrete)
     (pattern-match reactive)
     ;;; Forma parte de:
-    (multislot parte_de
+    (slot parte_de
         (type INSTANCE)
         (create-accessor read-write))
-    ;;; Tiene o no bañera
-    (slot bañera
+    ;;; Tiene o no banyera
+    (slot banyera
         (type SYMBOL)
         (create-accessor read-write))
     ;;; Tiene o no bidet
@@ -169,13 +169,13 @@
     (role concrete)
     (pattern-match reactive)
     ;;; Forma parte de:
-    (multislot parte_de
+    (slot parte_de
         (type INSTANCE)
         (create-accessor read-write))
     (slot cocina_equipada
         (type SYMBOL)
         (create-accessor read-write))
-    (slot tamaño_cocina
+    (slot tamanyo_cocina
         (type STRING)
         (create-accessor read-write))
     ;;; Tipo de cocina: {en 'u', en 'l', en isla, en paralelo, en linea}
@@ -189,7 +189,7 @@
     (role concrete)
     (pattern-match reactive)
     ;;; Forma parte de:
-    (multislot parte_de
+    (slot parte_de
         (type INSTANCE)
         (create-accessor read-write))
     ;;; Tipo de dormitorio: {simple, doble}
@@ -198,27 +198,27 @@
         (create-accessor read-write))
 )
 
-(defclass Localización "Clase de Localización"
+(defclass Localizacion "Clase de Localizacion"
     (is-a USER)
     (role concrete)
     (pattern-match reactive)
-    ;;; Ciudad de la localización
+    ;;; Ciudad de la localizacion
     (slot ciudad
         (type STRING)
         (create-accessor read-write))
-    ;;; Dirección de la localización
+    ;;; Direccion de la localizacion
     (slot direccion
         (type STRING)
         (create-accessor read-write))
-    ;;; Distrito de la localización
+    ;;; Distrito de la localizacion
     (slot distrito
         (type STRING)
         (create-accessor read-write))
-    ;;; Latitud de la localización
+    ;;; Latitud de la localizacion
     (slot latitud
         (type FLOAT)
         (create-accessor read-write))
-    ;;; Longitud de la localización
+    ;;; Longitud de la localizacion
     (slot longitud
         (type FLOAT)
         (create-accessor read-write))
@@ -268,7 +268,7 @@
          (amueblada  FALSE)
          (ascensor  FALSE)
          (balcon  TRUE)
-         (calefacción  TRUE)
+         (calefaccion  TRUE)
          (consumo  135)
          (electrodomesticos  "buen estado")
          (emisiones  50)
@@ -279,7 +279,7 @@
          (luz  TRUE)
          (permiso_mascotas  TRUE)
          (piscina  FALSE)
-         (soleado  "mañana")
+         (soleado  "manyana")
          (superficie  200)
          (terraza  TRUE)
          (vistas  "buenas")
@@ -295,7 +295,7 @@
          (amueblada  TRUE)
          (ascensor  FALSE)
          (balcon  FALSE)
-         (calefacción  TRUE)
+         (calefaccion  TRUE)
          (consumo  59)
          (electrodomesticos  "segunda mano")
          (emisiones  40)
@@ -306,15 +306,15 @@
          (luz  TRUE)
          (permiso_mascotas  FALSE)
          (piscina  TRUE)
-         (soleado  "mañana y tarde")
+         (soleado  "manyana y tarde")
          (superficie  60)
          (terraza  TRUE)
          (vistas  "buenas")
     )
 
-    ([Casa_10_Baño_1] of Baño
+    ([Casa_10_Banyo_1] of Banyo
          (parte_de  [Casa_10])
-         (bañera  FALSE)
+         (banyera  FALSE)
          (bidet  TRUE)
          (ducha  TRUE)
          (lavabo  TRUE)
@@ -323,7 +323,7 @@
     ([Casa_10_Cocina] of Cocina
          (parte_de  [Casa_10])
          (cocina_equipada  TRUE)
-         (tamaño_cocina  "grande")
+         (tamanyo_cocina  "grande")
          (tipo_co  "en isla")
     )
 
@@ -350,7 +350,7 @@
          (amueblada  TRUE)
          (ascensor  FALSE)
          (balcon  FALSE)
-         (calefacción  TRUE)
+         (calefaccion  TRUE)
          (consumo  105)
          (electrodomesticos  "nuevos")
          (emisiones  60)
@@ -361,15 +361,15 @@
          (luz  TRUE)
          (permiso_mascotas  FALSE)
          (piscina  TRUE)
-         (soleado  "mañana")
+         (soleado  "manyana")
          (superficie  100)
          (terraza  TRUE)
          (vistas  "no")
     )
 
-    ([Casa_11_Baño_1] of Baño
+    ([Casa_11_Banyo_1] of Banyo
          (parte_de  [Casa_11])
-         (bañera  TRUE)
+         (banyera  TRUE)
          (bidet  TRUE)
          (ducha  FALSE)
          (lavabo  TRUE)
@@ -378,7 +378,7 @@
     ([Casa_11_Cocina] of Cocina
          (parte_de  [Casa_11])
          (cocina_equipada  TRUE)
-         (tamaño_cocina  "grande")
+         (tamanyo_cocina  "grande")
          (tipo_co  "en 'u'")
     )
 
@@ -410,7 +410,7 @@
          (amueblada  FALSE)
          (ascensor  FALSE)
          (balcon  TRUE)
-         (calefacción  TRUE)
+         (calefaccion  TRUE)
          (consumo  112)
          (electrodomesticos  "segunda mano")
          (emisiones  60)
@@ -421,15 +421,15 @@
          (luz  TRUE)
          (permiso_mascotas  TRUE)
          (piscina  FALSE)
-         (soleado  "mañana")
+         (soleado  "manyana")
          (superficie  85)
          (terraza  TRUE)
          (vistas  "buenas")
     )
 
-    ([Casa_12_Baño_1] of Baño
+    ([Casa_12_Banyo_1] of Banyo
          (parte_de  [Casa_12])
-         (bañera  FALSE)
+         (banyera  FALSE)
          (bidet  TRUE)
          (ducha  FALSE)
          (lavabo  TRUE)
@@ -438,7 +438,7 @@
     ([Casa_12_Cocina] of Cocina
          (parte_de  [Casa_12])
          (cocina_equipada  TRUE)
-         (tamaño_cocina  "mediana")
+         (tamanyo_cocina  "mediana")
          (tipo_co  "en paralelo")
     )
 
@@ -463,7 +463,7 @@
          (amueblada  TRUE)
          (ascensor  TRUE)
          (balcon  TRUE)
-         (calefacción  TRUE)
+         (calefaccion  TRUE)
          (consumo  165)
          (electrodomesticos  "antiguos")
          (emisiones  50)
@@ -474,15 +474,15 @@
          (luz  TRUE)
          (permiso_mascotas  FALSE)
          (piscina  FALSE)
-         (soleado  "mañana")
+         (soleado  "manyana")
          (superficie  65)
          (terraza  FALSE)
          (vistas  "no")
     )
 
-    ([Casa_13_Baño_1] of Baño
+    ([Casa_13_Banyo_1] of Banyo
          (parte_de  [Casa_13])
-         (bañera  FALSE)
+         (banyera  FALSE)
          (bidet  FALSE)
          (ducha  TRUE)
          (lavabo  TRUE)
@@ -491,7 +491,7 @@
     ([Casa_13_Cocina] of Cocina
          (parte_de  [Casa_13])
          (cocina_equipada  TRUE)
-         (tamaño_cocina  "pequeña")
+         (tamanyo_cocina  "pequenya")
          (tipo_co  "en 'u''")
     )
 
@@ -526,7 +526,7 @@
          (amueblada  FALSE)
          (ascensor  TRUE)
          (balcon  TRUE)
-         (calefacción  TRUE)
+         (calefaccion  TRUE)
          (consumo  185)
          (electrodomesticos  "nuevos")
          (emisiones  90)
@@ -537,23 +537,23 @@
          (luz  TRUE)
          (permiso_mascotas  TRUE)
          (piscina  TRUE)
-         (soleado  "mañana")
+         (soleado  "manyana")
          (superficie  155)
          (terraza  FALSE)
          (vistas  "buenas")
     )
 
-    ([Casa_14_Baño_1] of Baño
+    ([Casa_14_Banyo_1] of Banyo
          (parte_de  [Casa_14])
-         (bañera  TRUE)
+         (banyera  TRUE)
          (bidet  TRUE)
          (ducha  TRUE)
          (lavabo  TRUE)
     )
 
-    ([Casa_14_Baño_2] of Baño
+    ([Casa_14_Banyo_2] of Banyo
          (parte_de  [Casa_14])
-         (bañera  FALSE)
+         (banyera  FALSE)
          (bidet  FALSE)
          (ducha  TRUE)
          (lavabo  TRUE)
@@ -562,7 +562,7 @@
     ([Casa_14_Cocina] of Cocina
          (parte_de  [Casa_14])
          (cocina_equipada  TRUE)
-         (tamaño_cocina  "grande")
+         (tamanyo_cocina  "grande")
          (tipo_co  "en 'l'")
     )
 
@@ -607,7 +607,7 @@
          (amueblada  TRUE)
          (ascensor  FALSE)
          (balcon  TRUE)
-         (calefacción  TRUE)
+         (calefaccion  TRUE)
          (consumo  115)
          (electrodomesticos  "segunda mano")
          (emisiones  50)
@@ -618,15 +618,15 @@
          (luz  TRUE)
          (permiso_mascotas  FALSE)
          (piscina  FALSE)
-         (soleado  "mañana")
+         (soleado  "manyana")
          (superficie  75)
          (terraza  FALSE)
          (vistas  "no")
     )
 
-    ([Casa_15_Baño_1] of Baño
+    ([Casa_15_Banyo_1] of Banyo
          (parte_de  [Casa_15])
-         (bañera  TRUE)
+         (banyera  TRUE)
          (bidet  TRUE)
          (ducha  TRUE)
          (lavabo  TRUE)
@@ -635,7 +635,7 @@
     ([Casa_15_Cocina] of Cocina
          (parte_de  [Casa_15])
          (cocina_equipada  TRUE)
-         (tamaño_cocina  "mediana")
+         (tamanyo_cocina  "mediana")
          (tipo_co  "en linea")
     )
 
@@ -660,7 +660,7 @@
          (amueblada  FALSE)
          (ascensor  TRUE)
          (balcon  FALSE)
-         (calefacción  TRUE)
+         (calefaccion  TRUE)
          (consumo  100)
          (electrodomesticos  "segunda mano")
          (emisiones  45)
@@ -677,9 +677,9 @@
          (vistas  "buenas")
     )
 
-    ([Casa_16_Baño_1] of Baño
+    ([Casa_16_Banyo_1] of Banyo
          (parte_de  [Casa_16])
-         (bañera  TRUE)
+         (banyera  TRUE)
          (bidet  TRUE)
          (ducha  TRUE)
          (lavabo  TRUE)
@@ -688,7 +688,7 @@
     ([Casa_16_Cocina] of Cocina
          (parte_de  [Casa_16])
          (cocina_equipada  TRUE)
-         (tamaño_cocina  "pequeña")
+         (tamanyo_cocina  "pequenya")
          (tipo_co  "en 'l'")
     )
 
@@ -713,7 +713,7 @@
          (amueblada  TRUE)
          (ascensor  TRUE)
          (balcon  TRUE)
-         (calefacción  TRUE)
+         (calefaccion  TRUE)
          (consumo  120)
          (electrodomesticos  "no")
          (emisiones  58)
@@ -724,15 +724,15 @@
          (luz  TRUE)
          (permiso_mascotas  FALSE)
          (piscina  FALSE)
-         (soleado  "mañana")
+         (soleado  "manyana")
          (superficie  85)
          (terraza  FALSE)
          (vistas  "no")
     )
 
-    ([Casa_17_Baño_1] of Baño
+    ([Casa_17_Banyo_1] of Banyo
          (parte_de  [Casa_17])
-         (bañera  FALSE)
+         (banyera  FALSE)
          (bidet  TRUE)
          (ducha  TRUE)
          (lavabo  TRUE)
@@ -741,7 +741,7 @@
     ([Casa_17_Cocina] of Cocina
          (parte_de  [Casa_17])
          (cocina_equipada  FALSE)
-         (tamaño_cocina  "pequeña")
+         (tamanyo_cocina  "pequenya")
          (tipo_co  "en paralelo")
     )
 
@@ -773,7 +773,7 @@
          (amueblada  TRUE)
          (ascensor  FALSE)
          (balcon  FALSE)
-         (calefacción  TRUE)
+         (calefaccion  TRUE)
          (consumo  122)
          (electrodomesticos  "nuevos")
          (emisiones  72)
@@ -790,25 +790,25 @@
          (vistas  "no")
     )
 
-    ([Casa_18_Baño_1] of Baño
+    ([Casa_18_Banyo_1] of Banyo
          (parte_de  [Casa_18])
-         (bañera  TRUE)
+         (banyera  TRUE)
          (bidet  TRUE)
          (ducha  TRUE)
          (lavabo  TRUE)
     )
 
-    ([Casa_18_Baño_2] of Baño
+    ([Casa_18_Banyo_2] of Banyo
          (parte_de  [Casa_18])
-         (bañera  TRUE)
+         (banyera  TRUE)
          (bidet  FALSE)
          (ducha  FALSE)
          (lavabo  TRUE)
     )
 
-    ([Casa_18_Baño_3] of Baño
+    ([Casa_18_Banyo_3] of Banyo
          (parte_de  [Casa_18])
-         (bañera  FALSE)
+         (banyera  FALSE)
          (bidet  FALSE)
          (ducha  FALSE)
          (lavabo  TRUE)
@@ -817,7 +817,7 @@
     ([Casa_18_Cocina] of Cocina
          (parte_de  [Casa_18])
          (cocina_equipada  TRUE)
-         (tamaño_cocina  "grande")
+         (tamanyo_cocina  "grande")
          (tipo_co  "en isla")
     )
 
@@ -852,7 +852,7 @@
          (amueblada  FALSE)
          (ascensor  FALSE)
          (balcon  TRUE)
-         (calefacción  TRUE)
+         (calefaccion  TRUE)
          (consumo  135)
          (electrodomesticos  "antiguos")
          (emisiones  63)
@@ -863,15 +863,15 @@
          (luz  TRUE)
          (permiso_mascotas  TRUE)
          (piscina  FALSE)
-         (soleado  "mañana")
+         (soleado  "manyana")
          (superficie  75)
          (terraza  FALSE)
          (vistas  "buenas")
     )
 
-    ([Casa_19_Baño_1] of Baño
+    ([Casa_19_Banyo_1] of Banyo
          (parte_de  [Casa_19])
-         (bañera  TRUE)
+         (banyera  TRUE)
          (bidet  TRUE)
          (ducha  FALSE)
          (lavabo  TRUE)
@@ -880,7 +880,7 @@
     ([Casa_19_Cocina] of Cocina
          (parte_de  [Casa_19])
          (cocina_equipada  TRUE)
-         (tamaño_cocina  "mediana")
+         (tamanyo_cocina  "mediana")
          (tipo_co  "en linea")
     )
 
@@ -900,17 +900,17 @@
          (precio  1560)
     )
 
-    ([Casa_1_Baño_1] of Baño
+    ([Casa_1_Banyo_1] of Banyo
          (parte_de  [Casa_1])
-         (bañera  TRUE)
+         (banyera  TRUE)
          (bidet  TRUE)
          (ducha  TRUE)
          (lavabo  TRUE)
     )
 
-    ([Casa_1_Baño_2] of Baño
+    ([Casa_1_Banyo_2] of Banyo
          (parte_de  [Casa_1])
-         (bañera  FALSE)
+         (banyera  FALSE)
          (bidet  FALSE)
          (ducha  TRUE)
          (lavabo  TRUE)
@@ -919,7 +919,7 @@
     ([Casa_1_Cocina] of Cocina
          (parte_de  [Casa_1])
          (cocina_equipada  TRUE)
-         (tamaño_cocina  "grande")
+         (tamanyo_cocina  "grande")
          (tipo_co  "en isla")
     )
 
@@ -954,7 +954,7 @@
          (amueblada  TRUE)
          (ascensor  TRUE)
          (balcon  TRUE)
-         (calefacción  TRUE)
+         (calefaccion  TRUE)
          (consumo  100)
          (electrodomesticos  "segunda mano")
          (emisiones  30)
@@ -965,7 +965,7 @@
          (luz  TRUE)
          (permiso_mascotas  FALSE)
          (piscina  FALSE)
-         (soleado  "mañana")
+         (soleado  "manyana")
          (superficie  80)
          (terraza  TRUE)
          (vistas  "no")
@@ -981,7 +981,7 @@
          (amueblada  FALSE)
          (ascensor  TRUE)
          (balcon  FALSE)
-         (calefacción  TRUE)
+         (calefaccion  TRUE)
          (consumo  145)
          (electrodomesticos  "no")
          (emisiones  68)
@@ -998,17 +998,17 @@
          (vistas  "buenas")
     )
 
-    ([Casa_20_Baño_1] of Baño
+    ([Casa_20_Banyo_1] of Banyo
          (parte_de  [Casa_20])
-         (bañera  FALSE)
+         (banyera  FALSE)
          (bidet  TRUE)
          (ducha  TRUE)
          (lavabo  TRUE)
     )
 
-    ([Casa_20_Baño_2] of Baño
+    ([Casa_20_Banyo_2] of Banyo
          (parte_de  [Casa_20])
-         (bañera  FALSE)
+         (banyera  FALSE)
          (bidet  TRUE)
          (ducha  TRUE)
          (lavabo  TRUE)
@@ -1017,7 +1017,7 @@
     ([Casa_20_Cocina] of Cocina
          (parte_de  [Casa_20])
          (cocina_equipada  FALSE)
-         (tamaño_cocina  "grande")
+         (tamanyo_cocina  "grande")
          (tipo_co  "en 'u'")
     )
 
@@ -1052,7 +1052,7 @@
          (amueblada  TRUE)
          (ascensor  TRUE)
          (balcon  TRUE)
-         (calefacción  TRUE)
+         (calefaccion  TRUE)
          (consumo  115)
          (electrodomesticos  "nuevos")
          (emisiones  65)
@@ -1069,9 +1069,9 @@
          (vistas  "no")
     )
 
-    ([Casa_21_Baño_1] of Baño
+    ([Casa_21_Banyo_1] of Banyo
          (parte_de  [Casa_21])
-         (bañera  FALSE)
+         (banyera  FALSE)
          (bidet  FALSE)
          (ducha  TRUE)
          (lavabo  TRUE)
@@ -1080,7 +1080,7 @@
     ([Casa_21_Cocina] of Cocina
          (parte_de  [Casa_21])
          (cocina_equipada  TRUE)
-         (tamaño_cocina  "mediana")
+         (tamanyo_cocina  "mediana")
          (tipo_co  "en paralelo")
     )
 
@@ -1105,7 +1105,7 @@
          (amueblada  FALSE)
          (ascensor  FALSE)
          (balcon  TRUE)
-         (calefacción  TRUE)
+         (calefaccion  TRUE)
          (consumo  135)
          (electrodomesticos  "buen estado")
          (emisiones  50)
@@ -1116,15 +1116,15 @@
          (luz  TRUE)
          (permiso_mascotas  TRUE)
          (piscina  FALSE)
-         (soleado  "mañana")
+         (soleado  "manyana")
          (superficie  200)
          (terraza  TRUE)
          (vistas  "buenas")
     )
 
-    ([Casa_22_Baño_1] of Baño
+    ([Casa_22_Banyo_1] of Banyo
          (parte_de  [Casa_22])
-         (bañera  FALSE)
+         (banyera  FALSE)
          (bidet  FALSE)
          (ducha  TRUE)
          (lavabo  TRUE)
@@ -1133,7 +1133,7 @@
     ([Casa_22_Cocina] of Cocina
          (parte_de  [Casa_22])
          (cocina_equipada  TRUE)
-         (tamaño_cocina  "pequeña")
+         (tamanyo_cocina  "pequenya")
          (tipo_co  "en linea")
     )
 
@@ -1165,7 +1165,7 @@
          (amueblada  FALSE)
          (ascensor  FALSE)
          (balcon  TRUE)
-         (calefacción  TRUE)
+         (calefaccion  TRUE)
          (consumo  132)
          (electrodomesticos  "segunda mano")
          (emisiones  62)
@@ -1176,23 +1176,23 @@
          (luz  TRUE)
          (permiso_mascotas  TRUE)
          (piscina  FALSE)
-         (soleado  "mañana")
+         (soleado  "manyana")
          (superficie  155)
          (terraza  FALSE)
          (vistas  "buenas")
     )
 
-    ([Casa_23_Baño_1] of Baño
+    ([Casa_23_Banyo_1] of Banyo
          (parte_de  [Casa_23])
-         (bañera  TRUE)
+         (banyera  TRUE)
          (bidet  TRUE)
          (ducha  FALSE)
          (lavabo  TRUE)
     )
 
-    ([Casa_23_Baño_2] of Baño
+    ([Casa_23_Banyo_2] of Banyo
          (parte_de  [Casa_23])
-         (bañera  TRUE)
+         (banyera  TRUE)
          (bidet  FALSE)
          (ducha  FALSE)
          (lavabo  TRUE)
@@ -1201,7 +1201,7 @@
     ([Casa_23_Cocina] of Cocina
          (parte_de  [Casa_23])
          (cocina_equipada  FALSE)
-         (tamaño_cocina  "mediana")
+         (tamanyo_cocina  "mediana")
          (tipo_co  "en 'l'")
     )
 
@@ -1231,7 +1231,7 @@
          (amueblada  FALSE)
          (ascensor  TRUE)
          (balcon  TRUE)
-         (calefacción  TRUE)
+         (calefaccion  TRUE)
          (consumo  125)
          (electrodomesticos  "segunda mano")
          (emisiones  67)
@@ -1242,15 +1242,15 @@
          (luz  TRUE)
          (permiso_mascotas  FALSE)
          (piscina  FALSE)
-         (soleado  "mañana")
+         (soleado  "manyana")
          (superficie  55)
          (terraza  FALSE)
          (vistas  "buenas")
     )
 
-    ([Casa_24_Baño_1] of Baño
+    ([Casa_24_Banyo_1] of Banyo
          (parte_de  [Casa_24])
-         (bañera  FALSE)
+         (banyera  FALSE)
          (bidet  TRUE)
          (ducha  TRUE)
          (lavabo  TRUE)
@@ -1259,7 +1259,7 @@
     ([Casa_24_Cocina] of Cocina
          (parte_de  [Casa_24])
          (cocina_equipada  TRUE)
-         (tamaño_cocina  "pequeña")
+         (tamanyo_cocina  "pequenya")
          (tipo_co  "en linea")
     )
 
@@ -1284,7 +1284,7 @@
          (amueblada  FALSE)
          (ascensor  TRUE)
          (balcon  TRUE)
-         (calefacción  TRUE)
+         (calefaccion  TRUE)
          (consumo  125)
          (electrodomesticos  "segunda mano")
          (emisiones  67)
@@ -1295,15 +1295,15 @@
          (luz  TRUE)
          (permiso_mascotas  FALSE)
          (piscina  FALSE)
-         (soleado  "mañana")
+         (soleado  "manyana")
          (superficie  55)
          (terraza  FALSE)
          (vistas  "buenas")
     )
 
-    ([Casa_25_Baño_1] of Baño
+    ([Casa_25_Banyo_1] of Banyo
          (parte_de  [Casa_25])
-         (bañera  FALSE)
+         (banyera  FALSE)
          (bidet  TRUE)
          (ducha  TRUE)
          (lavabo  TRUE)
@@ -1312,7 +1312,7 @@
     ([Casa_25_Cocina] of Cocina
          (parte_de  [Casa_25])
          (cocina_equipada  TRUE)
-         (tamaño_cocina  "pequeña")
+         (tamanyo_cocina  "pequenya")
          (tipo_co  "en linea")
     )
 
@@ -1354,7 +1354,7 @@
          (amueblada  FALSE)
          (ascensor  FALSE)
          (balcon  TRUE)
-         (calefacción  TRUE)
+         (calefaccion  TRUE)
          (consumo  205)
          (electrodomesticos  "no")
          (emisiones  100)
@@ -1365,31 +1365,31 @@
          (luz  TRUE)
          (permiso_mascotas  TRUE)
          (piscina  FALSE)
-         (soleado  "mañana")
+         (soleado  "manyana")
          (superficie  300)
          (terraza  TRUE)
          (vistas  "no")
     )
 
-    ([Casa_26_Baño_1] of Baño
+    ([Casa_26_Banyo_1] of Banyo
          (parte_de  [Casa_26])
-         (bañera  TRUE)
+         (banyera  TRUE)
          (bidet  TRUE)
          (ducha  TRUE)
          (lavabo  TRUE)
     )
 
-    ([Casa_26_Baño_2] of Baño
+    ([Casa_26_Banyo_2] of Banyo
          (parte_de  [Casa_26])
-         (bañera  TRUE)
+         (banyera  TRUE)
          (bidet  FALSE)
          (ducha  FALSE)
          (lavabo  TRUE)
     )
 
-    ([Casa_26_Baño_3] of Baño
+    ([Casa_26_Banyo_3] of Banyo
          (parte_de  [Casa_26])
-         (bañera  FALSE)
+         (banyera  FALSE)
          (bidet  FALSE)
          (ducha  FALSE)
          (lavabo  FALSE)
@@ -1398,7 +1398,7 @@
     ([Casa_26_Cocina] of Cocina
          (parte_de  [Casa_26])
          (cocina_equipada  FALSE)
-         (tamaño_cocina  "grande")
+         (tamanyo_cocina  "grande")
          (tipo_co  "en 'u'")
     )
 
@@ -1443,7 +1443,7 @@
          (amueblada  TRUE)
          (ascensor  TRUE)
          (balcon  FALSE)
-         (calefacción  TRUE)
+         (calefaccion  TRUE)
          (consumo  95)
          (electrodomesticos  "segunda mano")
          (emisiones  59)
@@ -1460,9 +1460,9 @@
          (vistas  "no")
     )
 
-    ([Casa_27_Baño_1] of Baño
+    ([Casa_27_Banyo_1] of Banyo
          (parte_de  [Casa_27])
-         (bañera  FALSE)
+         (banyera  FALSE)
          (bidet  FALSE)
          (ducha  TRUE)
          (lavabo  TRUE)
@@ -1471,7 +1471,7 @@
     ([Casa_27_Cocina] of Cocina
          (parte_de  [Casa_27])
          (cocina_equipada  TRUE)
-         (tamaño_cocina  "pequeña")
+         (tamanyo_cocina  "pequenya")
          (tipo_co  "en paralelo")
     )
 
@@ -1501,7 +1501,7 @@
          (amueblada  TRUE)
          (ascensor  TRUE)
          (balcon  TRUE)
-         (calefacción  TRUE)
+         (calefaccion  TRUE)
          (consumo  115)
          (electrodomesticos  "nuevos")
          (emisiones  78)
@@ -1518,17 +1518,17 @@
          (vistas  "buenas")
     )
 
-    ([Casa_28_Baño_1] of Baño
+    ([Casa_28_Banyo_1] of Banyo
          (parte_de  [Casa_28])
-         (bañera  TRUE)
+         (banyera  TRUE)
          (bidet  FALSE)
          (ducha  TRUE)
          (lavabo  TRUE)
     )
 
-    ([Casa_28_Baño_2] of Baño
+    ([Casa_28_Banyo_2] of Banyo
          (parte_de  [Casa_28])
-         (bañera  TRUE)
+         (banyera  TRUE)
          (bidet  FALSE)
          (ducha  FALSE)
          (lavabo  TRUE)
@@ -1537,7 +1537,7 @@
     ([Casa_28_Cocina] of Cocina
          (parte_de  [Casa_28])
          (cocina_equipada  TRUE)
-         (tamaño_cocina  "mediana")
+         (tamanyo_cocina  "mediana")
          (tipo_co  "en 'u'")
     )
 
@@ -1564,7 +1564,7 @@
          (amueblada  TRUE)
          (ascensor  FALSE)
          (balcon  FALSE)
-         (calefacción  TRUE)
+         (calefaccion  TRUE)
          (consumo  112)
          (electrodomesticos  "no")
          (emisiones  62)
@@ -1581,25 +1581,25 @@
          (vistas  "no")
     )
 
-    ([Casa_29_Baño_1] of Baño
+    ([Casa_29_Banyo_1] of Banyo
          (parte_de  [Casa_29])
-         (bañera  FALSE)
+         (banyera  FALSE)
          (bidet  TRUE)
          (ducha  TRUE)
          (lavabo  TRUE)
     )
 
-    ([Casa_29_Baño_2] of Baño
+    ([Casa_29_Banyo_2] of Banyo
          (parte_de  [Casa_29])
-         (bañera  FALSE)
+         (banyera  FALSE)
          (bidet  FALSE)
          (ducha  TRUE)
          (lavabo  TRUE)
     )
 
-    ([Casa_29_Baño_3] of Baño
+    ([Casa_29_Banyo_3] of Banyo
          (parte_de  [Casa_29])
-         (bañera  TRUE)
+         (banyera  TRUE)
          (bidet  FALSE)
          (ducha  TRUE)
          (lavabo  TRUE)
@@ -1608,7 +1608,7 @@
     ([Casa_29_Cocina] of Cocina
          (parte_de  [Casa_29])
          (cocina_equipada  TRUE)
-         (tamaño_cocina  "grande")
+         (tamanyo_cocina  "grande")
          (tipo_co  "en isla")
     )
 
@@ -1633,17 +1633,17 @@
          (precio  1170)
     )
 
-    ([Casa_2_Baño_1] of Baño
+    ([Casa_2_Banyo_1] of Banyo
          (parte_de  [Casa_2])
-         (bañera  FALSE)
+         (banyera  FALSE)
          (bidet  FALSE)
          (ducha  TRUE)
          (lavabo  TRUE)
     )
 
-    ([Casa_2_Baño_2] of Baño
+    ([Casa_2_Banyo_2] of Banyo
          (parte_de  [Casa_2])
-         (bañera  FALSE)
+         (banyera  FALSE)
          (bidet  FALSE)
          (ducha  FALSE)
          (lavabo  TRUE)
@@ -1652,7 +1652,7 @@
     ([Casa_2_Cocina] of Cocina
          (parte_de  [Casa_2])
          (cocina_equipada  FALSE)
-         (tamaño_cocina  "pequeña")
+         (tamanyo_cocina  "pequenya")
          (tipo_co  "en paralelo")
     )
 
@@ -1689,7 +1689,7 @@
          (amueblada  TRUE)
          (ascensor  TRUE)
          (balcon  FALSE)
-         (calefacción  TRUE)
+         (calefaccion  TRUE)
          (consumo  185)
          (electrodomesticos  "nuevos")
          (emisiones  80)
@@ -1700,7 +1700,7 @@
          (luz  TRUE)
          (permiso_mascotas  FALSE)
          (piscina  TRUE)
-         (soleado  "mañana y tarde")
+         (soleado  "manyana y tarde")
          (superficie  500)
          (terraza  TRUE)
          (vistas  "no")
@@ -1716,7 +1716,7 @@
          (amueblada  TRUE)
          (ascensor  TRUE)
          (balcon  TRUE)
-         (calefacción  TRUE)
+         (calefaccion  TRUE)
          (consumo  165)
          (electrodomesticos  "segunda mano")
          (emisiones  90)
@@ -1727,23 +1727,23 @@
          (luz  TRUE)
          (permiso_mascotas  TRUE)
          (piscina  TRUE)
-         (soleado  "mañana")
+         (soleado  "manyana")
          (superficie  85)
          (terraza  FALSE)
          (vistas  "buenas")
     )
 
-    ([Casa_30_Baño_1] of Baño
+    ([Casa_30_Banyo_1] of Banyo
          (parte_de  [Casa_30])
-         (bañera  FALSE)
+         (banyera  FALSE)
          (bidet  TRUE)
          (ducha  TRUE)
          (lavabo  TRUE)
     )
 
-    ([Casa_30_Baño_2] of Baño
+    ([Casa_30_Banyo_2] of Banyo
          (parte_de  [Casa_30])
-         (bañera  FALSE)
+         (banyera  FALSE)
          (bidet  FALSE)
          (ducha  TRUE)
          (lavabo  TRUE)
@@ -1752,7 +1752,7 @@
     ([Casa_30_Cocina] of Cocina
          (parte_de  [Casa_30])
          (cocina_equipada  TRUE)
-         (tamaño_cocina  "grande")
+         (tamanyo_cocina  "grande")
          (tipo_co  "en 'l'")
     )
 
@@ -1792,7 +1792,7 @@
          (amueblada  FALSE)
          (ascensor  TRUE)
          (balcon  FALSE)
-         (calefacción  TRUE)
+         (calefaccion  TRUE)
          (consumo  125)
          (electrodomesticos  "segunda mano")
          (emisiones  87)
@@ -1809,9 +1809,9 @@
          (vistas  "no")
     )
 
-    ([Casa_31_Baño_1] of Baño
+    ([Casa_31_Banyo_1] of Banyo
          (parte_de  [Casa_31])
-         (bañera  FALSE)
+         (banyera  FALSE)
          (bidet  FALSE)
          (ducha  TRUE)
          (lavabo  TRUE)
@@ -1820,7 +1820,7 @@
     ([Casa_31_Cocina] of Cocina
          (parte_de  [Casa_31])
          (cocina_equipada  FALSE)
-         (tamaño_cocina  "pequeña")
+         (tamanyo_cocina  "pequenya")
          (tipo_co  "en 'u'")
     )
 
@@ -1852,7 +1852,7 @@
          (amueblada  FALSE)
          (ascensor  FALSE)
          (balcon  TRUE)
-         (calefacción  TRUE)
+         (calefaccion  TRUE)
          (consumo  195)
          (electrodomesticos  "no")
          (emisiones  100)
@@ -1869,17 +1869,17 @@
          (vistas  "no")
     )
 
-    ([Casa_32_Baño_1] of Baño
+    ([Casa_32_Banyo_1] of Banyo
          (parte_de  [Casa_32])
-         (bañera  TRUE)
+         (banyera  TRUE)
          (bidet  TRUE)
          (ducha  TRUE)
          (lavabo  TRUE)
     )
 
-    ([Casa_32_Baño_2] of Baño
+    ([Casa_32_Banyo_2] of Banyo
          (parte_de  [Casa_32])
-         (bañera  TRUE)
+         (banyera  TRUE)
          (bidet  TRUE)
          (ducha  TRUE)
          (lavabo  TRUE)
@@ -1888,7 +1888,7 @@
     ([Casa_32_Cocina] of Cocina
          (parte_de  [Casa_32])
          (cocina_equipada  FALSE)
-         (tamaño_cocina  "madiana")
+         (tamanyo_cocina  "madiana")
          (tipo_co  "en paralelo")
     )
 
@@ -1928,7 +1928,7 @@
          (amueblada  TRUE)
          (ascensor  FALSE)
          (balcon  TRUE)
-         (calefacción  TRUE)
+         (calefaccion  TRUE)
          (consumo  65)
          (electrodomesticos  "segunda mano")
          (emisiones  27)
@@ -1945,17 +1945,17 @@
          (vistas  "no")
     )
 
-    ([Casa_33_Baño_1] of Baño
+    ([Casa_33_Banyo_1] of Banyo
          (parte_de  [Casa_33])
-         (bañera  TRUE)
+         (banyera  TRUE)
          (bidet  TRUE)
          (ducha  FALSE)
          (lavabo  TRUE)
     )
 
-    ([Casa_33_Baño_2] of Baño
+    ([Casa_33_Banyo_2] of Banyo
          (parte_de  [Casa_33])
-         (bañera  FALSE)
+         (banyera  FALSE)
          (bidet  TRUE)
          (ducha  FALSE)
          (lavabo  TRUE)
@@ -1964,7 +1964,7 @@
     ([Casa_33_Cocina] of Cocina
          (parte_de  [Casa_33])
          (cocina_equipada  TRUE)
-         (tamaño_cocina  "grande")
+         (tamanyo_cocina  "grande")
          (tipo_co  "en isla")
     )
 
@@ -2004,7 +2004,7 @@
          (amueblada  TRUE)
          (ascensor  TRUE)
          (balcon  TRUE)
-         (calefacción  TRUE)
+         (calefaccion  TRUE)
          (consumo  132)
          (electrodomesticos  "no")
          (emisiones  53)
@@ -2015,15 +2015,15 @@
          (luz  TRUE)
          (permiso_mascotas  TRUE)
          (piscina  FALSE)
-         (soleado  "mañana")
+         (soleado  "manyana")
          (superficie  110)
          (terraza  FALSE)
          (vistas  "buenas")
     )
 
-    ([Casa_34_Baño_1] of Baño
+    ([Casa_34_Banyo_1] of Banyo
          (parte_de  [Casa_34])
-         (bañera  FALSE)
+         (banyera  FALSE)
          (bidet  FALSE)
          (ducha  TRUE)
          (lavabo  TRUE)
@@ -2032,7 +2032,7 @@
     ([Casa_34_Cocina] of Cocina
          (parte_de  [Casa_34])
          (cocina_equipada  TRUE)
-         (tamaño_cocina  "mediana")
+         (tamanyo_cocina  "mediana")
          (tipo_co  "en linea")
     )
 
@@ -2067,7 +2067,7 @@
          (amueblada  FALSE)
          (ascensor  FALSE)
          (balcon  FALSE)
-         (calefacción  TRUE)
+         (calefaccion  TRUE)
          (consumo  144)
          (electrodomesticos  "no")
          (emisiones  83)
@@ -2078,15 +2078,15 @@
          (luz  TRUE)
          (permiso_mascotas  FALSE)
          (piscina  FALSE)
-         (soleado  "mañana")
+         (soleado  "manyana")
          (superficie  55)
          (terraza  FALSE)
          (vistas  "no")
     )
 
-    ([Casa_35_Baño_1] of Baño
+    ([Casa_35_Banyo_1] of Banyo
          (parte_de  [Casa_35])
-         (bañera  FALSE)
+         (banyera  FALSE)
          (bidet  FALSE)
          (ducha  TRUE)
          (lavabo  TRUE)
@@ -2095,7 +2095,7 @@
     ([Casa_35_Cocina] of Cocina
          (parte_de  [Casa_35])
          (cocina_equipada  FALSE)
-         (tamaño_cocina  "pequeña")
+         (tamanyo_cocina  "pequenya")
          (tipo_co  "en 'u''")
     )
 
@@ -2115,33 +2115,33 @@
          (precio  760)
     )
 
-    ([Casa_3_Baño_1] of Baño
+    ([Casa_3_Banyo_1] of Banyo
          (parte_de  [Casa_3])
-         (bañera  TRUE)
+         (banyera  TRUE)
          (bidet  TRUE)
          (ducha  TRUE)
          (lavabo  TRUE)
     )
 
-    ([Casa_3_Baño_2] of Baño
+    ([Casa_3_Banyo_2] of Banyo
          (parte_de  [Casa_3])
-         (bañera  TRUE)
+         (banyera  TRUE)
          (bidet  TRUE)
          (ducha  TRUE)
          (lavabo  TRUE)
     )
 
-    ([Casa_3_Baño_3] of Baño
+    ([Casa_3_Banyo_3] of Banyo
          (parte_de  [Casa_3])
-         (bañera  FALSE)
+         (banyera  FALSE)
          (bidet  FALSE)
          (ducha  TRUE)
          (lavabo  FALSE)
     )
 
-    ([Casa_3_Baño_4] of Baño
+    ([Casa_3_Banyo_4] of Banyo
          (parte_de  [Casa_3])
-         (bañera  FALSE)
+         (banyera  FALSE)
          (bidet  FALSE)
          (ducha  FALSE)
          (lavabo  TRUE)
@@ -2150,7 +2150,7 @@
     ([Casa_3_Cocina] of Cocina
          (parte_de  [Casa_3])
          (cocina_equipada  TRUE)
-         (tamaño_cocina  "grande")
+         (tamanyo_cocina  "grande")
          (tipo_co  "en 'l'")
     )
 
@@ -2195,7 +2195,7 @@
          (amueblada  TRUE)
          (ascensor  TRUE)
          (balcon  TRUE)
-         (calefacción  TRUE)
+         (calefaccion  TRUE)
          (consumo  105)
          (electrodomesticos  "no")
          (emisiones  30)
@@ -2212,17 +2212,17 @@
          (vistas  "buenas")
     )
 
-    ([Casa_4_Baño_1] of Baño
+    ([Casa_4_Banyo_1] of Banyo
          (parte_de  [Casa_4])
-         (bañera  TRUE)
+         (banyera  TRUE)
          (bidet  FALSE)
          (ducha  TRUE)
          (lavabo  TRUE)
     )
 
-    ([Casa_4_Baño_2] of Baño
+    ([Casa_4_Banyo_2] of Banyo
          (parte_de  [Casa_4])
-         (bañera  TRUE)
+         (banyera  TRUE)
          (bidet  FALSE)
          (ducha  FALSE)
          (lavabo  TRUE)
@@ -2231,7 +2231,7 @@
     ([Casa_4_Cocina] of Cocina
          (parte_de  [Casa_4])
          (cocina_equipada  FALSE)
-         (tamaño_cocina  "mediana")
+         (tamanyo_cocina  "mediana")
          (tipo_co  "en 'u'")
     )
 
@@ -2271,7 +2271,7 @@
          (amueblada  FALSE)
          (ascensor  TRUE)
          (balcon  FALSE)
-         (calefacción  TRUE)
+         (calefaccion  TRUE)
          (consumo  115)
          (electrodomesticos  "nuevos")
          (emisiones  45)
@@ -2288,9 +2288,9 @@
          (vistas  "no")
     )
 
-    ([Casa_5_Baño_1] of Baño
+    ([Casa_5_Banyo_1] of Banyo
          (parte_de  [Casa_5])
-         (bañera  TRUE)
+         (banyera  TRUE)
          (bidet  TRUE)
          (ducha  TRUE)
          (lavabo  TRUE)
@@ -2299,7 +2299,7 @@
     ([Casa_5_Cocina] of Cocina
          (parte_de  [Casa_5])
          (cocina_equipada  TRUE)
-         (tamaño_cocina  "pequeña")
+         (tamanyo_cocina  "pequenya")
          (tipo_co  "en linea")
     )
 
@@ -2329,7 +2329,7 @@
          (amueblada  TRUE)
          (ascensor  TRUE)
          (balcon  TRUE)
-         (calefacción  TRUE)
+         (calefaccion  TRUE)
          (consumo  90)
          (electrodomesticos  "segunda mano")
          (emisiones  25)
@@ -2346,9 +2346,9 @@
          (vistas  "no")
     )
 
-    ([Casa_6_Baño_1] of Baño
+    ([Casa_6_Banyo_1] of Banyo
          (parte_de  [Casa_6])
-         (bañera  FALSE)
+         (banyera  FALSE)
          (bidet  TRUE)
          (ducha  TRUE)
          (lavabo  TRUE)
@@ -2357,7 +2357,7 @@
     ([Casa_6_Cocina] of Cocina
          (parte_de  [Casa_6])
          (cocina_equipada  TRUE)
-         (tamaño_cocina  "pequeña")
+         (tamanyo_cocina  "pequenya")
          (tipo_co  "en linea")
     )
 
@@ -2382,7 +2382,7 @@
          (amueblada  TRUE)
          (ascensor  TRUE)
          (balcon  TRUE)
-         (calefacción  TRUE)
+         (calefaccion  TRUE)
          (consumo  95)
          (electrodomesticos  "segunda mano")
          (emisiones  35)
@@ -2393,15 +2393,15 @@
          (luz  TRUE)
          (permiso_mascotas  TRUE)
          (piscina  FALSE)
-         (soleado  "mañana")
+         (soleado  "manyana")
          (superficie  45)
          (terraza  FALSE)
          (vistas  "buenas")
     )
 
-    ([Casa_7_Baño_1] of Baño
+    ([Casa_7_Banyo_1] of Banyo
          (parte_de  [Casa_7])
-         (bañera  TRUE)
+         (banyera  TRUE)
          (bidet  FALSE)
          (ducha  FALSE)
          (lavabo  TRUE)
@@ -2410,7 +2410,7 @@
     ([Casa_7_Cocina] of Cocina
          (parte_de  [Casa_7])
          (cocina_equipada  FALSE)
-         (tamaño_cocina  "mediana")
+         (tamanyo_cocina  "mediana")
          (tipo_co  "en paralelo")
     )
 
@@ -2442,7 +2442,7 @@
          (amueblada  FALSE)
          (ascensor  FALSE)
          (balcon  TRUE)
-         (calefacción  TRUE)
+         (calefaccion  TRUE)
          (consumo  155)
          (electrodomesticos  "no")
          (emisiones  70)
@@ -2459,17 +2459,17 @@
          (vistas  "buenas")
     )
 
-    ([Casa_8_Baño_1] of Baño
+    ([Casa_8_Banyo_1] of Banyo
          (parte_de  [Casa_8])
-         (bañera  TRUE)
+         (banyera  TRUE)
          (bidet  FALSE)
          (ducha  TRUE)
          (lavabo  TRUE)
     )
 
-    ([Casa_8_Baño_2] of Baño
+    ([Casa_8_Banyo_2] of Banyo
          (parte_de  [Casa_8])
-         (bañera  FALSE)
+         (banyera  FALSE)
          (bidet  FALSE)
          (ducha  FALSE)
          (lavabo  TRUE)
@@ -2478,7 +2478,7 @@
     ([Casa_8_Cocina] of Cocina
          (parte_de  [Casa_8])
          (cocina_equipada  FALSE)
-         (tamaño_cocina  "mediana")
+         (tamanyo_cocina  "mediana")
          (tipo_co  "en isla")
     )
 
@@ -2508,7 +2508,7 @@
          (amueblada  FALSE)
          (ascensor  TRUE)
          (balcon  FALSE)
-         (calefacción  TRUE)
+         (calefaccion  TRUE)
          (consumo  155)
          (electrodomesticos  "buen estado")
          (emisiones  53)
@@ -2525,25 +2525,25 @@
          (vistas  "no")
     )
 
-    ([Casa_9_Baño_1] of Baño
+    ([Casa_9_Banyo_1] of Banyo
          (parte_de  [Casa_9])
-         (bañera  TRUE)
+         (banyera  TRUE)
          (bidet  TRUE)
          (ducha  TRUE)
          (lavabo  TRUE)
     )
 
-    ([Casa_9_Baño_2] of Baño
+    ([Casa_9_Banyo_2] of Banyo
          (parte_de  [Casa_9])
-         (bañera  TRUE)
+         (banyera  TRUE)
          (bidet  FALSE)
          (ducha  FALSE)
          (lavabo  TRUE)
     )
 
-    ([Casa_9_Baño_3] of Baño
+    ([Casa_9_Banyo_3] of Banyo
          (parte_de  [Casa_9])
-         (bañera  FALSE)
+         (banyera  FALSE)
          (bidet  TRUE)
          (ducha  TRUE)
          (lavabo  TRUE)
@@ -2552,7 +2552,7 @@
     ([Casa_9_Cocina] of Cocina
          (parte_de  [Casa_9])
          (cocina_equipada  TRUE)
-         (tamaño_cocina  "grande")
+         (tamanyo_cocina  "grande")
          (tipo_co  "en isla")
     )
 
@@ -2757,7 +2757,7 @@
          (tipo_ser  "Hospital")
     )
 
-    ([Loc_Casa_1] of Localización
+    ([Loc_Casa_1] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Casa 1")
          (distrito  "Les Corts")
@@ -2765,7 +2765,7 @@
          (longitud  2.114309997537524)
     )
 
-    ([Loc_Casa_10] of Localización
+    ([Loc_Casa_10] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Casa 10")
          (distrito  "Gracia")
@@ -2773,7 +2773,7 @@
          (longitud  2.147200726373559)
     )
 
-    ([Loc_Casa_11] of Localización
+    ([Loc_Casa_11] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Casa 11")
          (distrito  "Horta")
@@ -2781,7 +2781,7 @@
          (longitud  2.1697985398669193)
     )
 
-    ([Loc_Casa_12] of Localización
+    ([Loc_Casa_12] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Casa 12")
          (distrito  "Sant Andreu")
@@ -2789,7 +2789,7 @@
          (longitud  2.1879621840460417)
     )
 
-    ([Loc_Casa_13] of Localización
+    ([Loc_Casa_13] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Casa 13")
          (distrito  "Les Corts")
@@ -2797,7 +2797,7 @@
          (longitud  2.1158585398656116)
     )
 
-    ([Loc_Casa_14] of Localización
+    ([Loc_Casa_14] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Casa 14")
          (distrito  "Les Corts")
@@ -2805,7 +2805,7 @@
          (longitud  2.125409997537242)
     )
 
-    ([Loc_Casa_15] of Localización
+    ([Loc_Casa_15] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Casa 15")
          (distrito  "Gracia")
@@ -2813,7 +2813,7 @@
          (longitud  2.1585707263734224)
     )
 
-    ([Loc_Casa_16] of Localización
+    ([Loc_Casa_16] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Casa 16")
          (distrito  "Gracia")
@@ -2821,7 +2821,7 @@
          (longitud  2.1666992687023496)
     )
 
-    ([Loc_Casa_17] of Localización
+    ([Loc_Casa_17] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Casa 17")
          (distrito  "Sant Andreu")
@@ -2829,7 +2829,7 @@
          (longitud  2.1841999975383652)
     )
 
-    ([Loc_Casa_18] of Localización
+    ([Loc_Casa_18] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Casa 18")
          (distrito  "Sant Andreu")
@@ -2837,7 +2837,7 @@
          (longitud  2.1948978110315287)
     )
 
-    ([Loc_Casa_19] of Localización
+    ([Loc_Casa_19] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Casa 19")
          (distrito  "Sant Andreu")
@@ -2845,7 +2845,7 @@
          (longitud  2.1786092687024348)
     )
 
-    ([Loc_Casa_2] of Localización
+    ([Loc_Casa_2] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Casa 2")
          (distrito  "Les Corts")
@@ -2853,7 +2853,7 @@
          (longitud  2.1236099975378693)
     )
 
-    ([Loc_Casa_20] of Localización
+    ([Loc_Casa_20] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Casa 20")
          (distrito  "Sant Andreu")
@@ -2861,7 +2861,7 @@
          (longitud  2.2048799975386446)
     )
 
-    ([Loc_Casa_21] of Localización
+    ([Loc_Casa_21] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Casa 21")
          (distrito  "Sants")
@@ -2869,7 +2869,7 @@
          (longitud  2.136569268701414)
     )
 
-    ([Loc_Casa_22] of Localización
+    ([Loc_Casa_22] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Casa 22")
          (distrito  "Eixample")
@@ -2877,7 +2877,7 @@
          (longitud  2.1488707263733544)
     )
 
-    ([Loc_Casa_23] of Localización
+    ([Loc_Casa_23] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Casa 23")
          (distrito  "Sant Marti")
@@ -2885,7 +2885,7 @@
          (longitud  2.196719268702725)
     )
 
-    ([Loc_Casa_24] of Localización
+    ([Loc_Casa_24] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Casa 24")
          (distrito  "Sants")
@@ -2893,7 +2893,7 @@
          (longitud  2.15092926870148)
     )
 
-    ([Loc_Casa_25] of Localización
+    ([Loc_Casa_25] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Casa 25")
          (distrito  "Eixample")
@@ -2901,7 +2901,7 @@
          (longitud  2.1625192687016876)
     )
 
-    ([Loc_Casa_26] of Localización
+    ([Loc_Casa_26] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Casa 26")
          (distrito  "Eixample")
@@ -2909,7 +2909,7 @@
          (longitud  2.1837770821949314)
     )
 
-    ([Loc_Casa_27] of Localización
+    ([Loc_Casa_27] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Casa 27")
          (distrito  "Sant Marti")
@@ -2917,7 +2917,7 @@
          (longitud  2.192299268702445)
     )
 
-    ([Loc_Casa_28] of Localización
+    ([Loc_Casa_28] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Casa 28")
          (distrito  "Sant Marti")
@@ -2925,7 +2925,7 @@
          (longitud  2.2044199975383156)
     )
 
-    ([Loc_Casa_29] of Localización
+    ([Loc_Casa_29] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Casa 29")
          (distrito  "Sant Marti")
@@ -2933,7 +2933,7 @@
          (longitud  2.206379268702357)
     )
 
-    ([Loc_Casa_3] of Localización
+    ([Loc_Casa_3] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Casa 3")
          (distrito  "Nou Barris")
@@ -2941,7 +2941,7 @@
          (longitud  2.1685907263748234)
     )
 
-    ([Loc_Casa_30] of Localización
+    ([Loc_Casa_30] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Casa 30")
          (distrito  "Ciutat Vella")
@@ -2949,7 +2949,7 @@
          (longitud  2.199237811030474)
     )
 
-    ([Loc_Casa_31] of Localización
+    ([Loc_Casa_31] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Casa 31")
          (distrito  "Ciutat Vella")
@@ -2957,7 +2957,7 @@
          (longitud  2.1770663533587076)
     )
 
-    ([Loc_Casa_32] of Localización
+    ([Loc_Casa_32] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Casa 32")
          (distrito  "Ciutat Vella")
@@ -2965,7 +2965,7 @@
          (longitud  2.1680092687013723)
     )
 
-    ([Loc_Casa_33] of Localización
+    ([Loc_Casa_33] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Casa 33")
          (distrito  "Sants")
@@ -2973,7 +2973,7 @@
          (longitud  2.137119268701059)
     )
 
-    ([Loc_Casa_34] of Localización
+    ([Loc_Casa_34] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Casa 34")
          (distrito  "Sants")
@@ -2981,7 +2981,7 @@
          (longitud  2.1556414552083396)
     )
 
-    ([Loc_Casa_35] of Localización
+    ([Loc_Casa_35] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Casa 35")
          (distrito  "Ciutat Vella")
@@ -2989,7 +2989,7 @@
          (longitud  2.187429997537463)
     )
 
-    ([Loc_Casa_4] of Localización
+    ([Loc_Casa_4] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Casa 4")
          (distrito  "Les Corts")
@@ -2997,7 +2997,7 @@
          (longitud  2.1089692687015207)
     )
 
-    ([Loc_Casa_5] of Localización
+    ([Loc_Casa_5] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Casa 5")
          (distrito  "Sarria")
@@ -3005,7 +3005,7 @@
          (longitud  2.1377614552094424)
     )
 
-    ([Loc_Casa_6] of Localización
+    ([Loc_Casa_6] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Casa 6")
          (distrito  "Gracia")
@@ -3013,7 +3013,7 @@
          (longitud  2.1490270821954316)
     )
 
-    ([Loc_Casa_7] of Localización
+    ([Loc_Casa_7] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Casa 7")
          (distrito  "Horta")
@@ -3021,7 +3021,7 @@
          (longitud  2.1563599975385874)
     )
 
-    ([Loc_Casa_8] of Localización
+    ([Loc_Casa_8] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Casa 8")
          (distrito  "Horta")
@@ -3029,7 +3029,7 @@
          (longitud  2.165979268702986)
     )
 
-    ([Loc_Casa_9] of Localización
+    ([Loc_Casa_9] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Casa 9")
          (distrito  "Sarria")
@@ -3037,7 +3037,7 @@
          (longitud  2.1316392687018926)
     )
 
-    ([Loc_Centro] of Localización
+    ([Loc_Centro] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Barcelona")
          (distrito  "Ciutat Vella")
@@ -3045,7 +3045,7 @@
          (longitud  2.1685707263729355)
     )
 
-    ([Loc_Club_Esp_1] of Localización
+    ([Loc_Club_Esp_1] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Club Esp 1")
          (distrito  "Nou Barris")
@@ -3053,7 +3053,7 @@
          (longitud  2.163989268703306)
     )
 
-    ([Loc_Club_Esp_10] of Localización
+    ([Loc_Club_Esp_10] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Club Esp 10")
          (distrito  "Sant Marti")
@@ -3061,7 +3061,7 @@
          (longitud  2.2019407263741853)
     )
 
-    ([Loc_Club_Esp_11] of Localización
+    ([Loc_Club_Esp_11] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Club Esp 11")
          (distrito  "Sant Marti")
@@ -3069,7 +3069,7 @@
          (longitud  2.202110726373751)
     )
 
-    ([Loc_Club_Esp_12] of Localización
+    ([Loc_Club_Esp_12] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Club Esp 12")
          (distrito  "Sarria")
@@ -3077,7 +3077,7 @@
          (longitud  2.146799268701771)
     )
 
-    ([Loc_Club_Esp_13] of Localización
+    ([Loc_Club_Esp_13] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Club Esp 13")
          (distrito  "Sants")
@@ -3085,7 +3085,7 @@
          (longitud  2.1651907263725536)
     )
 
-    ([Loc_Club_Esp_2] of Localización
+    ([Loc_Club_Esp_2] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Club Esp 2")
          (distrito  "Sarria")
@@ -3093,7 +3093,7 @@
          (longitud  2.1323992687022)
     )
 
-    ([Loc_Club_Esp_3] of Localización
+    ([Loc_Club_Esp_3] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Club Esp 3")
          (distrito  "Gracia")
@@ -3101,7 +3101,7 @@
          (longitud  2.15230926870251)
     )
 
-    ([Loc_Club_Esp_4] of Localización
+    ([Loc_Club_Esp_4] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Club Esp 4")
          (distrito  "Sant Andreu")
@@ -3109,7 +3109,7 @@
          (longitud  2.185959268703051)
     )
 
-    ([Loc_Club_Esp_5] of Localización
+    ([Loc_Club_Esp_5] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Club Esp 5")
          (distrito  "Horta")
@@ -3117,7 +3117,7 @@
          (longitud  2.176031455209987)
     )
 
-    ([Loc_Club_Esp_6] of Localización
+    ([Loc_Club_Esp_6] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Club Esp 6")
          (distrito  "Les Corts")
@@ -3125,7 +3125,7 @@
          (longitud  2.1193599975374133)
     )
 
-    ([Loc_Club_Esp_7] of Localización
+    ([Loc_Club_Esp_7] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Club Esp 7")
          (distrito  "Gracia")
@@ -3133,7 +3133,7 @@
          (longitud  2.1590199975378788)
     )
 
-    ([Loc_Club_Esp_8] of Localización
+    ([Loc_Club_Esp_8] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Club Esp 8")
          (distrito  "Sants")
@@ -3141,7 +3141,7 @@
          (longitud  2.138770726372669)
     )
 
-    ([Loc_Club_Esp_9] of Localización
+    ([Loc_Club_Esp_9] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Club Esp 9")
          (distrito  "Sant Marti")
@@ -3149,7 +3149,7 @@
          (longitud  2.1911092687020552)
     )
 
-    ([Loc_Cole_1] of Localización
+    ([Loc_Cole_1] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Cole 1")
          (distrito  "Les Corts")
@@ -3157,7 +3157,7 @@
          (longitud  2.1078692687016374)
     )
 
-    ([Loc_Cole_10] of Localización
+    ([Loc_Cole_10] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Cole 10")
          (distrito  "Sants")
@@ -3165,7 +3165,7 @@
          (longitud  2.1536241668510945)
     )
 
-    ([Loc_Cole_2] of Localización
+    ([Loc_Cole_2] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Cole 2")
          (distrito  "Sant Andreu")
@@ -3173,7 +3173,7 @@
          (longitud  2.1777912515104)
     )
 
-    ([Loc_Cole_3] of Localización
+    ([Loc_Cole_3] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Cole 3")
          (distrito  "Horta")
@@ -3181,7 +3181,7 @@
          (longitud  2.170423641717255)
     )
 
-    ([Loc_Cole_4] of Localización
+    ([Loc_Cole_4] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Cole 4")
          (distrito  "Sarria")
@@ -3189,7 +3189,7 @@
          (longitud  2.1403943705522677)
     )
 
-    ([Loc_Cole_5] of Localización
+    ([Loc_Cole_5] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Cole 5")
          (distrito  "Sant Marti")
@@ -3197,7 +3197,7 @@
          (longitud  2.197160726374415)
     )
 
-    ([Loc_Cole_6] of Localización
+    ([Loc_Cole_6] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Cole 6")
          (distrito  "Sant Andreu")
@@ -3205,7 +3205,7 @@
          (longitud  2.191107811031268)
     )
 
-    ([Loc_Cole_7] of Localización
+    ([Loc_Cole_7] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Cole 7")
          (distrito  "Horta")
@@ -3213,7 +3213,7 @@
          (longitud  2.180829268702514)
     )
 
-    ([Loc_Cole_8] of Localización
+    ([Loc_Cole_8] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Cole 8")
          (distrito  "Eixample")
@@ -3221,7 +3221,7 @@
          (longitud  2.177208539866408)
     )
 
-    ([Loc_Cole_9] of Localización
+    ([Loc_Cole_9] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Cole 9")
          (distrito  "Sants")
@@ -3229,7 +3229,7 @@
          (longitud  2.1274607263726284)
     )
 
-    ([Loc_Gym_1] of Localización
+    ([Loc_Gym_1] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Gym 1")
          (distrito  "Sarria")
@@ -3237,7 +3237,7 @@
          (longitud  2.142126353359575)
     )
 
-    ([Loc_Gym_2] of Localización
+    ([Loc_Gym_2] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Gym 2")
          (distrito  "Nou Barris")
@@ -3245,7 +3245,7 @@
          (longitud  2.1785363533601365)
     )
 
-    ([Loc_Gym_3] of Localización
+    ([Loc_Gym_3] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Gym 3")
          (distrito  "Gracia")
@@ -3253,7 +3253,7 @@
          (longitud  2.1661685398666966)
     )
 
-    ([Loc_Gym_4] of Localización
+    ([Loc_Gym_4] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Gym 4")
          (distrito  "Les Corts")
@@ -3261,7 +3261,7 @@
          (longitud  2.1271192687015725)
     )
 
-    ([Loc_Gym_5] of Localización
+    ([Loc_Gym_5] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Gym 5")
          (distrito  "Sant Marti")
@@ -3269,7 +3269,7 @@
          (longitud  2.200567811030973)
     )
 
-    ([Loc_Gym_6] of Localización
+    ([Loc_Gym_6] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Gym 6")
          (distrito  "Eixample")
@@ -3277,7 +3277,7 @@
          (longitud  2.1832170821947163)
     )
 
-    ([Loc_Gym_7] of Localización
+    ([Loc_Gym_7] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Gym 1")
          (distrito  "Gracia")
@@ -3285,7 +3285,7 @@
          (longitud  2.1515321840449055)
     )
 
-    ([Loc_Hospital_1] of Localización
+    ([Loc_Hospital_1] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Hospital 1")
          (distrito  "Les Corts")
@@ -3293,7 +3293,7 @@
          (longitud  2.117662912880511)
     )
 
-    ([Loc_Hospital_2] of Localización
+    ([Loc_Hospital_2] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Hospital 2")
          (distrito  "Nou Barris")
@@ -3301,7 +3301,7 @@
          (longitud  2.172625099389163)
     )
 
-    ([Loc_Hospital_3] of Localización
+    ([Loc_Hospital_3] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Hospital 3")
          (distrito  "Gracia")
@@ -3309,7 +3309,7 @@
          (longitud  2.170649268702294)
     )
 
-    ([Loc_Hospital_4] of Localización
+    ([Loc_Hospital_4] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Hospital 4")
          (distrito  "Sants")
@@ -3317,7 +3317,7 @@
          (longitud  2.1479292687010867)
     )
 
-    ([Loc_Oci_1] of Localización
+    ([Loc_Oci_1] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Oci 1")
          (distrito  "Sarria")
@@ -3325,7 +3325,7 @@
          (longitud  2.150181455209397)
     )
 
-    ([Loc_Oci_2] of Localización
+    ([Loc_Oci_2] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Oci 2")
          (distrito  "Sant Andreu")
@@ -3333,7 +3333,7 @@
          (longitud  2.1843792687028425)
     )
 
-    ([Loc_Oci_3] of Localización
+    ([Loc_Oci_3] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Oci 3")
          (distrito  "Sants")
@@ -3341,7 +3341,7 @@
          (longitud  2.139579268701572)
     )
 
-    ([Loc_Oci_4] of Localización
+    ([Loc_Oci_4] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Oci 4")
          (distrito  "Ciutat Vella")
@@ -3349,7 +3349,7 @@
          (longitud  2.1721099975372207)
     )
 
-    ([Loc_Parc_1] of Localización
+    ([Loc_Parc_1] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Parc 1")
          (distrito  "Horta")
@@ -3357,7 +3357,7 @@
          (longitud  2.162457811031697)
     )
 
-    ([Loc_Parc_2] of Localización
+    ([Loc_Parc_2] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Parc 2")
          (distrito  "Les Corts")
@@ -3365,7 +3365,7 @@
          (longitud  2.12244999753749)
     )
 
-    ([Loc_Parc_3] of Localización
+    ([Loc_Parc_3] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Parc 3")
          (distrito  "Gracia")
@@ -3373,7 +3373,7 @@
          (longitud  2.160018539866634)
     )
 
-    ([Loc_Parc_4] of Localización
+    ([Loc_Parc_4] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Parc 4")
          (distrito  "Sant Marti")
@@ -3381,7 +3381,7 @@
          (longitud  2.2018285398671193)
     )
 
-    ([Loc_Parc_5] of Localización
+    ([Loc_Parc_5] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Parc 5")
          (distrito  "Eixample")
@@ -3389,7 +3389,7 @@
          (longitud  2.1502550993873246)
     )
 
-    ([Loc_Parc_6] of Localización
+    ([Loc_Parc_6] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Parc 6")
          (distrito  "Sants")
@@ -3397,7 +3397,7 @@
          (longitud  2.163411455208472)
     )
 
-    ([Loc_Parc_7] of Localización
+    ([Loc_Parc_7] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Parc 7")
          (distrito  "Sant Marti")
@@ -3405,7 +3405,7 @@
          (longitud  2.191789268701732)
     )
 
-    ([Loc_Aparcamiento_1] of Localización
+    ([Loc_Aparcamiento_1] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Aparcamiento 1")
          (distrito  "Gracia")
@@ -3413,7 +3413,7 @@
          (longitud  2.1475685398669695)
     )
 
-    ([Loc_Aparcamiento_2] of Localización
+    ([Loc_Aparcamiento_2] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Aparcamiento 2")
          (distrito  "Sant Andreu")
@@ -3421,7 +3421,7 @@
          (longitud  2.1809007263743205)
     )
 
-    ([Loc_Aparcamiento_3] of Localización
+    ([Loc_Aparcamiento_3] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Aparcamiento 3")
          (distrito  "Sarria")
@@ -3429,7 +3429,7 @@
          (longitud  2.1336692687017815)
     )
 
-    ([Loc_Aparcamiento_4] of Localización
+    ([Loc_Aparcamiento_4] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Aparcamiento 4")
          (distrito  "Eixample")
@@ -3437,7 +3437,7 @@
          (longitud  2.1628163533590166)
     )
 
-    ([Loc_Super_1] of Localización
+    ([Loc_Super_1] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Super 1")
          (distrito  "Sarria")
@@ -3445,7 +3445,7 @@
          (longitud  2.12899218404488)
     )
 
-    ([Loc_Super_2] of Localización
+    ([Loc_Super_2] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Super 2")
          (distrito  "Horta")
@@ -3453,7 +3453,7 @@
          (longitud  2.1612192687028706)
     )
 
-    ([Loc_Super_3] of Localización
+    ([Loc_Super_3] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Super 3")
          (distrito  "Eixample")
@@ -3461,7 +3461,7 @@
          (longitud  2.168779997537913)
     )
 
-    ([Loc_Super_4] of Localización
+    ([Loc_Super_4] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Super 4")
          (distrito  "Eixample")
@@ -3469,7 +3469,7 @@
          (longitud  2.1898685398666524)
     )
 
-    ([Loc_Super_5] of Localización
+    ([Loc_Super_5] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Super 5")
          (distrito  "Sants")
@@ -3477,7 +3477,7 @@
          (longitud  2.151789997537116)
     )
 
-    ([Loc_Super_6] of Localización
+    ([Loc_Super_6] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Super 6")
          (distrito  "Sant Marti")
@@ -3485,7 +3485,7 @@
          (longitud  2.2113499975382127)
     )
 
-    ([Loc_Tp_1] of Localización
+    ([Loc_Tp_1] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Tp 1")
          (distrito  "Nou Barris")
@@ -3493,7 +3493,7 @@
          (longitud  2.1724121840461326)
     )
 
-    ([Loc_Tp_10] of Localización
+    ([Loc_Tp_10] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Tp 10")
          (distrito  "Sant Andreu")
@@ -3501,7 +3501,7 @@
          (longitud  2.1890914552104324)
     )
 
-    ([Loc_Tp_11] of Localización
+    ([Loc_Tp_11] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Tp 11")
          (distrito  "Eixample")
@@ -3509,7 +3509,7 @@
          (longitud  2.158387811030378)
     )
 
-    ([Loc_Tp_12] of Localización
+    ([Loc_Tp_12] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Tp 12")
          (distrito  "Sant Marti")
@@ -3517,7 +3517,7 @@
          (longitud  2.195319997538196)
     )
 
-    ([Loc_Tp_13] of Localización
+    ([Loc_Tp_13] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Tp 13")
          (distrito  "Sant Marti")
@@ -3525,7 +3525,7 @@
          (longitud  2.2110192687023567)
     )
 
-    ([Loc_Tp_14] of Localización
+    ([Loc_Tp_14] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Tp 14")
          (distrito  "Sant Marti")
@@ -3533,7 +3533,7 @@
          (longitud  2.19374781103059)
     )
 
-    ([Loc_Tp_15] of Localización
+    ([Loc_Tp_15] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Tp 15")
          (distrito  "Ciutat Vella")
@@ -3541,7 +3541,7 @@
          (longitud  2.1793577447803463)
     )
 
-    ([Loc_Tp_16] of Localización
+    ([Loc_Tp_16] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Tp 16")
          (distrito  "Ciutat Vella")
@@ -3549,7 +3549,7 @@
          (longitud  2.166909997537193)
     )
 
-    ([Loc_Tp_17] of Localización
+    ([Loc_Tp_17] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Tp 1")
          (distrito  "Eixample")
@@ -3557,7 +3557,7 @@
          (longitud  2.145689997537058)
     )
 
-    ([Loc_Tp_18] of Localización
+    ([Loc_Tp_18] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Tp 18")
          (distrito  "Sants")
@@ -3565,7 +3565,7 @@
          (longitud  2.15189926870102)
     )
 
-    ([Loc_Tp_2] of Localización
+    ([Loc_Tp_2] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Tp 2")
          (distrito  "Nou Barris")
@@ -3573,7 +3573,7 @@
          (longitud  2.16857853986716)
     )
 
-    ([Loc_Tp_3] of Localización
+    ([Loc_Tp_3] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Tp 3")
          (distrito  "Horta")
@@ -3581,7 +3581,7 @@
          (longitud  2.154609997538405)
     )
 
-    ([Loc_Tp_4] of Localización
+    ([Loc_Tp_4] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Tp 4")
          (distrito  "Les Corts")
@@ -3589,7 +3589,7 @@
          (longitud  2.1098363533585167)
     )
 
-    ([Loc_Tp_5] of Localización
+    ([Loc_Tp_5] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Tp 5")
          (distrito  "Les Corts")
@@ -3597,7 +3597,7 @@
          (longitud  2.134870726373131)
     )
 
-    ([Loc_Tp_6] of Localización
+    ([Loc_Tp_6] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Tp 6")
          (distrito  "Sarria")
@@ -3605,7 +3605,7 @@
          (longitud  2.143652184044827)
     )
 
-    ([Loc_Tp_7] of Localización
+    ([Loc_Tp_7] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Tp 7")
          (distrito  "Gracia")
@@ -3613,7 +3613,7 @@
          (longitud  2.164952912880672)
     )
 
-    ([Loc_Tp_8] of Localización
+    ([Loc_Tp_8] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Tp 8")
          (distrito  "Horta")
@@ -3621,7 +3621,7 @@
          (longitud  2.176199997538264)
     )
 
-    ([Loc_Tp_9] of Localización
+    ([Loc_Tp_9] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "Tp 9")
          (distrito  "Sant Andreu")
@@ -3629,7 +3629,7 @@
          (longitud  2.1879385398672566)
     )
 
-    ([Loc_Uni_1] of Localización
+    ([Loc_Uni_1] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "IQS")
          (distrito  "Sarria")
@@ -3637,7 +3637,7 @@
          (longitud  2.1269982331122432)
     )
 
-    ([Loc_Uni_10] of Localización
+    ([Loc_Uni_10] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "UPF1")
          (distrito  "Sant Marti")
@@ -3645,7 +3645,7 @@
          (longitud  2.192910994523812)
     )
 
-    ([Loc_Uni_11] of Localización
+    ([Loc_Uni_11] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "UPF2")
          (distrito  "Ciutat Vella")
@@ -3653,7 +3653,7 @@
          (longitud  2.176155082653507)
     )
 
-    ([Loc_Uni_12] of Localización
+    ([Loc_Uni_12] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "UPF3")
          (distrito  "Ciutat Vella")
@@ -3661,7 +3661,7 @@
          (longitud  2.185560662324326)
     )
 
-    ([Loc_Uni_13] of Localización
+    ([Loc_Uni_13] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "UPC2")
          (distrito  "Sant Marti")
@@ -3669,7 +3669,7 @@
          (longitud  2.2113981475123787)
     )
 
-    ([Loc_Uni_14] of Localización
+    ([Loc_Uni_14] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "UPC3")
          (distrito  "Ciutat Vella")
@@ -3677,7 +3677,7 @@
          (longitud  2.184609751284033)
     )
 
-    ([Loc_Uni_2] of Localización
+    ([Loc_Uni_2] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "UIC")
          (distrito  "Sarria")
@@ -3685,7 +3685,7 @@
          (longitud  2.134414650726346)
     )
 
-    ([Loc_Uni_3] of Localización
+    ([Loc_Uni_3] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "URL")
          (distrito  "Gracia")
@@ -3693,7 +3693,7 @@
          (longitud  2.149101983230563)
     )
 
-    ([Loc_Uni_4] of Localización
+    ([Loc_Uni_4] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "UPC1")
          (distrito  "Les Corts")
@@ -3701,7 +3701,7 @@
          (longitud  2.112817422419202)
     )
 
-    ([Loc_Uni_5] of Localización
+    ([Loc_Uni_5] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "UB1")
          (distrito  "Les Corts")
@@ -3709,7 +3709,7 @@
          (longitud  2.1150909259184245)
     )
 
-    ([Loc_Uni_6] of Localización
+    ([Loc_Uni_6] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "UB2")
          (distrito  "Sants")
@@ -3717,7 +3717,7 @@
          (longitud  2.152992610109936)
     )
 
-    ([Loc_Uni_7] of Localización
+    ([Loc_Uni_7] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "UB3")
          (distrito  "Eixample")
@@ -3725,7 +3725,7 @@
          (longitud  2.133231578776022)
     )
 
-    ([Loc_Uni_8] of Localización
+    ([Loc_Uni_8] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "UB4")
          (distrito  "Eixample")
@@ -3733,7 +3733,7 @@
          (longitud  2.1301114160799863)
     )
 
-    ([Loc_Uni_9] of Localización
+    ([Loc_Uni_9] of Localizacion
          (ciudad  "Barcelona")
          (direccion  "UB5")
          (distrito  "Sants")
@@ -4116,7 +4116,7 @@
     (slot pref_amueblada
         (type SYMBOL)
         (create-accessor read-write))
-    (slot pref_bañera
+    (slot pref_banyera
         (type SYMBOL)
         (create-accessor read-write))
     (slot pref_piscina
@@ -4180,7 +4180,7 @@
 	(slot-insert$ ?self justificaciones-recomendable ?self:factores-positivos ?just)
 )
 
-(defmessage-handler Localización imprimir ()
+(defmessage-handler Localizacion imprimir ()
     (format t "    --> Ciudad: %s%n" ?self:ciudad)
     (format t "    --> Distrito: %s%n" ?self:distrito)
     (format t "    --> Direccion: %s%n" ?self:direccion)
@@ -4197,7 +4197,7 @@
     (format t "  --> Luz: %s%n" ?self:luz)
     (format t "  --> Aire: %s%n" ?self:aire)
     (format t "  --> Gas: %s%n" ?self:gas)
-    (format t "  --> Calefacción: %s%n" ?self:calefacción)
+    (format t "  --> Calefaccion: %s%n" ?self:calefaccion)
     (format t "  --> Iluminacion: %s%n" ?self:iluminacion)
     (format t "  --> Consumo: %d%n" ?self:consumo)
     (format t "  --> Emisiones: %d%n" ?self:emisiones)
@@ -4369,7 +4369,7 @@
 (defrule preguntas::pregunta-edad "pregunta al usuario su edad"
     ?p <- (object (is-a Persona) (edad 0))
     =>
-    (bind ?new-edad (pregunta-rango "Cuantos años tienes?" 18 120))
+    (bind ?new-edad (pregunta-rango "Cuantos anyos tienes?" 18 120))
     (send ?p put-edad ?new-edad)
 )
 
@@ -4556,11 +4556,11 @@
     (send ?p put-pref_amueblada ?new-am)
 )
 
-(defrule preguntas::pregunta-pref_bañera "si la prefiere amueblada, pregunta al usuario si prefiere tener bañera"
-    ?p <- (object (is-a Persona) (pref_amueblada TRUE) (pref_bañera nil))
+(defrule preguntas::pregunta-pref_banyera "si la prefiere amueblada, pregunta al usuario si prefiere tener banyera"
+    ?p <- (object (is-a Persona) (pref_amueblada TRUE) (pref_banyera nil))
     =>
-    (bind ?new-ba (pregunta-binaria "--> Buscas una casa con bañera?"))
-    (send ?p put-pref_bañera ?new-ba)
+    (bind ?new-ba (pregunta-binaria "--> Buscas una casa con banyera?"))
+    (send ?p put-pref_banyera ?new-ba)
 )
 
 (defrule preguntas::pregunta-cocinas "pregunta al usuario si cocina"
@@ -4601,7 +4601,7 @@
 (defrule preguntas::pregunta-pref_tipo_vistas "si quiere la casa con vistas, pregunta que vistas prefiere"
     ?p <- (object (is-a Persona) (pref_vistas TRUE) (pref_tipo_vistas ""))
     =>
-    (bind ?new-vi (pregunta-opciones "--> Que vistas prefieres?" "Montaña" "Playa" "Ciudad" "Indiferente"))
+    (bind ?new-vi (pregunta-opciones "--> Que vistas prefieres?" "Montanya" "Playa" "Ciudad" "Indiferente"))
     (send ?p put-pref_tipo_vistas ?new-vi)
 )
 
@@ -4743,18 +4743,18 @@
     (assert (distancia ?dd media))
 )
 
-(defrule abstraccion::garaje ""
-    ?p <- (object (is-a Persona) (num_coches ?nc) (aparcar ?a))
-    =>
-    (if (or (>= ?nc 3) (eq ?a "Garaje")) 
-    then 
-        (assert (garaje))
-    else 
-        (if (eq ?a "Aparcamiento")
-        then (assert (distancia "Aparcamiento" cerca))
-        )
-    )
-)
+;(defrule abstraccion::garaje ""
+;    ?p <- (object (is-a Persona) (num_coches ?nc) (aparcar ?a))
+;    =>
+;    (if (or (>= ?nc 3) (eq ?a "Garaje")) 
+;    then 
+;        (assert (garaje))
+;    else 
+;        (if (eq ?a "Aparcamiento")
+;        then (assert (distancia "Aparcamiento" cerca))
+;        )
+;    )
+;)
 
 (defrule abstraccion::transporte_publico ""
     ?p <- (object (is-a Persona) (transporte_publico TRUE))
@@ -4807,10 +4807,10 @@
     (assert (amueblada))
 )
 
-(defrule abstraccion::bañera ""
-    ?p <- (object (is-a Persona) (pref_bañera TRUE))
+(defrule abstraccion::banyera ""
+    ?p <- (object (is-a Persona) (pref_banyera TRUE))
     =>
-    (assert (bañera))
+    (assert (banyera))
 )
 
 (defrule abstraccion::piscina ""
@@ -4948,19 +4948,19 @@
 ;    (dormitorio_doble) 
 ;    ?dorm <- (object (is-a Dormitorio) (tipo_do "doble"))
 ;    =>
-;    (assert (tiene_dormitorio_doble (instance-name (send ?dorm get-parte_de))))
+;    (assert (tiene_dormitorio_doble (send (send (send ?dorm get-parte_de) get-localizado_en) get-direccion)))
 ;)
-
 ;(defrule asociacion::discard_dormitorio_doble "Se descartan las recomendaciones sin dormitorio doble"
 ;    (declare (salience 9))
 ;    (recomendaciones_creadas) 
 ;    (dormitorio_doble)
-;    ?rec <- (object (is-a Recomendacion) (oferta ?ofr))
-;    ?casa <- (object (is-a Vivienda))
-;    (test (eq (instance-name ?casa) (instance-name (send ?ofr get-oferta_de))))
-;    (not (tiene_dormitorio_doble (instance-name ?casa)))
+;    ?loc <- (object (is-a Localizacion)) ;(direccion ?dir))
+;    (object (localizado_en ?loc))
+;    ;?ofr <- (object (is-a Oferta_Alquiler) (oferta_de ?casa))
+;    ;?rec <- (object (is-a Recomendacion) (oferta ?ofr))
+;    ;(not (tiene_dormitorio_doble ?dir))
 ;    =>
-;    (format t "%n EOEOEOEO: %s %n" (instance-name ?casa))
+;    (format t "%n EOEOEOEO: %f %n" (send ?loc get-latitud))
 ;    ;(send ?rec delete)
 ;)
 
@@ -4970,6 +4970,15 @@
     (mascota) 
     ?rec <- (object (is-a Recomendacion) (oferta ?ofr))
     (test (not (send (send ?ofr get-oferta_de) get-permiso_mascotas)))
+    =>
+    (send ?rec delete)
+)
+
+(defrule asociacion::garaje "Se descartan las recomendaciones sin garaje"
+    (recomendaciones_creadas) 
+    (garaje) 
+    ?rec <- (object (is-a Recomendacion) (oferta ?ofr))
+    (test (not (send (send ?ofr get-oferta_de) get-garaje)))
     =>
     (send ?rec delete)
 )
@@ -5132,7 +5141,7 @@
 	(if (eq (send (send ?of get-oferta_de) get-soleado) "no")
     then (send ?rec criterio-violado "-La casa no es soleada")
     )
-    (if (eq (send (send ?of get-oferta_de) get-soleado) "mañana y tarde")
+    (if (eq (send (send ?of get-oferta_de) get-soleado) "manyana y tarde")
     then (send ?rec factor-positivo "-La casa es soleada todo el dia")
     )
     (assert (comprobado-soleada ?rec))
