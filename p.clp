@@ -4708,6 +4708,7 @@
 (defrule abstraccion::casa_pareja ""
     ?p <- (object (is-a Persona) (vives_pareja TRUE))
     =>
+    (assert (dormitorio_doble))
     (assert (personas_caben_casa 2))
 )
 
@@ -4940,6 +4941,29 @@
     =>
     (send ?rec delete)
 )
+
+;(defrule asociacion::dormitorio_doble "Se descartan las recomendaciones sin dormitorio doble"
+;    (declare (salience 10))
+;    (recomendaciones_creadas) 
+;    (dormitorio_doble) 
+;    ?dorm <- (object (is-a Dormitorio) (tipo_do "doble"))
+;    =>
+;    (assert (tiene_dormitorio_doble (instance-name (send ?dorm get-parte_de))))
+;)
+
+;(defrule asociacion::discard_dormitorio_doble "Se descartan las recomendaciones sin dormitorio doble"
+;    (declare (salience 9))
+;    (recomendaciones_creadas) 
+;    (dormitorio_doble)
+;    ?rec <- (object (is-a Recomendacion) (oferta ?ofr))
+;    ?casa <- (object (is-a Vivienda))
+;    (test (eq (instance-name ?casa) (instance-name (send ?ofr get-oferta_de))))
+;    (not (tiene_dormitorio_doble (instance-name ?casa)))
+;    =>
+;    (format t "%n EOEOEOEO: %s %n" (instance-name ?casa))
+;    ;(send ?rec delete)
+;)
+
 
 (defrule asociacion::permiso_mascotas "Se descartan las recomendaciones sin permiso de mascotas"
     (recomendaciones_creadas) 
