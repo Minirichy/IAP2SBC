@@ -4960,6 +4960,7 @@
     ?rec <- (object (is-a Recomendacion) (oferta ?ofr))
     (test (not (send (send ?ofr get-oferta_de) get-acceso_mov_red)))
     =>
+    (assert (deleted_why (send (send ?rec get-oferta) get-oferta_de) "mov_red"))
     (send ?rec delete)
 )
 
@@ -4969,6 +4970,7 @@
     ?rec <- (object (is-a Recomendacion) (oferta ?ofr))
     (test (not (send (send ?ofr get-oferta_de) get-amueblada)))
     =>
+    (assert (deleted_why (send (send ?rec get-oferta) get-oferta_de) "amueblada"))
     (send ?rec delete)
 )
 
@@ -5001,6 +5003,7 @@
     ?rec <- (object (is-a Recomendacion) (oferta ?ofr))
     (test (not (send (send ?ofr get-oferta_de) get-permiso_mascotas)))
     =>
+    (assert (deleted_why (send (send ?rec get-oferta) get-oferta_de) "permiso_masc"))
     (send ?rec delete)
 )
 
@@ -5010,6 +5013,7 @@
     ?rec <- (object (is-a Recomendacion) (oferta ?ofr))
     (test (not (send (send ?ofr get-oferta_de) get-garaje)))
     =>
+    (assert (deleted_why (send (send ?rec get-oferta) get-oferta_de) "garaje"))
     (send ?rec delete)
 )
 
@@ -5021,6 +5025,7 @@
     (test (< (send (send ?ofr get-oferta_de) get-superficie) ?ms))
     =>
     ;(format t "%d %d %s" (send (send ?ofr get-oferta_de) get-superficie) ?ms (< (send (send ?ofr get-oferta_de) get-superficie) ?ms))
+    (assert (deleted_why (send (send ?rec get-oferta) get-oferta_de) "superficie"))
     (send ?rec delete)
 )
 
@@ -5088,6 +5093,7 @@
     (not (cerca_distancia ?rec ?sitio "bien"))
     =>
     (assert (cerca_distancia ?rec ?sitio "mal"))
+    (assert (deleted_why (send (send ?rec get-oferta) get-oferta_de) "distancia"))
     (send ?rec delete)
 )
 
