@@ -4646,8 +4646,7 @@
 ;;;;;;;;;; MODULO ABSTRACCION ;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;TODO este modulo por ahora no hace nada, despues veremos si lo necesitamos para 
-;inferir y abstraer informacion que no obtenemos directamente de las preguntas
+
 
 (defmodule abstraccion
      (export ?ALL)
@@ -4950,7 +4949,6 @@
     (assert (recomendaciones_creadas))
 )
 
-;TODO: lo de instance-name igual se podria hacer mejor...
 (defrule asociacion::movilidad_reducida "Se descartan las recomendaciones no adaptadas a movilidad reducida "
     (recomendaciones_creadas) 
     (movilidad_reducida) 
@@ -5204,7 +5202,6 @@
     (assert (comprobado-soleada ?rec))
 )
 
-;TODO tipo de vistas
 (defrule refinamiento::vistas "si el cliente prefiere buenas vistas y no hay buenas vistas, es un criterio violado, si hay buenas vistas del tipo que prefiere es un factor positivo"
 	?rec <- (object (is-a Recomendacion) (oferta ?of))
 	(vistas ?tv)
@@ -5212,6 +5209,15 @@
 	=>
 	(if (eq (send (send ?of get-oferta_de) get-vistas) "no")
     then (send ?rec criterio-violado "-La casa no tiene buenas vistas")
+    )
+    (if (and (eq ?tv "Montanya") (eq (send (send ?of get-oferta_de) get-vistas) "montanya"))
+    then (send ?rec factor-positivo "-La casa tiene vistas de montanya")
+    )
+    (if (and (eq ?tv "Playa") (eq (send (send ?of get-oferta_de) get-vistas) "playa"))
+    then (send ?rec factor-positivo "-La casa tiene vistas de playa")
+    )
+    (if (and (eq ?tv "Ciudad") (eq (send (send ?of get-oferta_de) get-vistas) "ciudad"))
+    then (send ?rec factor-positivo "-La casa tiene vistas de ciudad")
     )
     (assert (comprobado-vistas ?rec))
 )
@@ -5318,7 +5324,6 @@
      (import asociacion deftemplate ?ALL)
 )
 
-;TODO: Output mas sofisticado?
 (defrule output::imprimir_recomendacion "Imprime una recomendacion"
     ?rec <- (object (is-a Recomendacion) (oferta ?of))
     =>
