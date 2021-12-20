@@ -1594,7 +1594,7 @@
          (soleado  "no")
          (superficie  50)
          (terraza  FALSE)
-         (vistas  "no")
+         (vistas  "ciudad")
     )
 
     ([Casa_27_Banyo_1] of Banyo
@@ -1668,7 +1668,7 @@
          (parte_de  [Casa_28])
          (banyera  TRUE)
          (bidet  FALSE)
-         (ducha  FALSE)
+         (ducha  TRUE)
          (lavabo  TRUE)
     )
 
