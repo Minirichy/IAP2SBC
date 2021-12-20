@@ -24,7 +24,7 @@ S
 N
 Piso
 Indiferente
-400
+750
 S
 S
 N

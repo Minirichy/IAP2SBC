@@ -24,7 +24,7 @@ S
 S
 Piso
 Atico
-3600
+1000
 S
 S
 S
