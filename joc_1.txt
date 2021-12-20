@@ -34,6 +34,6 @@ N
 N
 
 
-(facts asociation)
+(facts asociacion)
 (agenda)
 (exit 0)

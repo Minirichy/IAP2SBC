@@ -36,6 +36,6 @@ S
 Indiferente
 
 
-(facts asociation)
+(facts asociacion)
 (agenda)
 (exit 0)

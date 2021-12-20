@@ -1497,7 +1497,7 @@
          (iluminacion  "luz natural")
          (luz  TRUE)
          (permiso_mascotas  TRUE)
-         (piscina  FALSE)
+         (piscina  TRUE)
          (soleado  "manyana")
          (superficie  300)
          (terraza  TRUE)

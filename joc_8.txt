@@ -29,6 +29,6 @@ S
 Playa
 
 
-(facts asociation)
+(facts asociacion)
 (agenda)
 (exit 0)

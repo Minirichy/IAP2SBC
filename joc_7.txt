@@ -17,7 +17,7 @@ S
 S
 7077
 S
-2
+4
 Escuela
 N
 N
@@ -36,6 +36,6 @@ N
 N
 
 
-(facts asociation)
+(facts asociatcon)
 (agenda)
 (exit 0)
