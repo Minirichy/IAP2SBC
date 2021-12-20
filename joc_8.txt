@@ -1,0 +1,34 @@
+(load p.clp)
+
+(reset)
+(instances)
+(watch rules)
+(run)
+Cristina
+23
+650
+4500
+Estudio
+N
+N
+N
+S
+3
+N
+0
+S
+N
+Unifamiliar
+1000
+S
+S
+N
+S
+S
+S
+Playa
+
+
+(facts asociation)
+(agenda)
+(exit 0)
