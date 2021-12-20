@@ -26,7 +26,7 @@ Piso
 Indiferente
 400
 S
-N
+S
 N
 N
 S
