@@ -10,7 +10,7 @@
 ;;; Ontologia-DEF.clp
 ;;; Translated by owl2clips
 ;;; Translated to CLIPS from ontology Ontologia-DEF.owl
-;;; :Date 18/12/2021 17:23:49
+;;; :Date 20/12/2021 09:35:01
 
 (defclass Vivienda "Clase de Vivienda"
     (is-a USER)
@@ -169,11 +169,14 @@
     (role concrete)
     (pattern-match reactive)
     ;;; Forma parte de:
-    (slot parte_de
+    (multislot parte_de
         (type INSTANCE)
         (create-accessor read-write))
     (slot cocina_equipada
         (type SYMBOL)
+        (create-accessor read-write))
+    (slot fogones
+        (type STRING)
         (create-accessor read-write))
     (slot tamanyo_cocina
         (type STRING)
@@ -189,7 +192,7 @@
     (role concrete)
     (pattern-match reactive)
     ;;; Forma parte de:
-    (slot parte_de
+    (multislot parte_de
         (type INSTANCE)
         (create-accessor read-write))
     ;;; Tipo de dormitorio: {simple, doble}
@@ -241,6 +244,122 @@
         (create-accessor read-write))
 )
 
+(defclass Persona
+    (is-a USER)
+    (role concrete)
+    (pattern-match reactive)
+    ;;; Se solicita una
+    (multislot solicita
+        (type INSTANCE)
+        (create-accessor read-write))
+    (slot aparcar
+        (type STRING)
+        (create-accessor read-write))
+    (slot cocinas
+        (type SYMBOL)
+        (create-accessor read-write))
+    (slot comparte_piso
+        (type SYMBOL)
+        (create-accessor read-write))
+    (slot deporte
+        (type SYMBOL)
+        (create-accessor read-write))
+    (slot distancia_recorrer
+        (type FLOAT)
+        (create-accessor read-write))
+    (slot donde_deporte
+        (type STRING)
+        (create-accessor read-write))
+    (slot edad
+        (type INTEGER)
+        (create-accessor read-write))
+    (slot hijos
+        (type SYMBOL)
+        (create-accessor read-write))
+    (slot hijos_escuela_universidad
+        (type STRING)
+        (create-accessor read-write))
+    (slot ingresos
+        (type FLOAT)
+        (create-accessor read-write))
+    (slot ingresos_pareja
+        (type FLOAT)
+        (create-accessor read-write))
+    (slot mascota
+        (type SYMBOL)
+        (create-accessor read-write))
+    (slot mascota_grande
+        (type SYMBOL)
+        (create-accessor read-write))
+    (slot movilidad_reducida
+        (type SYMBOL)
+        (create-accessor read-write))
+    (slot nombre
+        (type STRING)
+        (create-accessor read-write))
+    (slot num_amigos
+        (type INTEGER)
+        (create-accessor read-write))
+    (slot num_coches
+        (type INTEGER)
+        (create-accessor read-write)
+        (default -1))
+    (slot num_hijos
+        (type INTEGER)
+        (create-accessor read-write))
+    (slot ocupacion
+        (type STRING)
+        (create-accessor read-write))
+    (slot pareja
+        (type SYMBOL)
+        (create-accessor read-write))
+    (slot precio_max
+        (type FLOAT)
+        (create-accessor read-write))
+    (slot precio_min
+        (type FLOAT)
+        (create-accessor read-write))
+    (slot pref_amueblada
+        (type SYMBOL)
+        (create-accessor read-write))
+    (slot pref_banyera
+        (type SYMBOL)
+        (create-accessor read-write))
+    (slot pref_distancia_centro
+        (type FLOAT)
+        (create-accessor read-write))
+    (slot pref_piscina
+        (type SYMBOL)
+        (create-accessor read-write))
+    (slot pref_piso
+        (type STRING)
+        (create-accessor read-write))
+    (slot pref_soleado
+        (type SYMBOL)
+        (create-accessor read-write))
+    (slot pref_tipo
+        (type STRING)
+        (create-accessor read-write))
+    (slot pref_tipo_cocina
+        (type STRING)
+        (create-accessor read-write))
+    (slot pref_tipo_vistas
+        (type STRING)
+        (create-accessor read-write))
+    (slot pref_vistas
+        (type SYMBOL)
+        (create-accessor read-write))
+    (slot puede_subir_escaleras
+        (type SYMBOL)
+        (create-accessor read-write))
+    (slot transporte_publico
+        (type SYMBOL)
+        (create-accessor read-write))
+    (slot vives_pareja
+        (type SYMBOL)
+        (create-accessor read-write))
+)
+
 (defclass Servicio "Clase de Servicio"
     (is-a USER)
     (role concrete)
@@ -249,7 +368,7 @@
     (slot localizado_en
         (type INSTANCE)
         (create-accessor read-write))
-    ;;; Tipo de servicio: {colegios, zonas verdes, metro, ocio nocturno...}
+    ;;; Tipo de servicio: {colegios, zonas verdes, metro, Ocio Nocturno...}
     (slot tipo_ser
         (type STRING)
         (create-accessor read-write))
@@ -282,7 +401,7 @@
          (soleado  "manyana")
          (superficie  200)
          (terraza  TRUE)
-         (vistas  "buenas")
+         (vistas  "montanya")
     )
 
     ([Casa_10] of Plurifamiliar
@@ -309,7 +428,7 @@
          (soleado  "manyana y tarde")
          (superficie  60)
          (terraza  TRUE)
-         (vistas  "buenas")
+         (vistas  "ciudad")
     )
 
     ([Casa_10_Banyo_1] of Banyo
@@ -323,6 +442,7 @@
     ([Casa_10_Cocina] of Cocina
          (parte_de  [Casa_10])
          (cocina_equipada  TRUE)
+         (fogones  "induccion")
          (tamanyo_cocina  "grande")
          (tipo_co  "en isla")
     )
@@ -378,6 +498,7 @@
     ([Casa_11_Cocina] of Cocina
          (parte_de  [Casa_11])
          (cocina_equipada  TRUE)
+         (fogones  "fogones")
          (tamanyo_cocina  "grande")
          (tipo_co  "en 'u'")
     )
@@ -424,7 +545,7 @@
          (soleado  "manyana")
          (superficie  85)
          (terraza  TRUE)
-         (vistas  "buenas")
+         (vistas  "ciudad")
     )
 
     ([Casa_12_Banyo_1] of Banyo
@@ -438,6 +559,7 @@
     ([Casa_12_Cocina] of Cocina
          (parte_de  [Casa_12])
          (cocina_equipada  TRUE)
+         (fogones  "fogones")
          (tamanyo_cocina  "mediana")
          (tipo_co  "en paralelo")
     )
@@ -491,6 +613,7 @@
     ([Casa_13_Cocina] of Cocina
          (parte_de  [Casa_13])
          (cocina_equipada  TRUE)
+         (fogones  "fogones")
          (tamanyo_cocina  "pequenya")
          (tipo_co  "en 'u''")
     )
@@ -540,7 +663,7 @@
          (soleado  "manyana")
          (superficie  155)
          (terraza  FALSE)
-         (vistas  "buenas")
+         (vistas  "ciudad")
     )
 
     ([Casa_14_Banyo_1] of Banyo
@@ -562,6 +685,7 @@
     ([Casa_14_Cocina] of Cocina
          (parte_de  [Casa_14])
          (cocina_equipada  TRUE)
+         (fogones  "fogones")
          (tamanyo_cocina  "grande")
          (tipo_co  "en 'l'")
     )
@@ -635,6 +759,7 @@
     ([Casa_15_Cocina] of Cocina
          (parte_de  [Casa_15])
          (cocina_equipada  TRUE)
+         (fogones  "induccion")
          (tamanyo_cocina  "mediana")
          (tipo_co  "en linea")
     )
@@ -671,10 +796,10 @@
          (luz  TRUE)
          (permiso_mascotas  TRUE)
          (piscina  FALSE)
-         (soleado  "no")
+         (soleado  "manyana")
          (superficie  65)
          (terraza  FALSE)
-         (vistas  "buenas")
+         (vistas  "ciudad")
     )
 
     ([Casa_16_Banyo_1] of Banyo
@@ -688,6 +813,7 @@
     ([Casa_16_Cocina] of Cocina
          (parte_de  [Casa_16])
          (cocina_equipada  TRUE)
+         (fogones  "induccion")
          (tamanyo_cocina  "pequenya")
          (tipo_co  "en 'l'")
     )
@@ -741,6 +867,7 @@
     ([Casa_17_Cocina] of Cocina
          (parte_de  [Casa_17])
          (cocina_equipada  FALSE)
+         (fogones  "induccion")
          (tamanyo_cocina  "pequenya")
          (tipo_co  "en paralelo")
     )
@@ -817,6 +944,7 @@
     ([Casa_18_Cocina] of Cocina
          (parte_de  [Casa_18])
          (cocina_equipada  TRUE)
+         (fogones  "fogones")
          (tamanyo_cocina  "grande")
          (tipo_co  "en isla")
     )
@@ -866,7 +994,7 @@
          (soleado  "manyana")
          (superficie  75)
          (terraza  FALSE)
-         (vistas  "buenas")
+         (vistas  "ciudad")
     )
 
     ([Casa_19_Banyo_1] of Banyo
@@ -880,6 +1008,7 @@
     ([Casa_19_Cocina] of Cocina
          (parte_de  [Casa_19])
          (cocina_equipada  TRUE)
+         (fogones  "fogones")
          (tamanyo_cocina  "mediana")
          (tipo_co  "en linea")
     )
@@ -919,6 +1048,7 @@
     ([Casa_1_Cocina] of Cocina
          (parte_de  [Casa_1])
          (cocina_equipada  TRUE)
+         (fogones  "fogones")
          (tamanyo_cocina  "grande")
          (tipo_co  "en isla")
     )
@@ -961,14 +1091,14 @@
          (estado  "segunda mano")
          (garaje  FALSE)
          (gas  TRUE)
-         (iluminacion  "poca")
+         (iluminacion  "no")
          (luz  TRUE)
          (permiso_mascotas  FALSE)
          (piscina  FALSE)
          (soleado  "manyana")
          (superficie  80)
          (terraza  TRUE)
-         (vistas  "no")
+         (vistas  "montanya")
     )
 
     ([Casa_20] of Plurifamiliar
@@ -995,7 +1125,7 @@
          (soleado  "tarde")
          (superficie  95)
          (terraza  TRUE)
-         (vistas  "buenas")
+         (vistas  "montanya")
     )
 
     ([Casa_20_Banyo_1] of Banyo
@@ -1017,6 +1147,7 @@
     ([Casa_20_Cocina] of Cocina
          (parte_de  [Casa_20])
          (cocina_equipada  FALSE)
+         (fogones  "induccion")
          (tamanyo_cocina  "grande")
          (tipo_co  "en 'u'")
     )
@@ -1080,6 +1211,7 @@
     ([Casa_21_Cocina] of Cocina
          (parte_de  [Casa_21])
          (cocina_equipada  TRUE)
+         (fogones  "fogones")
          (tamanyo_cocina  "mediana")
          (tipo_co  "en paralelo")
     )
@@ -1119,7 +1251,7 @@
          (soleado  "manyana")
          (superficie  200)
          (terraza  TRUE)
-         (vistas  "buenas")
+         (vistas  "playa")
     )
 
     ([Casa_22_Banyo_1] of Banyo
@@ -1133,6 +1265,7 @@
     ([Casa_22_Cocina] of Cocina
          (parte_de  [Casa_22])
          (cocina_equipada  TRUE)
+         (fogones  "fogones")
          (tamanyo_cocina  "pequenya")
          (tipo_co  "en linea")
     )
@@ -1179,7 +1312,7 @@
          (soleado  "manyana")
          (superficie  155)
          (terraza  FALSE)
-         (vistas  "buenas")
+         (vistas  "playa")
     )
 
     ([Casa_23_Banyo_1] of Banyo
@@ -1201,6 +1334,7 @@
     ([Casa_23_Cocina] of Cocina
          (parte_de  [Casa_23])
          (cocina_equipada  FALSE)
+         (fogones  "induccion")
          (tamanyo_cocina  "mediana")
          (tipo_co  "en 'l'")
     )
@@ -1245,7 +1379,7 @@
          (soleado  "manyana")
          (superficie  55)
          (terraza  FALSE)
-         (vistas  "buenas")
+         (vistas  "ciudad")
     )
 
     ([Casa_24_Banyo_1] of Banyo
@@ -1259,6 +1393,7 @@
     ([Casa_24_Cocina] of Cocina
          (parte_de  [Casa_24])
          (cocina_equipada  TRUE)
+         (fogones  "induccion")
          (tamanyo_cocina  "pequenya")
          (tipo_co  "en linea")
     )
@@ -1298,7 +1433,7 @@
          (soleado  "manyana")
          (superficie  55)
          (terraza  FALSE)
-         (vistas  "buenas")
+         (vistas  "montanya")
     )
 
     ([Casa_25_Banyo_1] of Banyo
@@ -1312,6 +1447,7 @@
     ([Casa_25_Cocina] of Cocina
          (parte_de  [Casa_25])
          (cocina_equipada  TRUE)
+         (fogones  "fogones")
          (tamanyo_cocina  "pequenya")
          (tipo_co  "en linea")
     )
@@ -1398,6 +1534,7 @@
     ([Casa_26_Cocina] of Cocina
          (parte_de  [Casa_26])
          (cocina_equipada  FALSE)
+         (fogones  "induccion")
          (tamanyo_cocina  "grande")
          (tipo_co  "en 'u'")
     )
@@ -1471,6 +1608,7 @@
     ([Casa_27_Cocina] of Cocina
          (parte_de  [Casa_27])
          (cocina_equipada  TRUE)
+         (fogones  "fogones")
          (tamanyo_cocina  "pequenya")
          (tipo_co  "en paralelo")
     )
@@ -1515,7 +1653,7 @@
          (soleado  "no")
          (superficie  110)
          (terraza  TRUE)
-         (vistas  "buenas")
+         (vistas  "ciudad")
     )
 
     ([Casa_28_Banyo_1] of Banyo
@@ -1537,6 +1675,7 @@
     ([Casa_28_Cocina] of Cocina
          (parte_de  [Casa_28])
          (cocina_equipada  TRUE)
+         (fogones  "fogones")
          (tamanyo_cocina  "mediana")
          (tipo_co  "en 'u'")
     )
@@ -1578,7 +1717,7 @@
          (soleado  "tarde")
          (superficie  145)
          (terraza  FALSE)
-         (vistas  "no")
+         (vistas  "playa")
     )
 
     ([Casa_29_Banyo_1] of Banyo
@@ -1608,6 +1747,7 @@
     ([Casa_29_Cocina] of Cocina
          (parte_de  [Casa_29])
          (cocina_equipada  TRUE)
+         (fogones  "induccion")
          (tamanyo_cocina  "grande")
          (tipo_co  "en isla")
     )
@@ -1652,6 +1792,7 @@
     ([Casa_2_Cocina] of Cocina
          (parte_de  [Casa_2])
          (cocina_equipada  FALSE)
+         (fogones  "fogones")
          (tamanyo_cocina  "pequenya")
          (tipo_co  "en paralelo")
     )
@@ -1703,7 +1844,7 @@
          (soleado  "manyana y tarde")
          (superficie  500)
          (terraza  TRUE)
-         (vistas  "no")
+         (vistas  "montanya")
     )
 
     ([Casa_30] of Plurifamiliar
@@ -1730,7 +1871,7 @@
          (soleado  "manyana")
          (superficie  85)
          (terraza  FALSE)
-         (vistas  "buenas")
+         (vistas  "playa")
     )
 
     ([Casa_30_Banyo_1] of Banyo
@@ -1752,6 +1893,7 @@
     ([Casa_30_Cocina] of Cocina
          (parte_de  [Casa_30])
          (cocina_equipada  TRUE)
+         (fogones  "induccion")
          (tamanyo_cocina  "grande")
          (tipo_co  "en 'l'")
     )
@@ -1820,6 +1962,7 @@
     ([Casa_31_Cocina] of Cocina
          (parte_de  [Casa_31])
          (cocina_equipada  FALSE)
+         (fogones  "induccion")
          (tamanyo_cocina  "pequenya")
          (tipo_co  "en 'u'")
     )
@@ -1866,7 +2009,7 @@
          (soleado  "no")
          (superficie  250)
          (terraza  FALSE)
-         (vistas  "no")
+         (vistas  "playa")
     )
 
     ([Casa_32_Banyo_1] of Banyo
@@ -1888,6 +2031,7 @@
     ([Casa_32_Cocina] of Cocina
          (parte_de  [Casa_32])
          (cocina_equipada  FALSE)
+         (fogones  "fogones")
          (tamanyo_cocina  "madiana")
          (tipo_co  "en paralelo")
     )
@@ -1942,7 +2086,7 @@
          (soleado  "no")
          (superficie  95)
          (terraza  FALSE)
-         (vistas  "no")
+         (vistas  "ciudad")
     )
 
     ([Casa_33_Banyo_1] of Banyo
@@ -1964,6 +2108,7 @@
     ([Casa_33_Cocina] of Cocina
          (parte_de  [Casa_33])
          (cocina_equipada  TRUE)
+         (fogones  "induccion")
          (tamanyo_cocina  "grande")
          (tipo_co  "en isla")
     )
@@ -2016,9 +2161,9 @@
          (permiso_mascotas  TRUE)
          (piscina  FALSE)
          (soleado  "manyana")
-         (superficie  110)
+         (superficie  90)
          (terraza  FALSE)
-         (vistas  "buenas")
+         (vistas  "playa")
     )
 
     ([Casa_34_Banyo_1] of Banyo
@@ -2032,6 +2177,7 @@
     ([Casa_34_Cocina] of Cocina
          (parte_de  [Casa_34])
          (cocina_equipada  TRUE)
+         (fogones  "fogones")
          (tamanyo_cocina  "mediana")
          (tipo_co  "en linea")
     )
@@ -2081,7 +2227,7 @@
          (soleado  "manyana")
          (superficie  55)
          (terraza  FALSE)
-         (vistas  "no")
+         (vistas  "playa")
     )
 
     ([Casa_35_Banyo_1] of Banyo
@@ -2095,6 +2241,7 @@
     ([Casa_35_Cocina] of Cocina
          (parte_de  [Casa_35])
          (cocina_equipada  FALSE)
+         (fogones  "fogones")
          (tamanyo_cocina  "pequenya")
          (tipo_co  "en 'u''")
     )
@@ -2150,6 +2297,7 @@
     ([Casa_3_Cocina] of Cocina
          (parte_de  [Casa_3])
          (cocina_equipada  TRUE)
+         (fogones  "induccion")
          (tamanyo_cocina  "grande")
          (tipo_co  "en 'l'")
     )
@@ -2200,16 +2348,16 @@
          (electrodomesticos  "no")
          (emisiones  30)
          (estado  "segunda mano")
-         (garaje  FALSE)
+         (garaje  TRUE)
          (gas  TRUE)
          (iluminacion  "luz natural")
          (luz  TRUE)
-         (permiso_mascotas  FALSE)
+         (permiso_mascotas  TRUE)
          (piscina  TRUE)
          (soleado  "no")
          (superficie  80)
          (terraza  TRUE)
-         (vistas  "buenas")
+         (vistas  "montanya")
     )
 
     ([Casa_4_Banyo_1] of Banyo
@@ -2231,6 +2379,7 @@
     ([Casa_4_Cocina] of Cocina
          (parte_de  [Casa_4])
          (cocina_equipada  FALSE)
+         (fogones  "induccion")
          (tamanyo_cocina  "mediana")
          (tipo_co  "en 'u'")
     )
@@ -2299,6 +2448,7 @@
     ([Casa_5_Cocina] of Cocina
          (parte_de  [Casa_5])
          (cocina_equipada  TRUE)
+         (fogones  "induccion")
          (tamanyo_cocina  "pequenya")
          (tipo_co  "en linea")
     )
@@ -2343,7 +2493,7 @@
          (soleado  "no")
          (superficie  45)
          (terraza  FALSE)
-         (vistas  "no")
+         (vistas  "montanya")
     )
 
     ([Casa_6_Banyo_1] of Banyo
@@ -2357,6 +2507,7 @@
     ([Casa_6_Cocina] of Cocina
          (parte_de  [Casa_6])
          (cocina_equipada  TRUE)
+         (fogones  "induccion")
          (tamanyo_cocina  "pequenya")
          (tipo_co  "en linea")
     )
@@ -2396,7 +2547,7 @@
          (soleado  "manyana")
          (superficie  45)
          (terraza  FALSE)
-         (vistas  "buenas")
+         (vistas  "ciudad")
     )
 
     ([Casa_7_Banyo_1] of Banyo
@@ -2410,6 +2561,7 @@
     ([Casa_7_Cocina] of Cocina
          (parte_de  [Casa_7])
          (cocina_equipada  FALSE)
+         (fogones  "fogones")
          (tamanyo_cocina  "mediana")
          (tipo_co  "en paralelo")
     )
@@ -2456,7 +2608,7 @@
          (soleado  "tarde")
          (superficie  120)
          (terraza  FALSE)
-         (vistas  "buenas")
+         (vistas  "no")
     )
 
     ([Casa_8_Banyo_1] of Banyo
@@ -2478,6 +2630,7 @@
     ([Casa_8_Cocina] of Cocina
          (parte_de  [Casa_8])
          (cocina_equipada  FALSE)
+         (fogones  "fogones")
          (tamanyo_cocina  "mediana")
          (tipo_co  "en isla")
     )
@@ -2552,6 +2705,7 @@
     ([Casa_9_Cocina] of Cocina
          (parte_de  [Casa_9])
          (cocina_equipada  TRUE)
+         (fogones  "induccion")
          (tamanyo_cocina  "grande")
          (tipo_co  "en isla")
     )
@@ -3405,33 +3559,33 @@
          (longitud  2.191789268701732)
     )
 
-    ([Loc_Aparcamiento_1] of Localizacion
+    ([Loc_Parking_1] of Localizacion
          (ciudad  "Barcelona")
-         (direccion  "Aparcamiento 1")
+         (direccion  "Parking 1")
          (distrito  "Gracia")
          (latitud  41.419515023758606)
          (longitud  2.1475685398669695)
     )
 
-    ([Loc_Aparcamiento_2] of Localizacion
+    ([Loc_Parking_2] of Localizacion
          (ciudad  "Barcelona")
-         (direccion  "Aparcamiento 2")
+         (direccion  "Parking 2")
          (distrito  "Sant Andreu")
          (latitud  41.424738695457464)
          (longitud  2.1809007263743205)
     )
 
-    ([Loc_Aparcamiento_3] of Localizacion
+    ([Loc_Parking_3] of Localizacion
          (ciudad  "Barcelona")
-         (direccion  "Aparcamiento 3")
+         (direccion  "Parking 3")
          (distrito  "Sarria")
          (latitud  41.39498265751859)
          (longitud  2.1336692687017815)
     )
 
-    ([Loc_Aparcamiento_4] of Localizacion
+    ([Loc_Parking_4] of Localizacion
          (ciudad  "Barcelona")
-         (direccion  "Aparcamiento 4")
+         (direccion  "Parking 4")
          (distrito  "Eixample")
          (latitud  41.39744874954209)
          (longitud  2.1628163533590166)
@@ -3743,22 +3897,22 @@
 
     ([Oci_1] of Servicio
          (localizado_en  [Loc_Oci_1])
-         (tipo_ser  "Ocio nocturno")
+         (tipo_ser  "Ocio Nocturno")
     )
 
     ([Oci_2] of Servicio
          (localizado_en  [Loc_Oci_2])
-         (tipo_ser  "Ocio nocturno")
+         (tipo_ser  "Ocio Nocturno")
     )
 
     ([Oci_3] of Servicio
          (localizado_en  [Loc_Oci_3])
-         (tipo_ser  "Ocio nocturno")
+         (tipo_ser  "Ocio Nocturno")
     )
 
     ([Oci_4] of Servicio
          (localizado_en  [Loc_Oci_4])
-         (tipo_ser  "Ocio nocturno")
+         (tipo_ser  "Ocio Nocturno")
     )
 
     ([Parc_1] of Servicio
@@ -3796,23 +3950,23 @@
          (tipo_ser  "Parque")
     )
 
-    ([Aparcamiento_1] of Servicio
-         (localizado_en  [Loc_Aparcamiento_1])
+    ([Parking_1] of Servicio
+         (localizado_en  [Loc_Parking_1])
          (tipo_ser  "Aparcamiento")
     )
 
-    ([Aparcamiento_2] of Servicio
-         (localizado_en  [Loc_Aparcamiento_2])
+    ([Parking_2] of Servicio
+         (localizado_en  [Loc_Parking_2])
          (tipo_ser  "Aparcamiento")
     )
 
-    ([Aparcamiento_3] of Servicio
-         (localizado_en  [Loc_Aparcamiento_3])
+    ([Parking_3] of Servicio
+         (localizado_en  [Loc_Parking_3])
          (tipo_ser  "Aparcamiento")
     )
 
-    ([Aparcamiento_4] of Servicio
-         (localizado_en  [Loc_Aparcamiento_4])
+    ([Parking_4] of Servicio
+         (localizado_en  [Loc_Parking_4])
          (tipo_ser  "Aparcamiento")
     )
 
@@ -4016,130 +4170,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; FIN CODIGO GENERADO CON PROTEGE ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-(defclass Persona "Classe de Persona"
-    (is-a USER)
-    (role concrete)
-    (pattern-match reactive)
-    ;;; Nombre de la persona
-    (slot nombre
-        (type STRING)
-        (create-accessor read-write))
-    ;;; Edad de la persona
-    (slot edad
-        (type INTEGER)
-        (create-accessor read-write))
-    ;;; Precio maximo dispuesto a pagar
-    (slot precio_max
-        (type FLOAT)
-        (create-accessor read-write))
-    ;;; Precio minimo a pagar de la persona
-    (slot precio_min
-        (type FLOAT)
-        (create-accessor read-write))
-    ;;; Si es estudiante
-    (slot ocupacion
-        (type STRING)
-        (create-accessor read-write))
-    (slot ingresos
-        (type FLOAT)
-        (create-accessor read-write))
-    (slot ingresos_pareja
-        (type FLOAT)
-        (create-accessor read-write))
-    (slot movilidad_reducida
-        (type SYMBOL)
-        (create-accessor read-write))
-    (slot puede_subir_escaleras
-        (type SYMBOL)
-        (create-accessor read-write))
-    (slot distancia_recorrer
-        (type FLOAT)
-        (create-accessor read-write))
-    (slot pareja
-        (type SYMBOL)
-        (create-accessor read-write))
-    (slot vives_pareja
-        (type SYMBOL)
-        (create-accessor read-write))
-    (slot hijos
-        (type SYMBOL)
-        (create-accessor read-write))
-    (slot num_hijos
-        (type INTEGER)
-        (create-accessor read-write))
-    (slot hijos_escuela_universidad
-        (type STRING)
-        (create-accessor read-write))
-    (slot comparte_piso
-        (type SYMBOL)
-        (create-accessor read-write))
-    (slot num_amigos
-        (type INTEGER)
-        (create-accessor read-write))
-    (slot deporte
-        (type SYMBOL)
-        (create-accessor read-write))
-    (slot donde_deporte
-        (type STRING)
-        (create-accessor read-write))
-    (slot num_coches
-        (type INTEGER)
-        (create-accessor read-write)
-        (default -1))
-    (slot aparcar
-        (type STRING)
-        (create-accessor read-write))
-    (slot transporte_publico
-        (type SYMBOL)
-        (create-accessor read-write))
-    (slot mascota
-        (type SYMBOL)
-        (create-accessor read-write))
-    (slot mascota_grande
-        (type SYMBOL)
-        (create-accessor read-write))
-
-
-    (slot pref_tipo
-        (type STRING)
-        (create-accessor read-write))
-    (slot pref_piso
-        (type STRING)
-        (create-accessor read-write))
-
-    (slot pref_distancia_centro
-        (type FLOAT)
-        (create-accessor read-write))
-
-    (slot pref_amueblada
-        (type SYMBOL)
-        (create-accessor read-write))
-    (slot pref_banyera
-        (type SYMBOL)
-        (create-accessor read-write))
-    (slot pref_piscina
-        (type SYMBOL)
-        (create-accessor read-write))
-
-    (slot cocinas
-        (type SYMBOL)
-        (create-accessor read-write))
-    (slot pref_tipo_cocina
-        (type STRING)
-        (create-accessor read-write))
-
-    (slot pref_soleado
-        (type SYMBOL)
-        (create-accessor read-write))
-    (slot pref_vistas
-        (type SYMBOL)
-        (create-accessor read-write))
-    (slot pref_tipo_vistas
-        (type STRING)
-        (create-accessor read-write))
-)
 
 (defmodule MAIN (export ?ALL))
 
@@ -4566,14 +4596,14 @@
 (defrule preguntas::pregunta-cocinas "pregunta al usuario si cocina"
     ?p <- (object (is-a Persona) (cocinas nil))
     =>
-    (bind ?new-c (pregunta-binaria "--> Cocinas regularmente?"))
+    (bind ?new-c (pregunta-binaria "Cocinas regularmente?"))
     (send ?p put-cocinas ?new-c)
 )
 
 (defrule preguntas::pregunta-pref_tipo_cocina "pregunta al usuario que tipo de cocina prefiere"
     ?p <- (object (is-a Persona) (cocinas TRUE) (pref_tipo_cocina ""))
     =>
-    (bind ?new-c (pregunta-opciones "----> Prefieres fogones o induccion?" "Fogones" "Induccion"))
+    (bind ?new-c (pregunta-opciones "--> Prefieres fogones o induccion?" "Fogones" "Induccion"))
     (send ?p put-pref_tipo_cocina ?new-c)
 )
 
@@ -4990,7 +5020,7 @@
     ?rec <- (object (is-a Recomendacion) (oferta ?ofr))
     (test (< (send (send ?ofr get-oferta_de) get-superficie) ?ms))
     =>
-    (format t "%d %d %s" (send (send ?ofr get-oferta_de) get-superficie) ?ms (< (send (send ?ofr get-oferta_de) get-superficie) ?ms))
+    ;(format t "%d %d %s" (send (send ?ofr get-oferta_de) get-superficie) ?ms (< (send (send ?ofr get-oferta_de) get-superficie) ?ms))
     (send ?rec delete)
 )
 
