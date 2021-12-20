@@ -420,10 +420,10 @@
          (gas  TRUE)
          (iluminacion  "luz natural")
          (luz  TRUE)
-         (permiso_mascotas  FALSE)
+         (permiso_mascotas  TRUE)
          (piscina  TRUE)
          (soleado  "manyana y tarde")
-         (superficie  60)
+         (superficie  100)
          (terraza  TRUE)
          (vistas  "ciudad")
     )
@@ -452,7 +452,7 @@
     ([Casa_10_Oferta] of Oferta_Alquiler
          (oferta_de  [Casa_10])
          (fianza  "2 meses")
-         (precio  530)
+         (precio  830)
     )
 
     ([Casa_11] of Unifamiliar
@@ -2063,7 +2063,7 @@
          (altura  "2a planta")
          (tipo_viv  "apartamento")
          (localizado_en  [Loc_Casa_33])
-         (acceso_mov_red  FALSE)
+         (acceso_mov_red  TRUE)
          (agua  TRUE)
          (aire  TRUE)
          (amueblada  TRUE)
