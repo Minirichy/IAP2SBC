@@ -248,10 +248,7 @@
     (is-a USER)
     (role concrete)
     (pattern-match reactive)
-    ;;; Se solicita una
-    (multislot solicita
-        (type INSTANCE)
-        (create-accessor read-write))
+
     (slot aparcar
         (type STRING)
         (create-accessor read-write))
@@ -4973,6 +4970,30 @@
     (assert (deleted_why (send (send ?rec get-oferta) get-oferta_de) "amueblada"))
     (send ?rec delete)
 )
+
+;(defrule asociacion::unifamiliar "Se descartan las que no coincidan con el tipo de casa que buscan"
+;    (declare (salience 20))
+;    (recomendaciones_creadas) 
+;    (tipo_casa "Piso") 
+;    ?casa <- (object (is-a Unifamiliar))
+;    ?ofr <- (object (is-a Oferta_Alquiler) (oferta_de ?casa))
+;    ?rec <- (object (is-a Recomendacion) (oferta ?ofr))
+;    =>
+;    (assert (deleted_why ?casa "unifamiliar"))
+;    (send ?rec delete)
+;)
+
+;(defrule asociacion::plurifamiliar "Se descartan las que no coincidan con el tipo de casa que buscan"
+;    (declare (salience 10))
+;    (recomendaciones_creadas) 
+;    (tipo_casa "Unifamiliar") 
+;    ?casa <- (object (is-a Plurifamiliar))
+;    ?ofr <- (object (is-a Oferta_Alquiler) (oferta_de ?casa))
+;    ?rec <- (object (is-a Recomendacion) (oferta ?ofr))
+;    =>
+;    (assert (deleted_why ?casa "plurifamiliar"))
+;    (send ?rec delete)
+;)
 
 ;(defrule asociacion::dormitorio_doble "Se descartan las recomendaciones sin dormitorio doble"
 ;    (declare (salience 10))
