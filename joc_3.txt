@@ -11,6 +11,7 @@ Biel
 Estudio
 N
 N
+N
 S
 3
 S
@@ -26,7 +27,7 @@ N
 N
 S
 N
-
+N
 
 (facts asociation)
 (agenda)
