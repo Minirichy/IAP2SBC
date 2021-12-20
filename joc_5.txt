@@ -1,0 +1,41 @@
+(load p.clp)
+
+(reset)
+(instances)
+(watch rules)
+(run)
+Maria
+45
+1600
+6780
+Trabajo
+3000
+N
+S
+S
+6700
+S
+3
+Ambas
+N
+S
+ClubDeporte
+0
+S
+N
+Piso
+Indiferente
+2000
+S
+S
+S
+Fogones
+S
+S
+S
+Indiferente
+
+
+(facts asociation)
+(agenda)
+(exit 0)

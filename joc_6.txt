@@ -1,0 +1,40 @@
+(load p.clp)
+
+(reset)
+(instances)
+(watch rules)
+(run)
+Pepe
+45
+200
+1500
+Trabajo
+1300
+N
+S
+S
+3400
+S
+1
+Universidad
+N
+S
+Parque
+1
+Aparcamiento
+S
+N
+Piso
+Indiferente
+800
+S
+N
+N
+N
+S
+N
+
+
+(facts asociation)
+(agenda)
+(exit 0)

@@ -1,0 +1,33 @@
+(load p.clp)
+
+(reset)
+(instances)
+(watch rules)
+(run)
+Javier
+30
+1000
+2820
+Trabajo
+3000
+N
+N
+N
+N
+0
+S
+S
+S
+Piso
+Indiferente
+500
+S
+N
+S
+S
+Ciudad
+
+
+(facts asociation)
+(agenda)
+(exit 0)

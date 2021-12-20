@@ -1,0 +1,41 @@
+(load p.clp)
+
+(reset)
+(instances)
+(watch rules)
+(run)
+Manel
+56
+2000
+8000
+Trabajo
+3500
+S
+S
+1000
+S
+S
+7077
+S
+2
+Escuela
+N
+N
+2
+Calle
+N
+S
+S
+Unifamiliar
+2000
+N
+S
+Fogones
+S
+N
+N
+
+
+(facts asociation)
+(agenda)
+(exit 0)
