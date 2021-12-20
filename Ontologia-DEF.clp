@@ -2,7 +2,7 @@
 ;;; Ontologia-DEF.clp
 ;;; Translated by owl2clips
 ;;; Translated to CLIPS from ontology Ontologia-DEF.owl
-;;; :Date 19/12/2021 09:37:45
+;;; :Date 20/12/2021 09:35:01
 
 (defclass Vivienda "Clase de Vivienda"
     (is-a USER)
@@ -167,6 +167,9 @@
     (slot cocina_equipada
         (type SYMBOL)
         (create-accessor read-write))
+    (slot fogones
+        (type STRING)
+        (create-accessor read-write))
     (slot tamaño_cocina
         (type STRING)
         (create-accessor read-write))
@@ -241,108 +244,109 @@
     (multislot solicita
         (type INSTANCE)
         (create-accessor read-write))
-    (slot coches
-        (type INTEGER)
-        (create-accessor read-write))
-    (slot cocinar
-        (type SYMBOL)
-        (create-accessor read-write))
-    (slot compañeros_piso
-        (type INTEGER)
-        (create-accessor read-write))
-    ;;; Baloncesto/Futbol/Otro/No
-    (slot deporte
+    (slot aparcar
         (type STRING)
         (create-accessor read-write))
-    ;;; Distancia del centro
-    (slot dist_centro
-        (type INTEGER)
+    (slot cocinas
+        (type SYMBOL)
         (create-accessor read-write))
-    ;;; Distancia que recorre por la acera?(No acabo de entender este atributo)
-    (slot dist_recorrer
-        (type INTEGER)
+    (slot comparte_piso
+        (type SYMBOL)
+        (create-accessor read-write))
+    (slot deporte
+        (type SYMBOL)
+        (create-accessor read-write))
+    (slot distancia_recorrer
+        (type FLOAT)
+        (create-accessor read-write))
+    (slot donde_deporte
+        (type STRING)
         (create-accessor read-write))
     (slot edad
         (type INTEGER)
         (create-accessor read-write))
-    ;;; Ejercicio en parque?
-    (slot ejer_parque
-        (type SYMBOL)
-        (create-accessor read-write))
-    (slot estudio
-        (type SYMBOL)
-        (create-accessor read-write))
-    (slot gimnasio
-        (type SYMBOL)
-        (create-accessor read-write))
     (slot hijos
-        (type INTEGER)
+        (type SYMBOL)
         (create-accessor read-write))
-    ;;; Edad de los hijos
-    (multislot hijos_edad
-        (type INTEGER)
+    (slot hijos_escuela_universidad
+        (type STRING)
+        (create-accessor read-write))
+    (slot ingresos
+        (type FLOAT)
+        (create-accessor read-write))
+    (slot ingresos_pareja
+        (type FLOAT)
         (create-accessor read-write))
     (slot mascota
+        (type SYMBOL)
+        (create-accessor read-write))
+    (slot mascota_grande
+        (type SYMBOL)
+        (create-accessor read-write))
+    (slot movilidad_reducida
         (type SYMBOL)
         (create-accessor read-write))
     (slot nombre
         (type STRING)
         (create-accessor read-write))
-    (slot num_baños
+    (slot num_amigos
         (type INTEGER)
         (create-accessor read-write))
-    (slot num_dorm
+    (slot num_coches
         (type INTEGER)
+        (create-accessor read-write))
+    (slot num_hijos
+        (type INTEGER)
+        (create-accessor read-write))
+    (slot ocupacion
+        (type STRING)
         (create-accessor read-write))
     (slot pareja
         (type SYMBOL)
         (create-accessor read-write))
-    ;;; Planta Baja, Atico, Indiferente, en medio
-    (slot pref_altura
-        (type STRING)
+    (slot precio_max
+        (type FLOAT)
+        (create-accessor read-write))
+    (slot precio_min
+        (type FLOAT)
         (create-accessor read-write))
     (slot pref_amueblada
-        (type SYMBOL)
-        (create-accessor read-write))
-    (slot pref_ascensor
         (type SYMBOL)
         (create-accessor read-write))
     (slot pref_bañera
         (type SYMBOL)
         (create-accessor read-write))
-    ;;; Si prefiere Plurifamiliar/Unifamiliar
-    (slot pref_casa
-        (type STRING)
-        (create-accessor read-write))
-    ;;; Induccion/Fogones/Indiferente
-    (slot pref_fogones
-        (type STRING)
-        (create-accessor read-write))
-    (slot pref_jardin
-        (type SYMBOL)
+    (slot pref_distancia_centro
+        (type FLOAT)
         (create-accessor read-write))
     (slot pref_piscina
         (type SYMBOL)
         (create-accessor read-write))
-    (slot pref_sol
+    (slot pref_piso
+        (type STRING)
+        (create-accessor read-write))
+    (slot pref_soleado
         (type SYMBOL)
+        (create-accessor read-write))
+    (slot pref_tipo
+        (type STRING)
+        (create-accessor read-write))
+    (slot pref_tipo_cocina
+        (type STRING)
+        (create-accessor read-write))
+    (slot pref_tipo_vistas
+        (type STRING)
         (create-accessor read-write))
     (slot pref_vistas
         (type SYMBOL)
         (create-accessor read-write))
-    (slot problemas_movilidad
-        (type SYMBOL)
-        (create-accessor read-write))
-    (slot subir_escaleras
-        (type SYMBOL)
-        (create-accessor read-write))
-    (slot sueldo
-        (type INTEGER)
-        (create-accessor read-write))
-    (slot trabajo
+    (slot puede_subir_escaleras
         (type SYMBOL)
         (create-accessor read-write))
     (slot transporte_publico
+        (type SYMBOL)
+        (create-accessor read-write))
+    (slot vives_pareja
         (type SYMBOL)
         (create-accessor read-write))
 )
@@ -388,7 +392,7 @@
          (soleado  "mañana")
          (superficie  200)
          (terraza  "true")
-         (vistas  "buenas")
+         (vistas  "montaña")
     )
 
     ([Casa_10] of Plurifamiliar
@@ -415,7 +419,7 @@
          (soleado  "mañana y tarde")
          (superficie  60)
          (terraza  "true")
-         (vistas  "buenas")
+         (vistas  "ciudad")
     )
 
     ([Casa_10_Baño_1] of Baño
@@ -429,6 +433,7 @@
     ([Casa_10_Cocina] of Cocina
          (parte_de  [Casa_10])
          (cocina_equipada  "true")
+         (fogones  "induccion")
          (tamaño_cocina  "grande")
          (tipo_co  "en isla")
     )
@@ -484,6 +489,7 @@
     ([Casa_11_Cocina] of Cocina
          (parte_de  [Casa_11])
          (cocina_equipada  "true")
+         (fogones  "fogones")
          (tamaño_cocina  "grande")
          (tipo_co  "en 'u'")
     )
@@ -530,7 +536,7 @@
          (soleado  "mañana")
          (superficie  85)
          (terraza  "true")
-         (vistas  "buenas")
+         (vistas  "ciudad")
     )
 
     ([Casa_12_Baño_1] of Baño
@@ -544,6 +550,7 @@
     ([Casa_12_Cocina] of Cocina
          (parte_de  [Casa_12])
          (cocina_equipada  "true")
+         (fogones  "fogones")
          (tamaño_cocina  "mediana")
          (tipo_co  "en paralelo")
     )
@@ -597,6 +604,7 @@
     ([Casa_13_Cocina] of Cocina
          (parte_de  [Casa_13])
          (cocina_equipada  "true")
+         (fogones  "fogones")
          (tamaño_cocina  "pequeña")
          (tipo_co  "en 'u''")
     )
@@ -646,7 +654,7 @@
          (soleado  "mañana")
          (superficie  155)
          (terraza  "false")
-         (vistas  "buenas")
+         (vistas  "ciudad")
     )
 
     ([Casa_14_Baño_1] of Baño
@@ -668,6 +676,7 @@
     ([Casa_14_Cocina] of Cocina
          (parte_de  [Casa_14])
          (cocina_equipada  "true")
+         (fogones  "fogones")
          (tamaño_cocina  "grande")
          (tipo_co  "en 'l'")
     )
@@ -741,6 +750,7 @@
     ([Casa_15_Cocina] of Cocina
          (parte_de  [Casa_15])
          (cocina_equipada  "true")
+         (fogones  "induccion")
          (tamaño_cocina  "mediana")
          (tipo_co  "en linea")
     )
@@ -777,10 +787,10 @@
          (luz  "true")
          (permiso_mascotas  "true")
          (piscina  "false")
-         (soleado  "no")
+         (soleado  "mañana")
          (superficie  65)
          (terraza  "false")
-         (vistas  "buenas")
+         (vistas  "ciudad")
     )
 
     ([Casa_16_Baño_1] of Baño
@@ -794,6 +804,7 @@
     ([Casa_16_Cocina] of Cocina
          (parte_de  [Casa_16])
          (cocina_equipada  "true")
+         (fogones  "induccion")
          (tamaño_cocina  "pequeña")
          (tipo_co  "en 'l'")
     )
@@ -847,6 +858,7 @@
     ([Casa_17_Cocina] of Cocina
          (parte_de  [Casa_17])
          (cocina_equipada  "false")
+         (fogones  "induccion")
          (tamaño_cocina  "pequeña")
          (tipo_co  "en paralelo")
     )
@@ -923,6 +935,7 @@
     ([Casa_18_Cocina] of Cocina
          (parte_de  [Casa_18])
          (cocina_equipada  "true")
+         (fogones  "fogones")
          (tamaño_cocina  "grande")
          (tipo_co  "en isla")
     )
@@ -972,7 +985,7 @@
          (soleado  "mañana")
          (superficie  75)
          (terraza  "false")
-         (vistas  "buenas")
+         (vistas  "ciudad")
     )
 
     ([Casa_19_Baño_1] of Baño
@@ -986,6 +999,7 @@
     ([Casa_19_Cocina] of Cocina
          (parte_de  [Casa_19])
          (cocina_equipada  "true")
+         (fogones  "fogones")
          (tamaño_cocina  "mediana")
          (tipo_co  "en linea")
     )
@@ -1025,6 +1039,7 @@
     ([Casa_1_Cocina] of Cocina
          (parte_de  [Casa_1])
          (cocina_equipada  "true")
+         (fogones  "fogones")
          (tamaño_cocina  "grande")
          (tipo_co  "en isla")
     )
@@ -1074,7 +1089,7 @@
          (soleado  "mañana")
          (superficie  80)
          (terraza  "true")
-         (vistas  "no")
+         (vistas  "montaña")
     )
 
     ([Casa_20] of Plurifamiliar
@@ -1101,7 +1116,7 @@
          (soleado  "tarde")
          (superficie  95)
          (terraza  "true")
-         (vistas  "buenas")
+         (vistas  "montaña")
     )
 
     ([Casa_20_Baño_1] of Baño
@@ -1123,6 +1138,7 @@
     ([Casa_20_Cocina] of Cocina
          (parte_de  [Casa_20])
          (cocina_equipada  "false")
+         (fogones  "induccion")
          (tamaño_cocina  "grande")
          (tipo_co  "en 'u'")
     )
@@ -1186,6 +1202,7 @@
     ([Casa_21_Cocina] of Cocina
          (parte_de  [Casa_21])
          (cocina_equipada  "true")
+         (fogones  "fogones")
          (tamaño_cocina  "mediana")
          (tipo_co  "en paralelo")
     )
@@ -1225,7 +1242,7 @@
          (soleado  "mañana")
          (superficie  200)
          (terraza  "true")
-         (vistas  "buenas")
+         (vistas  "playa")
     )
 
     ([Casa_22_Baño_1] of Baño
@@ -1239,6 +1256,7 @@
     ([Casa_22_Cocina] of Cocina
          (parte_de  [Casa_22])
          (cocina_equipada  "true")
+         (fogones  "fogones")
          (tamaño_cocina  "pequeña")
          (tipo_co  "en linea")
     )
@@ -1285,7 +1303,7 @@
          (soleado  "mañana")
          (superficie  155)
          (terraza  "false")
-         (vistas  "buenas")
+         (vistas  "playa")
     )
 
     ([Casa_23_Baño_1] of Baño
@@ -1307,6 +1325,7 @@
     ([Casa_23_Cocina] of Cocina
          (parte_de  [Casa_23])
          (cocina_equipada  "false")
+         (fogones  "induccion")
          (tamaño_cocina  "mediana")
          (tipo_co  "en 'l'")
     )
@@ -1351,7 +1370,7 @@
          (soleado  "mañana")
          (superficie  55)
          (terraza  "false")
-         (vistas  "buenas")
+         (vistas  "ciudad")
     )
 
     ([Casa_24_Baño_1] of Baño
@@ -1365,6 +1384,7 @@
     ([Casa_24_Cocina] of Cocina
          (parte_de  [Casa_24])
          (cocina_equipada  "true")
+         (fogones  "induccion")
          (tamaño_cocina  "pequeña")
          (tipo_co  "en linea")
     )
@@ -1404,7 +1424,7 @@
          (soleado  "mañana")
          (superficie  55)
          (terraza  "false")
-         (vistas  "buenas")
+         (vistas  "montaña")
     )
 
     ([Casa_25_Baño_1] of Baño
@@ -1418,6 +1438,7 @@
     ([Casa_25_Cocina] of Cocina
          (parte_de  [Casa_25])
          (cocina_equipada  "true")
+         (fogones  "fogones")
          (tamaño_cocina  "pequeña")
          (tipo_co  "en linea")
     )
@@ -1504,6 +1525,7 @@
     ([Casa_26_Cocina] of Cocina
          (parte_de  [Casa_26])
          (cocina_equipada  "false")
+         (fogones  "induccion")
          (tamaño_cocina  "grande")
          (tipo_co  "en 'u'")
     )
@@ -1577,6 +1599,7 @@
     ([Casa_27_Cocina] of Cocina
          (parte_de  [Casa_27])
          (cocina_equipada  "true")
+         (fogones  "fogones")
          (tamaño_cocina  "pequeña")
          (tipo_co  "en paralelo")
     )
@@ -1621,7 +1644,7 @@
          (soleado  "no")
          (superficie  110)
          (terraza  "true")
-         (vistas  "buenas")
+         (vistas  "ciudad")
     )
 
     ([Casa_28_Baño_1] of Baño
@@ -1643,6 +1666,7 @@
     ([Casa_28_Cocina] of Cocina
          (parte_de  [Casa_28])
          (cocina_equipada  "true")
+         (fogones  "fogones")
          (tamaño_cocina  "mediana")
          (tipo_co  "en 'u'")
     )
@@ -1684,7 +1708,7 @@
          (soleado  "tarde")
          (superficie  145)
          (terraza  "false")
-         (vistas  "no")
+         (vistas  "playa")
     )
 
     ([Casa_29_Baño_1] of Baño
@@ -1714,6 +1738,7 @@
     ([Casa_29_Cocina] of Cocina
          (parte_de  [Casa_29])
          (cocina_equipada  "true")
+         (fogones  "induccion")
          (tamaño_cocina  "grande")
          (tipo_co  "en isla")
     )
@@ -1758,6 +1783,7 @@
     ([Casa_2_Cocina] of Cocina
          (parte_de  [Casa_2])
          (cocina_equipada  "false")
+         (fogones  "fogones")
          (tamaño_cocina  "pequeña")
          (tipo_co  "en paralelo")
     )
@@ -1809,7 +1835,7 @@
          (soleado  "mañana y tarde")
          (superficie  500)
          (terraza  "true")
-         (vistas  "no")
+         (vistas  "montaña")
     )
 
     ([Casa_30] of Plurifamiliar
@@ -1836,7 +1862,7 @@
          (soleado  "mañana")
          (superficie  85)
          (terraza  "false")
-         (vistas  "buenas")
+         (vistas  "playa")
     )
 
     ([Casa_30_Baño_1] of Baño
@@ -1858,6 +1884,7 @@
     ([Casa_30_Cocina] of Cocina
          (parte_de  [Casa_30])
          (cocina_equipada  "true")
+         (fogones  "induccion")
          (tamaño_cocina  "grande")
          (tipo_co  "en 'l'")
     )
@@ -1926,6 +1953,7 @@
     ([Casa_31_Cocina] of Cocina
          (parte_de  [Casa_31])
          (cocina_equipada  "false")
+         (fogones  "induccion")
          (tamaño_cocina  "pequeña")
          (tipo_co  "en 'u'")
     )
@@ -1972,7 +2000,7 @@
          (soleado  "no")
          (superficie  250)
          (terraza  "false")
-         (vistas  "no")
+         (vistas  "playa")
     )
 
     ([Casa_32_Baño_1] of Baño
@@ -1994,6 +2022,7 @@
     ([Casa_32_Cocina] of Cocina
          (parte_de  [Casa_32])
          (cocina_equipada  "false")
+         (fogones  "fogones")
          (tamaño_cocina  "madiana")
          (tipo_co  "en paralelo")
     )
@@ -2048,7 +2077,7 @@
          (soleado  "no")
          (superficie  95)
          (terraza  "false")
-         (vistas  "no")
+         (vistas  "ciudad")
     )
 
     ([Casa_33_Baño_1] of Baño
@@ -2070,6 +2099,7 @@
     ([Casa_33_Cocina] of Cocina
          (parte_de  [Casa_33])
          (cocina_equipada  "true")
+         (fogones  "induccion")
          (tamaño_cocina  "grande")
          (tipo_co  "en isla")
     )
@@ -2124,7 +2154,7 @@
          (soleado  "mañana")
          (superficie  90)
          (terraza  "false")
-         (vistas  "buenas")
+         (vistas  "playa")
     )
 
     ([Casa_34_Baño_1] of Baño
@@ -2138,6 +2168,7 @@
     ([Casa_34_Cocina] of Cocina
          (parte_de  [Casa_34])
          (cocina_equipada  "true")
+         (fogones  "fogones")
          (tamaño_cocina  "mediana")
          (tipo_co  "en linea")
     )
@@ -2187,7 +2218,7 @@
          (soleado  "mañana")
          (superficie  55)
          (terraza  "false")
-         (vistas  "no")
+         (vistas  "playa")
     )
 
     ([Casa_35_Baño_1] of Baño
@@ -2201,6 +2232,7 @@
     ([Casa_35_Cocina] of Cocina
          (parte_de  [Casa_35])
          (cocina_equipada  "false")
+         (fogones  "fogones")
          (tamaño_cocina  "pequeña")
          (tipo_co  "en 'u''")
     )
@@ -2256,6 +2288,7 @@
     ([Casa_3_Cocina] of Cocina
          (parte_de  [Casa_3])
          (cocina_equipada  "true")
+         (fogones  "induccion")
          (tamaño_cocina  "grande")
          (tipo_co  "en 'l'")
     )
@@ -2306,16 +2339,16 @@
          (electrodomesticos  "no")
          (emisiones  30)
          (estado  "segunda mano")
-         (garaje  "false")
+         (garaje  "true")
          (gas  "true")
          (iluminacion  "luz natural")
          (luz  "true")
-         (permiso_mascotas  "false")
+         (permiso_mascotas  "true")
          (piscina  "true")
          (soleado  "no")
          (superficie  80)
          (terraza  "true")
-         (vistas  "buenas")
+         (vistas  "montaña")
     )
 
     ([Casa_4_Baño_1] of Baño
@@ -2337,6 +2370,7 @@
     ([Casa_4_Cocina] of Cocina
          (parte_de  [Casa_4])
          (cocina_equipada  "false")
+         (fogones  "induccion")
          (tamaño_cocina  "mediana")
          (tipo_co  "en 'u'")
     )
@@ -2405,6 +2439,7 @@
     ([Casa_5_Cocina] of Cocina
          (parte_de  [Casa_5])
          (cocina_equipada  "true")
+         (fogones  "induccion")
          (tamaño_cocina  "pequeña")
          (tipo_co  "en linea")
     )
@@ -2449,7 +2484,7 @@
          (soleado  "no")
          (superficie  45)
          (terraza  "false")
-         (vistas  "no")
+         (vistas  "montaña")
     )
 
     ([Casa_6_Baño_1] of Baño
@@ -2463,6 +2498,7 @@
     ([Casa_6_Cocina] of Cocina
          (parte_de  [Casa_6])
          (cocina_equipada  "true")
+         (fogones  "induccion")
          (tamaño_cocina  "pequeña")
          (tipo_co  "en linea")
     )
@@ -2502,7 +2538,7 @@
          (soleado  "mañana")
          (superficie  45)
          (terraza  "false")
-         (vistas  "buenas")
+         (vistas  "ciudad")
     )
 
     ([Casa_7_Baño_1] of Baño
@@ -2516,6 +2552,7 @@
     ([Casa_7_Cocina] of Cocina
          (parte_de  [Casa_7])
          (cocina_equipada  "false")
+         (fogones  "fogones")
          (tamaño_cocina  "mediana")
          (tipo_co  "en paralelo")
     )
@@ -2562,7 +2599,7 @@
          (soleado  "tarde")
          (superficie  120)
          (terraza  "false")
-         (vistas  "buenas")
+         (vistas  "no")
     )
 
     ([Casa_8_Baño_1] of Baño
@@ -2584,6 +2621,7 @@
     ([Casa_8_Cocina] of Cocina
          (parte_de  [Casa_8])
          (cocina_equipada  "false")
+         (fogones  "fogones")
          (tamaño_cocina  "mediana")
          (tipo_co  "en isla")
     )
@@ -2658,6 +2696,7 @@
     ([Casa_9_Cocina] of Cocina
          (parte_de  [Casa_9])
          (cocina_equipada  "true")
+         (fogones  "induccion")
          (tamaño_cocina  "grande")
          (tipo_co  "en isla")
     )

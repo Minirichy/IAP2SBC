@@ -1,0 +1,33 @@
+(load p.clp)
+
+(reset)
+(instances)
+(watch rules)
+(run)
+Biel
+21
+600
+3400
+Estudio
+N
+N
+S
+3
+S
+Gimnasio
+0
+S
+S
+N
+Piso
+Indiferente
+3000
+N
+N
+S
+N
+
+
+(facts asociation)
+(agenda)
+(exit 0)

@@ -1,0 +1,39 @@
+(load p.clp)
+
+(reset)
+(instances)
+(watch rules)
+(run)
+Nuria
+28
+800
+2480
+Trabajo
+2350
+N
+S
+S
+4870
+N
+N
+N
+1
+Garaje
+N
+S
+S
+Piso
+Atico
+600
+S
+S
+S
+Induccion
+N
+N
+N
+
+
+(facts asociation)
+(agenda)
+(exit 0)

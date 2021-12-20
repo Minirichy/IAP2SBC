@@ -1,0 +1,39 @@
+(load p.clp)
+
+(reset)
+(instances)
+(watch rules)
+(run)
+Pere
+67
+100
+100000
+Trabajo
+900
+S
+N
+1500
+S
+S
+1800
+N
+N
+N
+0
+S
+N
+Piso
+Indiferente
+400
+S
+N
+N
+N
+S
+S
+Ciudad
+
+
+(facts asociation)
+(agenda)
+(exit 0)
